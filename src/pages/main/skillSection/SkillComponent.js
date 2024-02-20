@@ -14,7 +14,7 @@ const SkillItem = styled.li`
     padding: 10px;
     display: flex;
     opacity: ${({ visible }) => (visible ? '1' : '0')};
-    transition: opacity 0.7s ease; 
+    transition: opacity 0.8s ease; 
 `;
 
 export default function SkillComponent ({skill}) {

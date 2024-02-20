@@ -22,7 +22,7 @@ const HeaderRow = styled.div`
 `
 
 const SiteName = styled.p`
-    font-size: 25px;
+    font-size: 26px;
     margin-right: auto;
     font-family: sans-serif;
 `
@@ -41,9 +41,15 @@ const Options = styled.ul`
 `
 
 const Optional = styled(Link) `
+    font-size: 20px;
     text-decoration: none;
     color: inherit;
     position: relative;
+
+    &:hover {
+        opacity: 0.7;
+        transition: opacity 0.2s ease-in;
+    }
 
     &.active::after {
         content: '';
@@ -54,6 +60,22 @@ const Optional = styled(Link) `
         width: 100%;
         height: 3px;
         background-color: blue;
+    }
+
+    &:hover::after {
+        background-color: darkblue;
+        transition: background-color 0.2s ease-in;
+    }
+    
+    
+    &::after {
+        background-color: blue;
+        transition: background-color 0.2s ease-in;
+    }
+    
+    &:not(:hover) {
+        opacity: 1;
+        transition: opacity 0.2s ease-in;
     }
 `
 
@@ -66,8 +88,8 @@ export default function HeaderSection () {
             setButton("home");
         } else if (location.pathname.includes("/projects")) {
             setButton("projects");
-        } else if (location.pathname.includes("/contacts")){
-            setButton("contacts");
+        } else if (location.pathname.includes("/blog")){
+            setButton("blog");
         }
     }, [location.pathname]);
 
@@ -79,7 +101,7 @@ export default function HeaderSection () {
                     <Options>
                         <Optional to={"/home"} className={buttonSelected === "home" ? "active" : ""}>HOME</Optional>
                         <Optional to={"/projects"} className={buttonSelected === "projects" ? "active" : ""}>PROJECTS</Optional>
-                        <Optional to={"/contacts"} className={buttonSelected === "contacts" ? "active" : ""}>CONTACTS</Optional>
+                        <Optional to={"/blog"} className={buttonSelected === "blog" ? "active" : ""}>MY BLOG</Optional>
                     </Options>
                 </HeaderRow>
             </HeaderContainer>

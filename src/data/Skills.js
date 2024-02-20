@@ -32,7 +32,7 @@ export function GetBackEndSkills () {
         },
         {
             img: REDIS_IMG,
-            title: "Redis. Умею писать кастомные аннотации кэширования применяя АОП"
+            title: "Кэширую с помощью Redis. Умею писать кастомные аннотации кэширования применяя АОП"
         },
         {
             img: LOMBOK_IMG,
@@ -44,7 +44,7 @@ export function GetBackEndSkills () {
         },
         {
             img: LOGBACK_IMG,
-            title: "Для логирования использую Logback"
+            title: "Logback"
         },
         {
             img: POSTMAN_IMG,
