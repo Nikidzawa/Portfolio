@@ -7,6 +7,7 @@ const Main = styled.div`
     min-height: 2000px;
     margin: 0 auto;
     padding: 0 20px;
+    background-color: black;
 `
 export default function MainPage () {
     return (

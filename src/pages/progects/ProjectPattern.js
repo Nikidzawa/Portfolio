@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import {useEffect, useState} from "react";
+import GitHub from "../../API/GitHub";
+import Loading from "../../Components/Loading";
 
 const Pattern = styled.div`
     padding: 20px;
@@ -11,10 +13,6 @@ const Pattern = styled.div`
     cursor: pointer;
     overflow: hidden; 
     transition: transform 0.3s ease;
-    transition: opacity 0.8s ease-in;
-    
-    opacity: ${({ visible }) => (visible ? '1' : '0')};
-
     &:hover {
         transform: scale(1.05);
     }
@@ -52,17 +50,23 @@ const Title = styled.p`
     padding: 10px;
 `
 
-export default function ProjectPattern ({project}) {
-    const [isVisible, setVisible] = useState(false);
+export default function ProjectPattern ({repo}) {
+    const [image, setImage] = useState(null);
+
     useEffect(() => {
-        setVisible(true)
-    }, [])
+        getImage();
+    }, []);
+
+    async function getImage() {
+        const imageName = await GitHub.getImage(repo.name);
+        setImage(imageName);
+    }
 
     return (
-        <Pattern visible={isVisible}>
+        <Pattern>
             <Content>
-                <Image src={project.img} alt="Logo"/>
-                <Title>{project.title}</Title>
+                {image === null ? <Loading/> : <Image src={image} alt="Logo"/>}
+                <Title>{repo.description}</Title>
             </Content>
         </Pattern>
     )

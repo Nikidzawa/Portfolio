@@ -1,6 +1,8 @@
 import styled from "styled-components";
+import {useEffect, useState} from "react";
+import Loader from "../../Components/Loading";
+import GitHub from "../../API/GitHub";
 import ProjectPattern from "./ProjectPattern";
-import GetProjects from "../../data/projects";
 
 const ProjectsGrid = styled.div `
     min-height: 1000px;
@@ -15,9 +17,20 @@ const ProjectsGrid = styled.div `
 `
 
 export default function ProjectsPage () {
+    const [repositories, setRepositories] = useState(null);
+
+    useEffect(() => {
+        const fetchRepos = async () => {
+            const repos = await GitHub.getRepos();
+            setRepositories(repos);
+        };
+
+        fetchRepos();
+    }, []);
+
     return (
         <ProjectsGrid>
-            {GetProjects().map(progect => <ProjectPattern project={progect}/>)}
+            {repositories === null ? <Loader/> : repositories.map(project => <ProjectPattern key={project.id} repo={project}/>)}
         </ProjectsGrid>
     )
 }

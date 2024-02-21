@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import {useEffect, useState} from "react";
+import "./Components.css"
 
 const TextContent = styled.div`
     min-height: 700px;
@@ -8,8 +9,6 @@ const TextContent = styled.div`
     justify-content: center;
     align-items: center;
     padding: 30px;
-    opacity: ${({ visible }) => (visible ? '1' : '0')};
-    transition: opacity 2s ease-in;
 
     @media (max-width: 700px) {
         margin-top: 100px;
@@ -35,20 +34,14 @@ const Text = styled.div`
 `
 
 export default function StarterSection () {
-    const [isVisible, setVisible] = useState(false);
-
-    useEffect(() => {
-        setVisible(true)
-    }, [])
-
     return (
         <StarterDiv>
-            <TextContent visible={isVisible}>
+            <TextContent>
                 <Text>Привет, меня зовут <strong>Никита</strong>.</Text>
-                <div style={{display: "flex"}}>
+                <div style={{display: "flex"}} className="typing-demo">
                     <Text>Я</Text><Text style={{color: "blue"}}>FullStack</Text>
+                    <Text>разработчик</Text>
                 </div>
-                <Text>разработчик</Text>
             </TextContent>
         </StarterDiv>
     )
