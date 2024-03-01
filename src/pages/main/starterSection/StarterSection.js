@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import "./Components.css"
 
 const TextContent = styled.div`
     min-height: 700px;
