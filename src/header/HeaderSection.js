@@ -6,6 +6,9 @@ const HeaderContainer = styled.div`
     margin: 0 auto;
     padding: 0 20px;
     max-width: 1200px;
+    @media screen and (max-width: 1200px) {
+        max-width: 100vw;
+    }
 `
 
 const HeaderRow = styled.div`
