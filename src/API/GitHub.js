@@ -2,14 +2,14 @@ export default class GitHub {
 
     options = {
         headers: {
-            'Authorization': 'Bearer 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'
+            'Authorization': 'Bearer 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'
         }
     };
     static getRepos () {
         const getReposURL = `https://api.github.com/users/nikidzawa/repos`
         const options = {
             headers: {
-                'Authorization': 'Bearer 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'
+                'Authorization': 'Bearer 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'
             }
         };
         return fetch(getReposURL, options).then(response => response.json()
@@ -21,7 +21,7 @@ export default class GitHub {
         const getImagesURL = `https://api.github.com/repos/nikidzawa/${repoName}/contents`;
         const options = {
             headers: {
-                'Authorization': 'Bearer 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'
+                'Authorization': 'Bearer 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'
             }
         };
         const files = await fetch(getImagesURL, options).then(response => response.json());
