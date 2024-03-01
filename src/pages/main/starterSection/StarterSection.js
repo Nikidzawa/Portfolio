@@ -10,11 +10,39 @@ const TextContent = styled.div`
     padding: 30px;
 `
 
+const Typing = styled.div`
+    width: 34ch;
+    animation: typing 2s steps(22), blink .5s step-end infinite alternate;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid;
+    font-family: monospace;
+    font-size: 2em;
+    @media screen and (max-width: 600px) {
+        width: 26.5ch;
+    }
+    @media screen and (max-width: 400px) {
+        width: 22.5ch;
+    }
+}
+
+@keyframes typing {
+    from {
+        width: 0
+    }
+}
+
+@keyframes blink {
+    50% {
+        border-color: transparent
+    }
+`
+
 const StarterDiv = styled.div`
     border-bottom: 1px solid azure;
 `
 
-const Text = styled.div`
+const Text = styled.span`
     font-family: sans-serif;
     font-size: 40px;
     padding: 10px;
@@ -33,10 +61,7 @@ export default function StarterSection () {
             <TextContent>
                 <Text>Привет👋</Text>
                 <Text>меня зовут <strong>Никита</strong>.</Text>
-                <div style={{display: "flex"}} className="typing">
-                    <Text>Я</Text><Text style={{color: "blue"}}>FullStack</Text>
-                    <Text>разработчик</Text>
-                </div>
+                <Typing><Text>Я</Text><Text style={{color: "blue"}}>FullStack</Text><Text>разработчик</Text></Typing>
             </TextContent>
         </StarterDiv>
     )
