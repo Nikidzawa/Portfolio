@@ -8,9 +8,6 @@ const Main = styled.div`
     margin: 0 auto;
     padding: 0 20px;
     background-color: black;
-    @media screen and (max-width: 1200px) {
-        max-width: 100vw;
-    }
 `
 export default function MainPage () {
     return (

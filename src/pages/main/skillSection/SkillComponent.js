@@ -7,7 +7,7 @@ const Title = styled.span`
         font-family: sans-serif;
         
         @media (max-width: 500px) {
-            font-size: 16px;
+            font-size: 17px;
         }
     `
 const SkillItem = styled.li`

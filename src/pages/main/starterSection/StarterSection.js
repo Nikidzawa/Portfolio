@@ -8,9 +8,6 @@ const TextContent = styled.div`
     justify-content: center;
     align-items: center;
     padding: 30px;
-    
-    @media screen and (max-width: 600px) {
-    }
 `
 
 const StarterDiv = styled.div`
@@ -23,6 +20,10 @@ const Text = styled.div`
     padding: 10px;
     @media screen and (max-width: 600px) {
         font-size: 30px;
+    }
+
+    @media screen and (max-width: 400px) {
+        font-size: 25px;
     }
 `
 
