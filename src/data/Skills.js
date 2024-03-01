@@ -69,7 +69,7 @@ export function GetFrontendSkills () {
         },
         {
             img: REACT,
-            title: "React Framework"
+            title: "React"
         },
         {
             img: HTML,

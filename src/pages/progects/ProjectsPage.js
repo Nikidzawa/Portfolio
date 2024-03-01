@@ -9,8 +9,12 @@ const ProjectsGrid = styled.div `
     padding: 50px;
     display: grid;
     grid-gap: 30px 50px;
-    grid-template-columns: auto auto;
+    grid-template-columns: auto auto auto;
     justify-content: center;
+    
+    @media (max-width: 1200px) {
+        grid-template-columns: auto auto;
+    }
     @media (max-width: 700px) {
         grid-template-columns: auto;
     }
