@@ -8,8 +8,8 @@ const SkillButton = styled.button`
     border-radius: 20px;
     padding: 10px;
     margin: 0 auto;
-    min-width: 250px;
-    font-size: 20px;
+    min-width: 260px;
+    font-size: 22px;
     font-family: sans-serif;
     cursor: pointer;
 
@@ -29,9 +29,7 @@ const SkillButton = styled.button`
         transition: opacity 0.5s ease-in;
     }
 
-    @media (max-width: 830px) {
-        min-width: 250px;
-        font-size: 20px;
+    @media screen and (max-width: 900px) {
         margin-top: 15px;
     }
 `;
@@ -46,7 +44,7 @@ const Category = styled.div`
 const SkillsButtons = styled.div`
     padding-top: 30px;
     display: flex;
-    @media (max-width: 830px) {
+    @media screen and (max-width: 900px) {
         padding-top: 10px;
         display: grid;
         justify-content: center;
@@ -63,9 +61,9 @@ export default function SkillsSection () {
 
     function getText () {
         switch (category) {
-            case "BackEnd":
+            case "Backend":
                 return GetBackEndSkills().map(skill => <SkillComponent key={skill.title} skill={skill}/>)
-            case "FrontEnd":
+            case "Frontend":
                 return GetFrontendSkills().map(skill => <SkillComponent key={skill.title} skill={skill}/>)
             case "Other":
                 return GetOtherSkills().map(skill => <SkillComponent key={skill.title} skill={skill}/>)
@@ -76,10 +74,10 @@ export default function SkillsSection () {
         <Category>
             <h1 style={{textAlign: "center"}}>MY SKILLS</h1>
             <SkillsButtons>
-                <SkillButton onClick={() => handleChange("BackEnd")}
-                             className={category === "BackEnd" ? "active" : ""}>BackEnd</SkillButton>
-                <SkillButton onClick={() => handleChange("FrontEnd")}
-                             className={category === "FrontEnd" ? "active" : ""}>FrontEnd</SkillButton>
+                <SkillButton onClick={() => handleChange("Backend")}
+                             className={category === "Backend" ? "active" : ""}>Backend</SkillButton>
+                <SkillButton onClick={() => handleChange("Frontend")}
+                             className={category === "Frontend" ? "active" : ""}>Frontend</SkillButton>
                 <SkillButton onClick={() => handleChange("Other")}
                              className={category === "Other" ? "active" : ""}>Other</SkillButton>
             </SkillsButtons>

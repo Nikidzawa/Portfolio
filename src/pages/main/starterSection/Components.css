@@ -4,7 +4,7 @@
     place-items: center;
 }
 
-.typing-demo {
+.typing {
     width: 34ch;
     animation: typing 2s steps(22), blink .5s step-end infinite alternate;
     white-space: nowrap;
@@ -12,6 +12,9 @@
     border-right: 3px solid;
     font-family: monospace;
     font-size: 2em;
+    @media screen and (max-width: 600px) {
+        width: 26.5ch;
+    }
 }
 
 @keyframes typing {

@@ -15,7 +15,7 @@ const HeaderRow = styled.div`
     column-gap: 30px;
     row-gap: 20px;
     flex-wrap: wrap;
-    @media (max-width: 700px) {
+    @media screen and (max-width: 700px) {
         row-gap: 0;
         justify-content: start;
     }
@@ -27,14 +27,16 @@ const SiteName = styled.p`
     font-family: sans-serif;
 `
 
+
 const Options = styled.ul`
     display: flex;
     flex-wrap: wrap;
     font-family: sans-serif;
     align-items: center;
+    cursor: pointer;
     column-gap: 40px;
-    @media (max-width: 700px) {
-        column-gap: 20px;
+    
+    @media screen and (max-width: 700px) {
         padding-left: 0;
         margin-left: 0;
     }

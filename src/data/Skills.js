@@ -28,7 +28,7 @@ export function GetBackEndSkills () {
         },
         {
             img: SQL_IMG,
-            title: "Знаю язык SQL, часто работаю с PostgeSQL"
+            title: "Знаю язык SQL, в качестве СУБД использую PostgreSQL"
         },
         {
             img: REDIS_IMG,

@@ -24,16 +24,6 @@ code {
     monospace;
 }
 
-li {
-  list-style: none;
-  cursor: pointer;
-
-  &:hover {
-    opacity: 0.7;
-    transition: opacity 0.5s;
-  }
-}
-
 ul {
   list-style: none;
 }

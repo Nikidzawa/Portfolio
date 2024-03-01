@@ -3,9 +3,6 @@ import MainPage from "./pages/main/MainPage";
 import {Navigate, Route, Routes} from "react-router-dom"
 import FooterSection from "./footer/FooterSection";
 import ProjectsPage from "./pages/progects/ProjectsPage";
-
-
-
 function App() {
   return (
       <div>
