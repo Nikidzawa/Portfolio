@@ -12,33 +12,28 @@ const TextContent = styled.div`
     }
 `
 
+const TypingContainer = styled.div`
+    display: flex; 
+    justify-content: center;
+`
+
 const Typing = styled.div`
-    width: 34ch;
-    max-width: 34ch;
-    animation: typing 2s steps(22), blink .5s step-end infinite alternate;
-    white-space: nowrap;
+    color: #fff;
     overflow: hidden;
-    border-right: 3px solid;
-    font-family: monospace;
-    font-size: 2em;
-    @media screen and (max-width: 600px) {
-        width: 26.5ch;
-        max-width: 26.5ch;
-    }
-    @media screen and (max-width: 400px) {
-        width: 22.5ch;
-        max-width: 22.5ch;
+    border-right: .20em solid white;
+    white-space: nowrap;
+    margin: 0 auto;
+    letter-spacing: .15em;
+    animation: typing 2.5s steps(35, end), blink-caret .5s step-end infinite;
+
+    @keyframes typing {
+        from { width: 0 }
+        to { width: 100% }
     }
 
-@keyframes typing {
-    from {
-        width: 0
-    }
-}
-
-@keyframes blink {
-    50% {
-        border-color: transparent
+    @keyframes blink-caret {
+        from, to { border-color: transparent }
+        50% { border-color: white }
     }
 `
 
@@ -49,12 +44,12 @@ const StarterDiv = styled.div`
 const Text = styled.span`
     font-family: sans-serif;
     font-size: 40px;
-    padding: 10px;
+    padding-bottom: 10px;
     @media screen and (max-width: 600px) {
-        font-size: 30px;
+        font-size: 35px;
     }
 
-    @media screen and (max-width: 400px) {
+    @media screen and (max-width: 500px) {
         font-size: 25px;
     }
 `
@@ -64,8 +59,10 @@ export default function StarterSection () {
         <StarterDiv>
             <TextContent>
                 <Text>Привет👋</Text>
-                <Text>меня зовут <strong>Никита</strong>.</Text>
-                <Typing><Text>Я</Text><Text style={{color: "blue"}}>FullStack</Text><Text>разработчик</Text></Typing>
+                <Text>меня зовут <strong>Никита</strong>,</Text>
+                <TypingContainer>
+                    <Typing><Text>Я</Text><Text style={{color: "blue"}}> FullStack </Text><Text>разработчик.</Text></Typing>
+                </TypingContainer>
             </TextContent>
         </StarterDiv>
     )
