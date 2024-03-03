@@ -14,9 +14,6 @@ body {
   padding: 20px 0;
   border-bottom: 1px solid azure;
   letter-spacing: normal;
-  background-image: url("../src/header/back.jpg");
-  background-repeat: repeat;
-  background-size: cover;
 }
 
 code {

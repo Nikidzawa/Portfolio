@@ -43,16 +43,16 @@ export function GetBackEndSkills () {
             title: "Apache kafka. Так же пробовал писать собственные брокеры сообщений на базе TCP/IP стека"
         },
         {
+            img: REST_ASSURED,
+            title: "Rest-Assured"
+        },
+        {
             img: LOGBACK_IMG,
             title: "Logback"
         },
         {
             img: POSTMAN_IMG,
             title: "Postman"
-        },
-        {
-            img: REST_ASSURED,
-            title: "Rest-тесты на Rest-Assured"
         },
         {
             img: SWAGGER_IMG,

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import {useEffect, useState} from "react";
 import GitHub from "../../API/GitHub";
-import Loading from "../../Components/Loading";
+import Loading from "../../components/Loading";
 import React from "react";
 
 const Card = styled.div`
@@ -23,10 +23,8 @@ const Card = styled.div`
     }
 `
 const StyledAnchor = styled.a`
-    /* Ваши собственные стили */
-    text-decoration: none; /* Убираем подчеркивание ссылки */
-    color: inherit; /* Наследуем цвет текста от родительского элемента */
-    /* Другие стили по желанию */
+    text-decoration: none;
+    color: inherit;
 `;
 
 const Image = styled.img`
@@ -42,7 +40,7 @@ const Image = styled.img`
 const LoadingContainer = styled.div`
     position: relative;
     width: 210px;
-    height: 210px;
+    height: 234px;
 `
 
 const Title = styled.p`

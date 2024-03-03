@@ -1,6 +1,7 @@
 import {Link, useLocation} from "react-router-dom";
 import {useEffect, useState} from "react";
 import styled from "styled-components";
+import SITE_LOGO from "./Icon.png"
 
 const HeaderContainer = styled.div`
     margin: 0 auto;
@@ -12,21 +13,38 @@ const HeaderRow = styled.div`
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    column-gap: 30px;
+    column-gap: 12px;
     row-gap: 20px;
     flex-wrap: wrap;
-    @media screen and (max-width: 700px) {
+    @media screen and (max-width: 800px) {
         row-gap: 0;
         justify-content: start;
     }
 `
-
-const SiteName = styled.p`
+const SiteImage = styled.img`
+    width: 35px;
+    height: 35px;
+    @media screen and (max-width: 390px) {
+        width: 32px;
+        height: 32px;
+    }
+`
+const SiteName = styled(Link)`
+    text-decoration: none;
+    color: inherit;
     font-size: 26px;
     margin-right: auto;
     font-family: sans-serif;
-`
 
+    &::after {
+        content: attr(data-after);
+        display: inline-block;
+        color: blue;
+    }
+    @media screen and (max-width: 390px) {
+        font-size: 23px;
+    }
+`
 
 const Options = styled.ul`
     display: flex;
@@ -36,8 +54,7 @@ const Options = styled.ul`
     cursor: pointer;
     column-gap: 40px;
     
-    @media screen and (max-width: 700px) {
-        column-gap: 30px;
+    @media screen and (max-width: 800px) {
         padding-left: 0;
         margin-left: 0;
     }
@@ -48,11 +65,6 @@ const Optional = styled(Link) `
     text-decoration: none;
     color: inherit;
     position: relative;
-
-    &:hover {
-        opacity: 0.7;
-        transition: opacity 0.2s ease-in;
-    }
 
     &.active::after {
         content: '';
@@ -91,7 +103,7 @@ export default function HeaderSection () {
             setButton("home");
         } else if (location.pathname.includes("/projects")) {
             setButton("projects");
-        } else if (location.pathname.includes("/blog")){
+        } else if (location.pathname.includes("/blog")) {
             setButton("blog");
         }
     }, [location.pathname]);
@@ -100,11 +112,12 @@ export default function HeaderSection () {
         <header className="header">
             <HeaderContainer>
                 <HeaderRow>
-                    <SiteName>NIKIDZAWA.RU</SiteName>
+                    <SiteImage src={SITE_LOGO}/>
+                    <SiteName to={"/home"} data-after={buttonSelected === "blog" ? "BLOG" : "PORTFOLIO"}>NIKIDZAWA.</SiteName>
                     <Options>
                         <Optional to={"/home"} className={buttonSelected === "home" ? "active" : ""}>HOME</Optional>
                         <Optional to={"/projects"} className={buttonSelected === "projects" ? "active" : ""}>PROJECTS</Optional>
-                        <Optional to={"/blog"} className={buttonSelected === "blog" ? "active" : ""}>MY BLOG</Optional>
+                        <Optional to={"/blog"} className={buttonSelected === "blog" ? "active" : ""}>BLOG</Optional>
                     </Options>
                 </HeaderRow>
             </HeaderContainer>

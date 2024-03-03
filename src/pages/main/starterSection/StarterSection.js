@@ -7,6 +7,9 @@ const TextContent = styled.div`
     justify-content: center;
     align-items: center;
     padding: 30px;
+    @media screen and (max-width: 600px) {
+        min-height: 450px;
+    }
 `
 
 const Typing = styled.div`

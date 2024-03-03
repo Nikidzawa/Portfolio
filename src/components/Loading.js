@@ -8,7 +8,7 @@ const LoaderWrapper = styled.div`
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-40%) translateY(-50%);
     text-align: center;
 `
 

@@ -1,12 +1,12 @@
 import styled from "styled-components";
 import {useEffect, useState} from "react";
-import Loader from "../../Components/Loading";
+import Loader from "../../components/Loading";
 import GitHub from "../../API/GitHub";
 import ProjectPattern from "./ProjectCard";
 import BestRepos from "../../data/BestRepos";
 
 const MainContainer = styled.div`
-    min-height: 1000px;
+    min-height: 2000px;
     text-align: center;
     padding: 10px;
 `
@@ -47,13 +47,13 @@ export default function ProjectsPage () {
             {
                 repositories == null ? <Loader/> :
                     <div>
-                        <Text>Лучшие проекты</Text>
+                        <Text>Мои лучшие проекты</Text>
                         <ProjectsGrid>
                             {repositories.filter(project => BestRepos().some(bestRepo => bestRepo.id === project.id)).map(filteredProject => (
                                     <ProjectPattern key={filteredProject.id} repo={filteredProject}/>
                                 ))}
                         </ProjectsGrid>
-                        <Text>Другие проекты</Text>
+                        <Text>Не менее интересные проекты</Text>
                         <ProjectsGrid>
                             {repositories.filter(project => !BestRepos().some(bestRepo => bestRepo.id === project.id)).map(filteredProject => (
                                 <ProjectPattern key={filteredProject.id} repo={filteredProject}/>
