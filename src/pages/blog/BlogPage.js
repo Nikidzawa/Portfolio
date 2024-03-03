@@ -15,11 +15,17 @@ const Blog = styled.div`
     align-items: center;
     display: flex;
 `
+
 export default function BlogPage () {
     return (
         <BlogContainer>
             <Blog>
                 <SearchPanel/>
+                <select>
+                    <option>Любой</option>
+                    <option>Frontend</option>
+                    <option>Backend</option>
+                </select>
             </Blog>
             {GetBlogs().length === 0 ? <p>Пока ничего нет</p> : <p>Что-то есть</p>}
         </BlogContainer>

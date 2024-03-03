@@ -2,6 +2,7 @@ import {Link, useLocation} from "react-router-dom";
 import {useEffect, useState} from "react";
 import styled from "styled-components";
 import SITE_LOGO from "./Icon.png"
+import MobileDetect from "mobile-detect";
 
 const HeaderContainer = styled.div`
     margin: 0 auto;
@@ -60,6 +61,8 @@ const Options = styled.ul`
     }
 `
 
+const md = new MobileDetect(window.navigator.userAgent);
+const isMobile = md.mobile();
 const Optional = styled(Link) `
     font-size: 20px;
     text-decoration: none;
@@ -77,20 +80,16 @@ const Optional = styled(Link) `
         background-color: blue;
     }
 
-    &:hover::after {
-        background-color: darkblue;
-        transition: background-color 0.2s ease-in;
-    }
-    
-    
-    &::after {
-        background-color: blue;
-        transition: background-color 0.2s ease-in;
-    }
-    
-    &:not(:hover) {
-        opacity: 1;
-        transition: opacity 0.2s ease-in;
+    &:not(${!isMobile}) {
+        &:hover::after {
+            background-color: darkblue;
+            transition: background-color 0.2s ease-in;
+        }
+
+        &::after {
+            background-color: blue;
+            transition: background-color 0.2s ease-in;
+        }
     }
 `
 

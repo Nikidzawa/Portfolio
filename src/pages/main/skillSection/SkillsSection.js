@@ -2,7 +2,10 @@ import styled from "styled-components";
 import {useState} from "react";
 import {GetBackEndSkills, GetFrontendSkills, GetOtherSkills} from "../../../data/Skills";
 import SkillComponent from "./SkillComponent";
+import MobileDetect from "mobile-detect";
 
+const md = new MobileDetect(window.navigator.userAgent);
+const isMobile = md.mobile();
 const SkillButton = styled.button`
     border: none;
     border-radius: 20px;
@@ -19,14 +22,15 @@ const SkillButton = styled.button`
         transition: color 0.5s;
     }
 
-    &:hover {
-        opacity: 0.7;
-        transition: opacity 0.5s ease-in;
-    }
-
-    &:not(:hover) {
-        opacity: 1;
-        transition: opacity 0.5s ease-in;
+    &:not(${!isMobile}) {
+        &:hover {
+            opacity: 0.7;
+            transition: opacity 0.5s ease-in;
+        }
+        &:not(:hover) {
+            opacity: 1;
+            transition: opacity 0.5s ease-in;
+        }
     }
 
     @media screen and (max-width: 900px) {

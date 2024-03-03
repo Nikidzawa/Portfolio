@@ -14,6 +14,7 @@ const TextContent = styled.div`
 
 const Typing = styled.div`
     width: 34ch;
+    max-width: 34ch;
     animation: typing 2s steps(22), blink .5s step-end infinite alternate;
     white-space: nowrap;
     overflow: hidden;
@@ -22,11 +23,12 @@ const Typing = styled.div`
     font-size: 2em;
     @media screen and (max-width: 600px) {
         width: 26.5ch;
+        max-width: 26.5ch;
     }
     @media screen and (max-width: 400px) {
         width: 22.5ch;
+        max-width: 22.5ch;
     }
-}
 
 @keyframes typing {
     from {
