@@ -1,5 +1,5 @@
 .search-input {
-    min-width: 500px;
+    width: 50%;
     height: 30px;
     background-color: inherit;
     background-image: url("./images/search-white.png");

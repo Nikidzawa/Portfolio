@@ -13,7 +13,6 @@ const SkillButton = styled.button`
     margin: 0 auto;
     min-width: 260px;
     font-size: 22px;
-    font-family: sans-serif;
     cursor: pointer;
 
     &.active {

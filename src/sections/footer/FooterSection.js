@@ -25,7 +25,7 @@ export default function FooterSection () {
                 <a href={"https://t.me/Nikidzawa"}><img alt={"Telegram"} height={"45px"} width={"45px"} src={TELEGRAM_IMG}/></a>
                 <a href={"https://github.com/Nikidzawa"}><img alt={"Desktop"} height={"45px"} width={"45px"} src={GITHUB_IMG}/></a>
             </Links>
-            <span style={{marginBottom: "5px"}}>© 2024 NIKIDZAWA.RU</span>
+            <span style={{paddingBottom: "5px"}}>© NIKIDZAWA.RU, 2024</span>
         </FooterContainer>
     )
 }

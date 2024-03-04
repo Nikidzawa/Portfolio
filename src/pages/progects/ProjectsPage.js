@@ -5,12 +5,6 @@ import GitHub from "../../API/GitHub";
 import ProjectPattern from "./ProjectCard";
 import BestRepos from "../../data/BestRepos";
 
-const MainContainer = styled.div`
-    min-height: 2000px;
-    text-align: center;
-    padding: 10px;
-`
-
 const Text = styled.h1`
     font-family: sans-serif;
     padding: 15px;
@@ -43,7 +37,7 @@ export default function ProjectsPage () {
     }, []);
 
     return (
-        <MainContainer>
+        <main className={"main-container"} style={{textAlign: "center"}}>
             {
                 repositories == null ? <Loader/> :
                     <div>
@@ -61,6 +55,6 @@ export default function ProjectsPage () {
                         </ProjectsGrid>
                     </div>
             }
-        </MainContainer>
+        </main>
     )
 }

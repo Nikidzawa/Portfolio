@@ -1,8 +1,7 @@
 import styled from "styled-components";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import GitHub from "../../API/GitHub";
 import Loading from "../../components/Loading";
-import React from "react";
 
 const Card = styled.div`
     padding: 20px;

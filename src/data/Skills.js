@@ -16,6 +16,7 @@ import DOCKER from "./imgs/docker.png"
 import GITHUB from "./imgs/github.png"
 import POSTMAN_IMG from "./imgs/postman.png"
 import FX_IMG from "./imgs/javaFX.jpg"
+
 export function GetBackEndSkills () {
     return [
         {

@@ -4,8 +4,6 @@ import {useEffect, useState} from "react";
 const Title = styled.span`
     font-size: 20px;
     padding: 10px;
-    font-family: sans-serif;
-    
     @media (max-width: 500px) {
         font-size: 17px;
     }

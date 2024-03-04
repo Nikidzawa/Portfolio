@@ -1,33 +1,45 @@
 import styled from "styled-components";
-import SearchPanel from "./SearchPanel";
 import GetBlogs from "../../data/GetBlogs";
+import BlogContainer from "./BlogContainer";
+import SearchSection from "./SearchPanel";
+import {useEffect, useMemo, useState} from "react";
 
-
-const BlogContainer = styled.div`
-    min-height: 2000px;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-`
-
-const Blog = styled.div`
-    min-height: 100px;
-    align-items: center;
-    display: flex;
+const BlogsList = styled.div`
+    display: grid;
+    grid-gap: 30px;
 `
 
 export default function BlogPage () {
+    const [search, setSearch] = useState("");
+    const [posts, setPosts] = useState([]);
+    const [selectedSort, setSelectedSort] = useState("any")
+
+    useEffect(() => {
+        const fetchedPosts = GetBlogs();
+        setPosts(fetchedPosts);
+    }, [])
+
+    const handleSearch = (event) => {
+        setSearch(event.target.value)
+    }
+
+    const handleSort = (event) => {
+        setSelectedSort(event.target.value);
+    };
+
+    const sortedAndSearchedPosts = useMemo(() => {
+        const filteredPosts = posts.filter(post =>
+            post.title.toLowerCase().includes(search.toLowerCase())
+        );
+        return selectedSort === "any" ? filteredPosts : filteredPosts.filter(post => post.theme === selectedSort);
+    }, [search, selectedSort, posts]);
+
     return (
-        <BlogContainer>
-            <Blog>
-                <SearchPanel/>
-                <select>
-                    <option>Любой</option>
-                    <option>Frontend</option>
-                    <option>Backend</option>
-                </select>
-            </Blog>
-            {GetBlogs().length === 0 ? <p>Пока ничего нет</p> : <p>Что-то есть</p>}
-        </BlogContainer>
-    )
+        <main className={'main-container'}>
+            <SearchSection handleSearch={handleSearch} handleSort={handleSort} />
+            <BlogsList>
+                {sortedAndSearchedPosts.map((post, index) => (<BlogContainer article_data={post} key={post.url} />))}
+            </BlogsList>
+        </main>
+    );
 }
