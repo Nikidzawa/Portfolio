@@ -1,3 +1,3 @@
 export default function SQL () {
-    return <div>Hello, SQL!</div>
+    return <div>Статья пока не завершена</div>
 }

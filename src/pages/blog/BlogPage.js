@@ -7,6 +7,7 @@ import {useEffect, useMemo, useState} from "react";
 const BlogsList = styled.div`
     display: grid;
     grid-gap: 30px;
+    padding-top: 40px;
 `
 
 export default function BlogPage () {

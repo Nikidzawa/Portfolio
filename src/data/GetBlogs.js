@@ -23,7 +23,7 @@ export default function GetBlogs () {
             level: 1,
             img: require("./imgs/javaFX.png"),
             theme: "frontend",
-            url: "javaFx"
+            url: "javaFX"
         }
     ]
 }
