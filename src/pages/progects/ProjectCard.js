@@ -63,13 +63,12 @@ export default function ProjectCard ({repo}) {
     const [image, setImage] = useState(null);
 
     useEffect(() => {
-        getImage();
-    }, []);
-
-    async function getImage() {
-        const imageName = await GitHub.getImage(repo.name);
-        setImage(imageName);
-    }
+        async function getImage() {
+            const imageName = await GitHub.getImage(repo.name);
+            setImage(imageName);
+        }
+        getImage()
+    }, [repo.name]);
 
 
     return (

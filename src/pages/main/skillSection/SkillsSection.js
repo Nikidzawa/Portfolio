@@ -70,6 +70,7 @@ export default function SkillsSection () {
                 return GetFrontendSkills().map(skill => <SkillComponent key={skill.title} skill={skill}/>)
             case "Other":
                 return GetOtherSkills().map(skill => <SkillComponent key={skill.title} skill={skill}/>)
+            default: return null
         }
     }
 

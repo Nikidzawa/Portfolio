@@ -1,0 +1,12 @@
+.warning {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 1px solid yellow;
+    border-radius: 10px;
+    background-image: url("./warning.png");
+    background-size: 40px 40px;
+    background-position: 5px center;
+    padding: 20px;
+    padding-left: 50px;
+    background-repeat: no-repeat;
+}
