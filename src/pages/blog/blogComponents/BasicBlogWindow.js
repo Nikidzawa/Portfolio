@@ -1,11 +1,10 @@
 import GO_BACK_IMG from "./goBack.png";
-import { useNavigate } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import styled from "styled-components";
 
 const BlogHeader = styled.div`
     display: flex;
     align-items: center;
-    margin-bottom: 10px;
 `;
 
 const HeaderTitle = styled.h1`
@@ -14,22 +13,28 @@ const HeaderTitle = styled.h1`
     flex: 1;
 `;
 
+const Image = styled.img`
+    cursor: pointer;
+    width: 35px;
+    height: 35px;
+    @media screen and (max-width: 600px) {
+        display: none;
+    }
+`
+
 export default function BasicBlogWindow({ children, name }) {
     const navigate = useNavigate();
 
     function returnToBlogPage() {
-        navigate("/blog");
+        navigate(-1);
     }
 
     return (
         <main className={"main-container"}>
             <BlogHeader>
-                <img
+                <Image
                     onClick={returnToBlogPage}
-                    style={{ cursor: "pointer" }}
                     src={GO_BACK_IMG}
-                    width={"35px"}
-                    height={"35px"}
                 />
                 <HeaderTitle>{name}</HeaderTitle>
             </BlogHeader>

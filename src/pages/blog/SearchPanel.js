@@ -3,6 +3,7 @@ import "./blog.css"
 
 const Container = styled.div`
     display: flex;
+    padding-top: 10px;
 `
 const OptionalMenu = styled.select`
     margin-left: auto;

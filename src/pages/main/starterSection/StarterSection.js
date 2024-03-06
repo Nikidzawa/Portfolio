@@ -8,7 +8,7 @@ const TextContent = styled.div`
     align-items: center;
     padding: 30px;
     @media screen and (max-width: 600px) {
-        min-height: 450px;
+        min-height: 350px;
     }
 `
 

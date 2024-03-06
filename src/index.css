@@ -14,13 +14,18 @@ body {
   min-height: 2000px;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 10px;
 }
 
 .header {
   padding: 20px 0;
   border-bottom: 1px solid azure;
   letter-spacing: normal;
+  margin-bottom: 20px;
+  @media screen and (max-width: 600px) {
+    margin-bottom: 10px;
+    padding: 10px 0;
+  }
 }
 
 code {

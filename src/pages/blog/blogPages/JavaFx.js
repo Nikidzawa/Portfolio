@@ -1,3 +1,5 @@
+import BasicBlogWindow from "../blogComponents/BasicBlogWindow";
+
 export default function JavaFx () {
-    return <div>Статья пока не завершена</div>
+    return <BasicBlogWindow name={"Статья пока не завершена"}></BasicBlogWindow>
 }

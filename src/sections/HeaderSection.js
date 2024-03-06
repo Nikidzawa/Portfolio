@@ -58,6 +58,7 @@ const Options = styled.ul`
     @media screen and (max-width: 800px) {
         padding-left: 0;
         margin-left: 0;
+        padding-top: 5px;
     }
 `
 

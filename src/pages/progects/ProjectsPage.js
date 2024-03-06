@@ -7,7 +7,10 @@ import BestRepos from "../../data/BestRepos";
 
 const Text = styled.h1`
     font-family: sans-serif;
-    padding: 15px;
+    padding: 10px;
+    @media screen and (max-width: 600px) {
+        padding: 0;
+    }
 `
 
 const ProjectsGrid = styled.div `

@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import GetBlogs from "../../data/GetBlogs";
-import BlogContainer from "./BlogContainer";
+import ArticleContainer from "./ArticleContainer";
 import SearchSection from "./SearchPanel";
 import {useEffect, useMemo, useState} from "react";
+import CourseContainer from "./CourseContainer";
 
 const BlogsList = styled.div`
     display: grid;
@@ -39,7 +40,11 @@ export default function BlogPage () {
         <main className={'main-container'}>
             <SearchSection handleSearch={handleSearch} handleSort={handleSort} />
             <BlogsList>
-                {sortedAndSearchedPosts.map((post, index) => (<BlogContainer article_data={post} key={post.url} />))}
+                {sortedAndSearchedPosts.map(post =>
+                    post.type === "article" ?
+                        <ArticleContainer article_data={post} key={post.url} /> :
+                        <CourseContainer course_data={post} key={post.url}/>)
+                }
             </BlogsList>
         </main>
     );
