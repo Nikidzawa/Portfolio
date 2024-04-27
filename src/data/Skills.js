@@ -29,11 +29,11 @@ export function GetBackEndSkills () {
         },
         {
             img: SQL_IMG,
-            title: "Знаю язык SQL, в качестве СУБД использую PostgreSQL"
+            title: "SQL, в качестве СУБД использую PostgreSQL"
         },
         {
             img: REDIS_IMG,
-            title: "Redis. Умею писать кастомные аннотации кэширования применяя АОП"
+            title: "Redis"
         },
         {
             img: LOMBOK_IMG,
@@ -41,11 +41,11 @@ export function GetBackEndSkills () {
         },
         {
             img: KAFKA_IMG,
-            title: "Apache kafka. Так же пробовал писать собственные брокеры сообщений на базе TCP/IP стека"
+            title: "Apache kafka"
         },
         {
             img: REST_ASSURED,
-            title: "Rest-Assured"
+            title: "Rest Assured"
         },
         {
             img: LOGBACK_IMG,
@@ -91,15 +91,15 @@ export function GetOtherSkills () {
     return [
         {
             img: LINUX,
-            title: "Использую ядро линукс на втором компьютере и разворачиваю на нём сервера. Умею писать bash-скрипты"
+            title: "Использую ядро линукс на втором компьютере и разворачиваю на нём сервера"
         },
         {
             img: DOCKER,
-            title: "Умею контейнеризировать в docker, настраивать окружение в docker-compose"
+            title: "Docker"
         },
         {
             img: GITHUB,
-            title: "В качестве системы контроля версий использую GIT"
+            title: "GitHub, GitLab"
         },
 
     ]

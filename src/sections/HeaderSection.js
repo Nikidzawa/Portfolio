@@ -42,6 +42,7 @@ const SiteName = styled(Link)`
         display: inline-block;
         color: blue;
     }
+
     @media screen and (max-width: 390px) {
         font-size: 23px;
     }

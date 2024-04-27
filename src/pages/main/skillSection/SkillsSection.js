@@ -38,25 +38,21 @@ const SkillButton = styled.button`
 `;
 
 const Category = styled.div`
-    padding: 10px;
+    padding: 0 10px;
     display: block;
     justify-content: center;
     align-items: center;
+    min-height: 800px;
 `
 
 const SkillsButtons = styled.div`
     padding-top: 30px;
     display: flex;
-    @media screen and (max-width: 900px) {
-        padding-top: 10px;
-        display: grid;
-        justify-content: center;
-        padding-bottom: 10px;
-    }
+    gap: 10px;
 `
 
 export default function SkillsSection () {
-    const [category, setCategory] = useState();
+    const [category, setCategory] = useState("Backend");
 
     function handleChange (props) {
         setCategory(props)
@@ -76,7 +72,7 @@ export default function SkillsSection () {
 
     return (
         <Category>
-            <h1 style={{textAlign: "center"}}>MY SKILLS</h1>
+            <h1 style={{textAlign: "center"}}>Мой стек</h1>
             <SkillsButtons>
                 <SkillButton onClick={() => handleChange("Backend")}
                              className={category === "Backend" ? "active" : ""}>Backend</SkillButton>
