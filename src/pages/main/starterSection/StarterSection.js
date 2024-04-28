@@ -39,6 +39,7 @@ const Typing = styled.div`
 
 const StarterDiv = styled.div`
     border-bottom: 1px solid azure;
+    margin-bottom: 70px;
 `
 
 const Text = styled.span`

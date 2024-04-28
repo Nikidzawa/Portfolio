@@ -23,7 +23,7 @@ export function GetBackEndSkills () {
     return [
         {
             img: JAVA_IMG,
-            title: "Java"
+            title: "Java 22"
         },
         {
             img: SPRING_IMG,
@@ -43,7 +43,7 @@ export function GetBackEndSkills () {
         },
         {
             img: KAFKA_IMG,
-            title: "Apache kafka"
+            title: "Apache Kafka"
         },
         {
             img: REST_ASSURED,
@@ -52,10 +52,6 @@ export function GetBackEndSkills () {
         {
             img: LOGBACK_IMG,
             title: "Logback"
-        },
-        {
-            img: POSTMAN_IMG,
-            title: "Postman"
         },
         {
             img: SWAGGER_IMG,
@@ -93,7 +89,7 @@ export function GetOtherSkills () {
     return [
         {
             img: LINUX,
-            title: "Использую ядро линукс на втором компьютере и разворачиваю на нём сервера"
+            title: "Linux Ubuntu"
         },
         {
             img: DOCKER,
@@ -106,6 +102,10 @@ export function GetOtherSkills () {
         {
             img: TOMCAT,
             title: "Apache Tomcat"
+        },
+        {
+            img: POSTMAN_IMG,
+            title: "Postman"
         },
         {
             img: GITHUB,

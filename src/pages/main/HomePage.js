@@ -8,8 +8,8 @@ export default function HomePage () {
     return (
         <main className={"main-container"}>
             <StarterSection/>
-            <CaseSection/>
-            <Separator/>
+            {/*<CaseSection/>*/}
+            {/*<Separator/>*/}
             <BestProjectSection/>
             <Separator/>
             <SkillsSection/>
