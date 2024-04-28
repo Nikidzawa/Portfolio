@@ -1,35 +1,60 @@
 import styled from "styled-components";
-import LOGO from "./1.png"
+import LOGO from "./logo.jpg"
 import TELEGRAM_ICON from "../../../sections/footer/telega.png"
+import GithubLogo from "../../../sections/footer/gitHub.svg";
 
 const SectionName = styled.h1`
     text-align: center;
+    padding-bottom: 20px;
 `
 
 const ProjectInfoContainer = styled.div`
     display: flex;
-    align-items: center;
     gap: 20px;
     border-radius: 20px;
     padding: 10px;
     color: white;
+    max-width: 900px;
+    align-items: center;
 `
 
 const MainContainer = styled.div`
     margin-top: 100px;
+    @media screen and (max-width: 750px) {
+        margin: 50px auto;
+    }
+`
+
+const LinkContainer = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 0 20px 0;
+`
+
+const Text = styled.div`
+    @media screen and (max-width: 395px) {
+        font-size: 15px;
+    }
 `
 
 export default function CaseSection () {
 
     return (
         <MainContainer>
-            <SectionName>Реальный коммерческий кейс</SectionName>
+            <SectionName>REAL COMMERCIAL CASE</SectionName>
+            <LinkContainer>
+                <a href={"https://github.com/Nikidzawa/Go_Link"}>
+                    <img src={GithubLogo}/>
+                </a>
+                <strong style={{fontSize: "25px"}}>That Girl Oasis</strong>
+            </LinkContainer>
             <ProjectInfoContainer>
-                <img width={"100px"} src={LOGO}/>
-                <div>
-                    Создал высоконагруженную FullStack экосистему <strong>That Girl Oasis</strong> - женское сообщество для новых знакомств и
-                    уютного время провождения.
-                </div>
+                <img width={"125px"} height={"125px"} src={LOGO}/>
+                <Text>
+                    Женское сообщество для новых знакомств и уютного время провождения.
+                    В экосистему входит телеграм бот для знакомств и сайт для записи на офлайн мероприятия
+                </Text>
             </ProjectInfoContainer>
             <h3>Особенности проекта</h3>
             <div style={{display: "flex", flexDirection: "column", gap: "10px"}}>

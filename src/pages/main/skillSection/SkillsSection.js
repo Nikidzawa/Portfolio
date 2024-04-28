@@ -15,6 +15,11 @@ const SkillButton = styled.button`
     font-size: 22px;
     cursor: pointer;
 
+    @media screen and (max-width: 800px) {  
+        min-width: 30%;
+        font-size: 18px;
+    }
+
     &.active {
         background-color: blue;
         color: white;
@@ -31,17 +36,11 @@ const SkillButton = styled.button`
             transition: opacity 0.5s ease-in;
         }
     }
-
-    @media screen and (max-width: 900px) {
-        margin-top: 15px;
-    }
 `;
 
 const Category = styled.div`
     padding: 0 10px;
     display: block;
-    justify-content: center;
-    align-items: center;
     min-height: 800px;
 `
 
@@ -49,6 +48,14 @@ const SkillsButtons = styled.div`
     padding-top: 30px;
     display: flex;
     gap: 10px;
+    
+    @media screen and (max-width: 600px) {
+        padding: 0;
+    }
+`
+
+const Components = styled.div`
+    padding: 10px;
 `
 
 export default function SkillsSection () {
@@ -72,7 +79,7 @@ export default function SkillsSection () {
 
     return (
         <Category>
-            <h1 style={{textAlign: "center"}}>Мой стек</h1>
+            <h1 style={{textAlign: "center"}}>MY STACK</h1>
             <SkillsButtons>
                 <SkillButton onClick={() => handleChange("Backend")}
                              className={category === "Backend" ? "active" : ""}>Backend</SkillButton>
@@ -81,7 +88,7 @@ export default function SkillsSection () {
                 <SkillButton onClick={() => handleChange("Other")}
                              className={category === "Other" ? "active" : ""}>Other</SkillButton>
             </SkillsButtons>
-            <ul>{getText()}</ul>
+            <Components>{getText()}</Components>
         </Category>
     )
 }

@@ -2,6 +2,11 @@ import GoLinkLogo from "./goLink.png"
 import GithubLogo from "../../../sections/footer/gitHub.svg"
 import styled from "styled-components";
 
+const SiteName = styled.h1`
+    text-align: center;     
+    padding-bottom: 20px;
+`
+
 const InfoContainer = styled.div`
     display: flex;
     position: relative;
@@ -17,6 +22,8 @@ const InfoContainer = styled.div`
 const LinkContainer = styled.div`
     display: flex;
     align-items: center;
+    gap: 10px;
+    padding: 0 0 20px 0;
 `
 
 const Image = styled.img`
@@ -28,38 +35,37 @@ const Image = styled.img`
         height: auto;
     }
 `
-const TextContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+
+const MainInfoContainer = styled.div`
+    @media screen and (max-width: 750px) {
+        padding-top: 10px;
+    }
 `
 
 export default function BestProjectSection () {
     return (
         <>
-            <h1 style={{textAlign: "center", padding: "0 0 10px"}}>Лучший пет-проект</h1>
+            <SiteName>BEST PET PROJECT</SiteName>
+                <LinkContainer>
+                    <a href={"https://github.com/Nikidzawa/Go_Link"}>
+                        <img src={GithubLogo}/>
+                    </a>
+                    <strong style={{fontSize: "25px"}}>Мессенджер GoLink</strong>
+                </LinkContainer>
             <InfoContainer>
                 <Image src={GoLinkLogo}/>
-                <TextContainer>
-                    <div>
-                        <div style={{fontSize: "25px"}}><strong>Мессенджер GoLink</strong></div>
-                        <p>Мой аналог популярного мессенджера - Telegram</p>
-                        <p>Есть все функции присущие обынчым мессенджерам -
-                            он поддерживает отправку, фотографий, голосовых сообщений и имеет встроенный медиа и аудио
-                            плеер.
-                            Можно изменять и удалять сообщения</p>
-
-                        <p>Мессенджер хорошо оптимизирован, использование базы данных происходит только при входе в
-                            мессенджер,
-                            все остальные действия, в том числе отправка сообщений, осуществляются с помощью сетевого
-                            протокола TCP/IP</p>
-                    </div>
-                    <LinkContainer>
-                        <a href={"https://github.com/Nikidzawa/Go_Link"}>
-                            <img width={"30px"} src={GithubLogo}/>
-                        </a>
-                    </LinkContainer>
-                </TextContainer>
+                <MainInfoContainer>
+                    <div>Мой десктопный аналог популярного мессенджера - Telegram</div>
+                    <p>Есть все функции присущие обынчым мессенджерам -
+                        он поддерживает отправку фотографий, голосовых сообщений и имеет встроенный медиа и аудио
+                        плеер.
+                        Можно изменять и удалять сообщения</p>
+                    <p>
+                        Мессенджер хорошо оптимизирован. Использование базы данных происходит только при первом запуске,
+                        все остальные действия, в том числе отправка сообщений, осуществляются с помощью сетевого
+                        протокола TCP/IP
+                    </p>
+                </MainInfoContainer>
             </InfoContainer>
         </>
     )

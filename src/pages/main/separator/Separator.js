@@ -5,6 +5,9 @@ const SeparatorLine = styled.div`
     width: 60%;
     background-color: white;
     margin: 100px auto;
+    @media screen and (max-width: 750px) {
+        margin: 50px auto;
+    }
 `
 
 export default function Separator () {
