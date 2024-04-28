@@ -53,6 +53,7 @@ const Text = styled.span`
 `
 
 export default function StarterSection () {
+
     return (
         <StarterDiv>
             <TextContent>
