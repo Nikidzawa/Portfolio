@@ -1,15 +1,12 @@
 import styled from "styled-components";
 
 const TextContent = styled.div`
-    min-height: 700px;
+    min-height: 90vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 30px;
-    @media screen and (max-width: 600px) {
-        min-height: 350px;
-    }
 `
 
 const TypingContainer = styled.div`
