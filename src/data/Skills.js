@@ -16,6 +16,8 @@ import DOCKER from "./imgs/docker.png"
 import GITHUB from "./imgs/github.png"
 import POSTMAN_IMG from "./imgs/postman.png"
 import FX_IMG from "./imgs/javaFX.jpg"
+import NGINX from "./imgs/nginx.png"
+import TOMCAT from "./imgs/tomcat.png"
 
 export function GetBackEndSkills () {
     return [
@@ -96,6 +98,14 @@ export function GetOtherSkills () {
         {
             img: DOCKER,
             title: "Docker"
+        },
+        {
+            img: NGINX,
+            title: "Nginx"
+        },
+        {
+            img: TOMCAT,
+            title: "Apache Tomcat"
         },
         {
             img: GITHUB,
