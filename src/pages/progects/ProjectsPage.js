@@ -1,9 +1,6 @@
 import styled from "styled-components";
 import {useEffect, useState} from "react";
-import Loader from "../../components/Loading";
 import GitHub from "../../API/GitHub";
-import ProjectPattern from "./ProjectCard";
-import BestRepos from "../../data/BestRepos";
 
 const Text = styled.h1`
     font-family: sans-serif;
@@ -41,23 +38,7 @@ export default function ProjectsPage () {
 
     return (
         <main className={"main-container"} style={{textAlign: "center"}}>
-            {
-                repositories == null ? <Loader/> :
-                    <div>
-                        <Text>Мои лучшие проекты</Text>
-                        <ProjectsGrid>
-                            {repositories.filter(project => BestRepos().some(bestRepo => bestRepo.id === project.id)).map(filteredProject => (
-                                    <ProjectPattern key={filteredProject.id} repo={filteredProject}/>
-                                ))}
-                        </ProjectsGrid>
-                        <Text>Не менее интересные проекты</Text>
-                        <ProjectsGrid>
-                            {repositories.filter(project => !BestRepos().some(bestRepo => bestRepo.id === project.id)).map(filteredProject => (
-                                <ProjectPattern key={filteredProject.id} repo={filteredProject}/>
-                            ))}
-                        </ProjectsGrid>
-                    </div>
-            }
+
         </main>
     )
 }

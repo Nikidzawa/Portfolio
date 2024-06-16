@@ -52,16 +52,27 @@ const Text = styled.span`
     }
 `
 
-export default function StarterSection () {
+export default function StarterSection ({language}) {
 
     return (
         <StarterDiv>
             <TextContent>
-                <Text>Привет👋</Text>
-                <Text>меня зовут <strong>Никита</strong>,</Text>
-                <TypingContainer>
-                    <Typing><Text>Я</Text><Text style={{color: "blue"}}> FullStack </Text><Text>разработчик.</Text></Typing>
-                </TypingContainer>
+                {language === "en" ?
+                <>
+                    <Text>Hello👋</Text>
+                    <Text>my name is <strong>Nikita</strong>,</Text>
+                    <TypingContainer>
+                        <Typing><Text>I'm</Text><Text style={{color: "blue"}}> FullStack </Text><Text>developer.</Text></Typing>
+                    </TypingContainer>
+                </> :
+                    <>
+                        <Text>Привет👋</Text>
+                        <Text>меня зовут <strong>Никита</strong>,</Text>
+                        <TypingContainer>
+                            <Typing><Text>Я</Text><Text style={{color: "blue"}}> FullStack </Text><Text>разработчик.</Text></Typing>
+                        </TypingContainer>
+                    </>
+                }
             </TextContent>
         </StarterDiv>
     )

@@ -3,6 +3,8 @@ import {useEffect, useState} from "react";
 import styled from "styled-components";
 import SITE_LOGO from "./Icon.png"
 import MobileDetect from "mobile-detect";
+import PENDOSI_IMG from "../img/pendosi.png"
+import PATRIOT_IMG from "../img/patriot.png"
 
 const HeaderContainer = styled.div`
     margin: 0 auto;
@@ -23,8 +25,8 @@ const HeaderRow = styled.div`
     }
 `
 const SiteImage = styled.img`
-    width: 35px;
-    height: 35px;
+    width: 40px;
+    height: 40px;
     @media screen and (max-width: 390px) {
         width: 32px;
         height: 32px;
@@ -33,7 +35,7 @@ const SiteImage = styled.img`
 const SiteName = styled(Link)`
     text-decoration: none;
     color: inherit;
-    font-size: 26px;
+    font-size: 28px;
     margin-right: auto;
     font-family: sans-serif;
 
@@ -55,11 +57,24 @@ const Options = styled.ul`
     align-items: center;
     cursor: pointer;
     column-gap: 40px;
+    font-size: 22px;
     
     @media screen and (max-width: 800px) {
         padding-left: 0;
         margin-left: 0;
         padding-top: 5px;
+    }
+`
+
+const FlagAndLanguage = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    
+    @media screen and (max-width: 500px) {
+        div {
+            display: none;
+        }
     }
 `
 
@@ -95,7 +110,7 @@ const Optional = styled(Link) `
     }
 `
 
-export default function HeaderSection () {
+export default function HeaderSection ({language, setLanguage}) {
     const location = useLocation();
     const [buttonSelected, setButton] = useState("home");
 
@@ -114,11 +129,24 @@ export default function HeaderSection () {
             <HeaderContainer>
                 <HeaderRow>
                     <SiteImage src={SITE_LOGO}/>
-                    <SiteName to={"/home"} data-after={buttonSelected === "blog" ? "BLOG" : "PORTFOLIO"}>NIKIDZAWA.</SiteName>
+                    <SiteName to={"/home"} data-after={"RU"}>NIKIDZAWA.</SiteName>
+                    {/*<SiteName to={"/home"} data-after={buttonSelected === "blog" ? "BLOG" : "PORTFOLIO"}>NIKIDZAWA.</SiteName>*/}
                     <Options>
-                        <Optional to={"/home"} className={buttonSelected === "home" ? "active" : ""}>HOME</Optional>
-                        <Optional to={"/projects"} className={buttonSelected === "projects" ? "active" : ""}>PROJECTS</Optional>
-                        <Optional to={"/blog"} className={buttonSelected === "blog" ? "active" : ""}>BLOG</Optional>
+                        {
+                            language === "en" ?
+                                <FlagAndLanguage onClick={() => setLanguage("ru")}>
+                                    <img height={"25px"} width={"35px"} src={PENDOSI_IMG}/>
+                                    <div>English</div>
+                                </FlagAndLanguage>
+                                :
+                                <FlagAndLanguage onClick={() => setLanguage("en")}>
+                                    <img height={"25px"} width={"35px"} src={PATRIOT_IMG}/>
+                                    <div>Русский</div>
+                                </FlagAndLanguage>
+                        }
+                        {/*    <Optional to={"/home"} className={buttonSelected === "home" ? "active" : ""}>HOME</Optional>*/}
+                        {/*    /!*<Optional to={"/projects"} className={buttonSelected === "projects" ? "active" : ""}>PROJECTS</Optional>*!/*/}
+                    {/*    <Optional to={"/blog"} className={buttonSelected === "blog" ? "active" : ""}>BLOG</Optional>*/}
                     </Options>
                 </HeaderRow>
             </HeaderContainer>

@@ -31,7 +31,7 @@ export function GetBackEndSkills () {
         },
         {
             img: SQL_IMG,
-            title: "SQL, в качестве СУБД использую PostgreSQL"
+            title: "SQL (PostgreSQL)"
         },
         {
             img: REDIS_IMG,

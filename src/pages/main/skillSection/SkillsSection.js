@@ -58,7 +58,7 @@ const Components = styled.div`
     padding: 10px;
 `
 
-export default function SkillsSection () {
+export default function SkillsSection ({language}) {
     const [category, setCategory] = useState("Backend");
 
     function handleChange (props) {
@@ -79,7 +79,11 @@ export default function SkillsSection () {
 
     return (
         <Category>
-            <h1 style={{textAlign: "center"}}>MY STACK</h1>
+            {language === "en" ?
+                <h1 style={{textAlign: "center"}}>MY STACK</h1>
+                :
+                <h1 style={{textAlign: "center"}}>МОЙ СТЕК</h1>
+            }
             <SkillsButtons>
                 <SkillButton onClick={() => handleChange("Backend")}
                              className={category === "Backend" ? "active" : ""}>Backend</SkillButton>
