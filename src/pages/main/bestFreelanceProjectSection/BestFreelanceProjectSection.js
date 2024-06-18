@@ -46,7 +46,7 @@ const MainInfoContainer = styled.div`
 
 export default function BestFreelanceProjectSection ({language}) {
     return (
-        <>
+        <div style={{minHeight: "70vh", display: "flex", flexDirection: "column", justifyContent: "center"}}>
             {
                 language === "en" ?
                     <>
@@ -95,6 +95,6 @@ export default function BestFreelanceProjectSection ({language}) {
                         </InfoContainer>
                     </>
             }
-        </>
+        </div>
     )
 }

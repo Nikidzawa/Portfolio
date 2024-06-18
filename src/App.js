@@ -25,7 +25,7 @@ function App() {
   return (
       language &&
       <div>
-          <HeaderSection setLanguage={setLanguage} language={language}/>
+          {/*<HeaderSection setLanguage={setLanguage} language={language}/>*/}
           <Routes>
               <Route path={"/home"} element={<HomePage language={language}/>}></Route>
 

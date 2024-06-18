@@ -45,7 +45,7 @@ const MainInfoContainer = styled.div`
 
 export default function BestPetProjectSection ({language}) {
     return (
-        <>
+        <div style={{minHeight: "70vh", display: "flex", flexDirection: "column", justifyContent: "center"}}>
             {
                 language === "en" ?
                     <>
@@ -95,6 +95,6 @@ export default function BestPetProjectSection ({language}) {
                         </InfoContainer>
                     </>
             }
-        </>
+        </div>
     )
 }

@@ -6,13 +6,15 @@ import BestFreelanceProjectSection from "./bestFreelanceProjectSection/BestFreel
 
 export default function HomePage ({language}) {
     return (
-        <main className={"main-container"}>
+        <>
             <StarterSection language={language}/>
-            <BestPetProjectSection language={language}/>
-            <Separator/>
-            <BestFreelanceProjectSection language={language}/>
-            <Separator/>
-            <SkillsSection language={language}/>
-        </main>
-    )
+            <main className={"main-container"}>
+                <BestPetProjectSection language={language}/>
+                <Separator/>
+                <BestFreelanceProjectSection language={language}/>
+                <Separator/>
+                <SkillsSection language={language}/>
+            </main>
+        </>
+)
 }
