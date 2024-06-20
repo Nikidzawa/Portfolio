@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 
 const TextContent = styled.div`
-    min-height: 100vh;
+    min-height: 95vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -52,7 +52,7 @@ const Text = styled.span`
     }
 `;
 
-export default function StarterSection({ language }) {
+export default function StarterSection({ language, starterSectionRef}) {
     const canvasRef = useRef(null);
     const containerRef = useRef(null);
 
@@ -64,7 +64,7 @@ export default function StarterSection({ language }) {
 
         const getOpts = () => {
             const width = window.innerWidth;
-            
+
             if (width < 500) {
                 return {
                     particleColor: "rgb(200,200,200)",
@@ -195,7 +195,7 @@ export default function StarterSection({ language }) {
     }, []);
 
     return (
-        <StarterDiv>
+        <StarterDiv ref={starterSectionRef}>
             <TextContent ref={containerRef}>
                 <canvas ref={canvasRef} style={{ position: 'absolute', top: 0, left: 0, zIndex: -1 }}></canvas>
                 {language === "en" ? (

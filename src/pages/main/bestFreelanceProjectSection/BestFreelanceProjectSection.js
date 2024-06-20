@@ -2,21 +2,46 @@ import FREELANCE_IMG from "./freelance.jpg"
 import GithubLogo from "../../../sections/footer/gitHub.svg"
 import styled from "styled-components";
 
+const MainContainer = styled.div`
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    @media screen and (max-width: 750px){
+        min-height: 100vh;
+        padding-bottom: 10px;
+    }
+`
+
 const SiteName = styled.h1`
-    text-align: center;     
-    padding-bottom: 20px;
+    text-align: center;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    @media screen and (max-width: 750px){
+        font-size: 26px;
+    }
+
+    @media screen and (max-width: 390px){
+        font-size: 25px;
+    }
 `
 
 const InfoContainer = styled.div`
     display: flex;
     position: relative;
-    font-size: 18px;
     gap: 15px;
-    
-    @media screen and (max-width: 590px){
+    font-size: 18px;
+
+    @media screen and (max-width: 750px){
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        font-size: 15px;
     }
 `
 
@@ -25,6 +50,19 @@ const LinkContainer = styled.div`
     align-items: center;
     gap: 10px;
     padding: 0 0 20px 0;
+    a {
+        img {
+            @media (max-width: 750px) {
+                width: 30px;
+            }
+        }
+    }
+    strong {
+        font-size: 25px;
+        @media (max-width: 750px) {
+            font-size: 23px;
+        }
+    }
 `
 
 const Image = styled.img`
@@ -44,9 +82,9 @@ const MainInfoContainer = styled.div`
     }
 `
 
-export default function BestFreelanceProjectSection ({language}) {
+export default function BestFreelanceProjectSection ({language, bestFreelanceProjectRef}) {
     return (
-        <div style={{minHeight: "70vh", display: "flex", flexDirection: "column", justifyContent: "center"}}>
+        <MainContainer ref={bestFreelanceProjectRef}>
             {
                 language === "en" ?
                     <>
@@ -55,7 +93,7 @@ export default function BestFreelanceProjectSection ({language}) {
                             <a href={"https://github.com/Nikidzawa/ThatGirl_Oasis_Telebot"}>
                                 <img src={GithubLogo}/>
                             </a>
-                            <strong style={{fontSize: "25px"}}>ThatGirl Oasis</strong>
+                            <strong>ThatGirl Oasis</strong>
                         </LinkContainer>
                         <InfoContainer>
                             <Image src={FREELANCE_IMG}/>
@@ -73,7 +111,7 @@ export default function BestFreelanceProjectSection ({language}) {
                             </MainInfoContainer>
                         </InfoContainer>
                     </> :
-                    <>
+                    <div>
                         <SiteName>ФРИЛАНС</SiteName>
                         <LinkContainer>
                             <a href={"https://github.com/Nikidzawa/ThatGirl_Oasis_Telebot"}>
@@ -93,8 +131,8 @@ export default function BestFreelanceProjectSection ({language}) {
                                     оффлайн мероприятия через сайт-афишу прямо внутри бота</p>
                             </MainInfoContainer>
                         </InfoContainer>
-                    </>
+                    </div>
             }
-        </div>
+        </MainContainer>
     )
 }

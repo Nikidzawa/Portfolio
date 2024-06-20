@@ -37,28 +37,53 @@ const SkillButton = styled.button`
         }
     }
 `;
+const MainContainer = styled.div`
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+    @media screen and (max-width: 750px){
+        min-height: 100vh;
+        padding-bottom: 10px;
+    }
+`
+
+const SiteName = styled.h1`
+    text-align: center;
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    @media screen and (max-width: 750px){
+        font-size: 26px;
+    }
+    
+    @media screen and (max-width: 390px){
+        font-size: 25px;
+    }
+`
 
 const Category = styled.div`
-    padding: 0 10px;
-    display: block;
+    display: flex;
+    flex-direction: column;
     min-height: 800px;
 `
 
 const SkillsButtons = styled.div`
-    padding-top: 30px;
     display: flex;
+    justify-content: center;
+    align-items: center;
     gap: 10px;
-    
-    @media screen and (max-width: 600px) {
-        padding: 0;
-    }
 `
 
 const Components = styled.div`
     padding: 10px;
 `
 
-export default function SkillsSection ({language}) {
+export default function SkillsSection ({language, skillsSectionRef}) {
     const [category, setCategory] = useState("Backend");
 
     function handleChange (props) {
@@ -78,21 +103,23 @@ export default function SkillsSection ({language}) {
     }
 
     return (
-        <Category>
-            {language === "en" ?
-                <h1 style={{textAlign: "center"}}>MY STACK</h1>
-                :
-                <h1 style={{textAlign: "center"}}>МОЙ СТЕК</h1>
-            }
-            <SkillsButtons>
-                <SkillButton onClick={() => handleChange("Backend")}
-                             className={category === "Backend" ? "active" : ""}>Backend</SkillButton>
-                <SkillButton onClick={() => handleChange("Frontend")}
-                             className={category === "Frontend" ? "active" : ""}>Frontend</SkillButton>
-                <SkillButton onClick={() => handleChange("Other")}
-                             className={category === "Other" ? "active" : ""}>Other</SkillButton>
-            </SkillsButtons>
-            <Components>{getText()}</Components>
-        </Category>
+        <MainContainer ref={skillsSectionRef}>
+            <Category>
+                {language === "en" ?
+                    <SiteName>MY STACK</SiteName>
+                    :
+                    <SiteName>МОЙ СТЕК</SiteName>
+                }
+                <SkillsButtons>
+                    <SkillButton onClick={() => handleChange("Backend")}
+                                 className={category === "Backend" ? "active" : ""}>Backend</SkillButton>
+                    <SkillButton onClick={() => handleChange("Frontend")}
+                                 className={category === "Frontend" ? "active" : ""}>Frontend</SkillButton>
+                    <SkillButton onClick={() => handleChange("Other")}
+                                 className={category === "Other" ? "active" : ""}>Other</SkillButton>
+                </SkillsButtons>
+                <Components>{getText()}</Components>
+            </Category>
+        </MainContainer>
     )
 }

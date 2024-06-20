@@ -2,9 +2,33 @@ import GoLinkLogo from "./goLink.png"
 import GithubLogo from "../../../sections/footer/gitHub.svg"
 import styled from "styled-components";
 
+const MainContainer = styled.div`
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+    @media screen and (max-width: 750px){
+        min-height: 100vh;
+        padding-bottom: 10px;
+    }
+`
+
 const SiteName = styled.h1`
-    text-align: center;     
-    padding-bottom: 20px;
+    text-align: center;
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    @media screen and (max-width: 750px){
+        font-size: 26px;
+    }
+
+    @media screen and (max-width: 390px){
+        font-size: 25px;
+    }
 `
 
 const InfoContainer = styled.div`
@@ -17,6 +41,7 @@ const InfoContainer = styled.div`
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        font-size: 15px;
     }
 `
 
@@ -25,6 +50,19 @@ const LinkContainer = styled.div`
     align-items: center;
     gap: 10px;
     padding: 0 0 20px 0;
+    a {
+        img {
+            @media (max-width: 750px) {
+                width: 30px;
+            }
+        }
+    }
+    strong {
+        font-size: 25px;
+        @media (max-width: 750px) {
+            font-size: 23px;
+        }
+    }
 `
 
 const Image = styled.img`
@@ -43,9 +81,9 @@ const MainInfoContainer = styled.div`
     }
 `
 
-export default function BestPetProjectSection ({language}) {
+export default function BestPetProjectSection ({language, bestPetProjectRef}) {
     return (
-        <div style={{minHeight: "70vh", display: "flex", flexDirection: "column", justifyContent: "center"}}>
+        <MainContainer ref={bestPetProjectRef}>
             {
                 language === "en" ?
                     <>
@@ -54,10 +92,10 @@ export default function BestPetProjectSection ({language}) {
                             <a href={"https://github.com/Nikidzawa/Go_Link"}>
                                 <img src={GithubLogo}/>
                             </a>
-                            <strong style={{fontSize: "25px"}}>GoLink Messenger</strong>
+                            <strong>GoLink Messenger</strong>
                         </LinkContainer>
                         <InfoContainer>
-                            <Image src={GoLinkLogo}/>
+                            <Image src={GoLinkLogo} />
                             <MainInfoContainer>
                                 <div><strong>GoLink</strong> - this is my desktop equivalent of the Telegram messenger
                                 </div>
@@ -71,13 +109,13 @@ export default function BestPetProjectSection ({language}) {
                             </MainInfoContainer>
                         </InfoContainer>
                     </> :
-                    <>
+                    <div>
                         <SiteName>ЛУЧШИЙ ПЕТ ПРОЕКТ</SiteName>
                         <LinkContainer>
                             <a href={"https://github.com/Nikidzawa/Go_Link"}>
                                 <img src={GithubLogo}/>
                             </a>
-                            <strong style={{fontSize: "25px"}}>Мессенджер GoLink</strong>
+                            <strong>Мессенджер GoLink</strong>
                         </LinkContainer>
                         <InfoContainer>
                             <Image src={GoLinkLogo}/>
@@ -93,8 +131,8 @@ export default function BestPetProjectSection ({language}) {
                                 </p>
                             </MainInfoContainer>
                         </InfoContainer>
-                    </>
+                    </div>
             }
-        </div>
+        </MainContainer>
     )
 }
