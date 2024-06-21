@@ -66,7 +66,7 @@ export default function HomePage ({language, setLanguage}) {
     };
 
     const getNextSection = () => {
-        if (!currentSection) return sections[0];
+        if (!currentSection) return sections[1];
         const currentIndex = sections.findIndex(section => section.id === currentSection);
         return sections[currentIndex + 1];
     };
