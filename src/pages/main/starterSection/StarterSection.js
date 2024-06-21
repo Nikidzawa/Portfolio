@@ -1,5 +1,7 @@
-import React, { useEffect, useRef } from "react";
+import React, {useEffect, useRef} from "react";
 import styled from "styled-components";
+import PENDOSI_IMG from "../../../img/pendosi.png"
+import PATRIOT_IMG from "../../../img/patriot.png"
 
 const TextContent = styled.div`
     min-height: 95vh;
@@ -52,7 +54,26 @@ const Text = styled.span`
     }
 `;
 
-export default function StarterSection({ language, starterSectionRef}) {
+const FlagContainer = styled.div`
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+`
+
+const Image = styled.img`
+    width: 50px;
+    height: 35px;
+    
+    @media screen and (max-width: 700px) {
+        width: 40px;
+        height: 30px;
+    }
+`
+
+export default function StarterSection({ language, starterSectionRef, setLanguage}) {
     const canvasRef = useRef(null);
     const containerRef = useRef(null);
 
@@ -197,6 +218,9 @@ export default function StarterSection({ language, starterSectionRef}) {
     return (
         <StarterDiv ref={starterSectionRef}>
             <TextContent ref={containerRef}>
+                <FlagContainer onClick={() => setLanguage(language === "en" ? "ru" : "en")}>
+                    <Image src={language === "en" ? PENDOSI_IMG : PATRIOT_IMG }/>
+                </FlagContainer>
                 <canvas ref={canvasRef} style={{ position: 'absolute', top: 0, left: 0, zIndex: -1 }}></canvas>
                 {language === "en" ? (
                     <>
@@ -205,7 +229,7 @@ export default function StarterSection({ language, starterSectionRef}) {
                         <TypingContainer>
                             <Typing>
                                 <Text>I'm</Text>
-                                <Text style={{ color: "blue" }}> FullStack </Text>
+                                <Text style={{ color: "#2929ff" }}> FullStack </Text>
                                 <Text>developer.</Text>
                             </Typing>
                         </TypingContainer>
@@ -217,7 +241,7 @@ export default function StarterSection({ language, starterSectionRef}) {
                         <TypingContainer>
                             <Typing>
                                 <Text>Я</Text>
-                                <Text style={{ color: "blue" }}> FullStack </Text>
+                                <Text style={{ color: "#2929ff" }}> FullStack </Text>
                                 <Text>разработчик.</Text>
                             </Typing>
                         </TypingContainer>
