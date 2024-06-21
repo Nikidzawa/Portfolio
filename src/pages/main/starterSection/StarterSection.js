@@ -1,7 +1,5 @@
 import React, {useEffect, useRef} from "react";
 import styled from "styled-components";
-import PENDOSI_IMG from "../../../img/pendosi.png"
-import PATRIOT_IMG from "../../../img/patriot.png"
 
 const TextContent = styled.div`
     min-height: 95vh;
@@ -16,6 +14,16 @@ const TypingContainer = styled.div`
     display: flex;
     justify-content: center;
 `;
+
+const LanguageCode = styled.div`
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    
+    @media screen and (max-width: 500px) {
+        font-size: 25px;
+    }
+`
 
 const Typing = styled.div`
     color: #fff;
@@ -44,6 +52,7 @@ const StarterDiv = styled.div`
 const Text = styled.span`
     font-family: sans-serif;
     font-size: 40px;
+    font-weight: bold;
     padding-bottom: 10px;
     @media screen and (max-width: 600px) {
         font-size: 35px;
@@ -61,16 +70,6 @@ const FlagContainer = styled.div`
     display: flex;
     align-items: center;
     cursor: pointer;
-`
-
-const Image = styled.img`
-    width: 50px;
-    height: 35px;
-    
-    @media screen and (max-width: 700px) {
-        width: 40px;
-        height: 30px;
-    }
 `
 
 export default function StarterSection({ language, starterSectionRef, setLanguage}) {
@@ -91,8 +90,8 @@ export default function StarterSection({ language, starterSectionRef, setLanguag
                     particleColor: "rgb(200,200,200)",
                     lineColor: "rgb(200,200,200)",
                     particleAmount: 25,
-                    defaultSpeed: 0.5,
-                    variantSpeed: 0.5,
+                    defaultSpeed: 0.45,
+                    variantSpeed: 0.45,
                     defaultRadius: 2,
                     variantRadius: 2,
                     linkRadius: 180,
@@ -102,8 +101,8 @@ export default function StarterSection({ language, starterSectionRef, setLanguag
                     particleColor: "rgb(200,200,200)",
                     lineColor: "rgb(200,200,200)",
                     particleAmount: 50,
-                    defaultSpeed: 1,
-                    variantSpeed: 1,
+                    defaultSpeed: 0.9,
+                    variantSpeed: 0.9,
                     defaultRadius: 2,
                     variantRadius: 2,
                     linkRadius: 300,
@@ -219,7 +218,11 @@ export default function StarterSection({ language, starterSectionRef, setLanguag
         <StarterDiv ref={starterSectionRef}>
             <TextContent ref={containerRef}>
                 <FlagContainer onClick={() => setLanguage(language === "en" ? "ru" : "en")}>
-                    <Image src={language === "en" ? PENDOSI_IMG : PATRIOT_IMG }/>
+                    <LanguageCode>
+                        {
+                            language === "en" ? "EN" : "RU"
+                        }
+                    </LanguageCode>
                 </FlagContainer>
                 <canvas ref={canvasRef} style={{ position: 'absolute', top: 0, left: 0, zIndex: -1 }}></canvas>
                 {language === "en" ? (
