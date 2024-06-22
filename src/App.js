@@ -5,10 +5,11 @@ import {useEffect, useState} from "react";
 import {createGlobalStyle} from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
-  body {
-      background-color: ${props => props.theme === "dark" ? "black" : "white"};
-      color: ${props => props.theme === "dark" ? "white" : "black"};
-  }
+    body {
+        background-color: ${props => props.theme === "dark" ? "black" : "white"};
+        color: ${props => props.theme === "dark" ? "white" : "black"};
+        transition: background-color 0.5s ease, color 0.5s ease;
+    }
 `;
 
 function App() {
@@ -36,11 +37,13 @@ function App() {
       <>
           <GlobalStyle theme={theme}/>
           <Routes>
-              <Route path={"/home"} element={<HomePage setLanguage={setLanguage}
-                                                       language={language}
-                                                       theme={theme}
-                                                       setTheme={setTheme}
-              />}
+              <Route path={"/home"} element={
+                  <HomePage setLanguage={setLanguage}
+                            language={language}
+                            theme={theme}
+                            setTheme={setTheme}
+                  />
+              }
               ></Route>
               <Route path={"/"} element={<Navigate to="/home"/>}></Route>
           </Routes>

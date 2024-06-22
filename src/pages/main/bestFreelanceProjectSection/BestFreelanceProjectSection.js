@@ -1,5 +1,5 @@
 import FREELANCE_IMG from "./freelance.jpg"
-import GithubLogo from "../../../data/imgs/github.png"
+import GithubLogo from "../../../img/github.png"
 import styled from "styled-components";
 import React from "react";
 
@@ -10,8 +10,7 @@ const MainContainer = styled.div`
     justify-content: center;
 
     @media screen and (max-width: 750px){
-        min-height: 100vh;
-        padding-bottom: 10px;
+        margin: 5vh 0;
     }
 `
 
@@ -49,11 +48,11 @@ const InfoContainer = styled.div`
 const LinkContainer = styled.div`
     display: flex;
     align-items: center;
-    gap: 3px;
+    gap: 5px;
     padding: 0 0 20px 0;
     a {
         img {
-            width: 50px;
+            width: 40px;
             @media (max-width: 750px) {
                 width: 30px;
             }

@@ -31,11 +31,11 @@ const SkillButton = styled.button`
     &:not(${!isMobile}) {
         &:hover {
             opacity: 0.7;
-            transition: opacity 0.5s ease-in;
+            transition: opacity 0.35s ease-in;
         }
         &:not(:hover) {
             opacity: 1;
-            transition: opacity 0.5s ease-in;
+            transition: opacity 0.35s ease-in;
         }
     }
 `;
@@ -46,8 +46,7 @@ const MainContainer = styled.div`
     justify-content: center;
     
     @media screen and (max-width: 750px){
-        min-height: 100vh;
-        padding-bottom: 10px;
+        margin: 5vh 0;
     }
 `
 

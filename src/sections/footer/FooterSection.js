@@ -27,8 +27,8 @@ export default function FooterSection ({theme}) {
             <Links>
                 <a href={"https://t.me/Nikidzawa"}>
                     <img alt={"Telegram"}
-                         height={"45px"}
-                         width={"45px"}
+                         height={"42px"}
+                         width={"42px"}
                          src={theme === "dark" ? TELEGRAM_IMG : TELEGRAM_BLACK_IMG}/>
                 </a>
                 <a href={"https://github.com/Nikidzawa"}>

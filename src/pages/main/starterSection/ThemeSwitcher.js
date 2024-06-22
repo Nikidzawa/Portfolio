@@ -32,11 +32,16 @@ const Input = styled.input`
     }
 
     &:checked + span::before {
-        transform: translateX(40px);
-        background-color: black;
+        transform: translateX(42px);
+        background-color: orange;
         box-shadow: none;
+        width: 32px;
+        height: 32px;
         @media screen and (max-width: 600px) {
             transform: translateX(30px);
+            width: 25px;
+            height: 25px;
+            top: 3px;
         }
     }
 `;
@@ -52,7 +57,7 @@ const Slider = styled.span`
         content: "";
         position: absolute;
         top: 7px;
-        left: 10px;
+        left: 9px;
         width: 30px;
         height: 30px;
         border-radius: 50%;

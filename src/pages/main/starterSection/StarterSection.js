@@ -80,8 +80,8 @@ export default function StarterSection({   language,
 
             if (width < 500) {
                 return {
-                    particleColor: "rgb(200,200,200)",
-                    lineColor: "rgb(200,200,200)",
+                    particleColor: "rgb(174,174,174)",
+                    lineColor: "rgb(174,174,174)",
                     particleAmount: 25,
                     defaultSpeed: 0.45,
                     variantSpeed: 0.45,
@@ -91,8 +91,8 @@ export default function StarterSection({   language,
                 };
             } else {
                 return {
-                    particleColor: "rgb(200,200,200)",
-                    lineColor: "rgb(200,200,200)",
+                    particleColor: "rgb(174,174,174)",
+                    lineColor: "rgb(174,174,174)",
                     particleAmount: 50,
                     defaultSpeed: 0.9,
                     variantSpeed: 0.9,
