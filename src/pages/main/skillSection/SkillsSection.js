@@ -14,6 +14,8 @@ const SkillButton = styled.button`
     min-width: 260px;
     font-size: 22px;
     cursor: pointer;
+    background-color: ${props => props.theme === "dark" ? "white" : "black"};
+    color: ${props => props.theme === "dark" ? "black" : "white"};
 
     @media screen and (max-width: 800px) {  
         min-width: 30%;
@@ -83,7 +85,7 @@ const Components = styled.div`
     padding: 10px;
 `
 
-export default function SkillsSection ({language, skillsSectionRef}) {
+export default function SkillsSection ({language, skillsSectionRef, theme}) {
     const [category, setCategory] = useState("Backend");
 
     function handleChange (props) {
@@ -112,10 +114,13 @@ export default function SkillsSection ({language, skillsSectionRef}) {
                 }
                 <SkillsButtons>
                     <SkillButton onClick={() => handleChange("Backend")}
+                                 theme={theme}
                                  className={category === "Backend" ? "active" : ""}>Backend</SkillButton>
                     <SkillButton onClick={() => handleChange("Frontend")}
+                                 theme={theme}
                                  className={category === "Frontend" ? "active" : ""}>Frontend</SkillButton>
                     <SkillButton onClick={() => handleChange("Other")}
+                                 theme={theme}
                                  className={category === "Other" ? "active" : ""}>Other</SkillButton>
                 </SkillsButtons>
                 <Components>{getText()}</Components>

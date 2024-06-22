@@ -5,7 +5,9 @@ import Separator from "./separator/Separator";
 import BestFreelanceProjectSection from "./bestFreelanceProjectSection/BestFreelanceProjectSection";
 import {useEffect, useRef, useState} from "react";
 import DOWN_BUTTON_IMAGE from "../../img/downButton.png"
+import DOWN_BUTTON_BLACK_IMG from "../../img/downButtonBlack.png"
 import UP_BUTTON_IMAGE from "../../img/upButton.png"
+import UP_BUTTON_BLACK_IMG from "../../img/upButtonBlack.png"
 import styled from "styled-components";
 
 const NavigateButtonContainer = styled.div`
@@ -16,6 +18,10 @@ const NavigateButtonContainer = styled.div`
     gap: 10px;
     flex-direction: column;
     z-index: 1000;
+
+    @media screen and (max-width: 600px) {  
+        gap: 5px;
+    }
 `
 
 const NavigateButton = styled.img`
@@ -27,7 +33,7 @@ const NavigateButton = styled.img`
     }
 `
 
-export default function HomePage ({language, setLanguage}) {
+export default function HomePage ({language, setLanguage, theme, setTheme}) {
     const starterSectionRef = useRef(null);
     const bestPetProjectRef = useRef(null);
     const bestFreelanceProjectRef = useRef(null);
@@ -101,26 +107,29 @@ export default function HomePage ({language, setLanguage}) {
                 starterSectionRef={starterSectionRef}
                 language={language}
                 setLanguage={setLanguage}
+                theme={theme}
+                setTheme={setTheme}
             />
             <main className={"main-container"}>
-                <Separator/>
+                <Separator theme={theme}/>
                 <BestPetProjectSection
                     language={language}
                     bestPetProjectRef={bestPetProjectRef}
                 />
-                <Separator />
+                <Separator theme={theme}/>
                     <BestFreelanceProjectSection
                         language={language}
                         bestFreelanceProjectRef={bestFreelanceProjectRef}
                     />
-                <Separator />
+                <Separator theme={theme}/>
                     <SkillsSection
+                        theme={theme}
                         language={language}
                         skillsSectionRef={skillsSectionRef}
                     />
                 <NavigateButtonContainer>
-                    <NavigateButton onClick={handlePrevScroll} src={UP_BUTTON_IMAGE}/>
-                    <NavigateButton onClick={handleNextSection} src={DOWN_BUTTON_IMAGE}/>
+                    <NavigateButton onClick={handlePrevScroll} src={theme === "dark" ? UP_BUTTON_IMAGE : UP_BUTTON_BLACK_IMG}/>
+                    <NavigateButton onClick={handleNextSection} src={theme === "dark" ? DOWN_BUTTON_IMAGE : DOWN_BUTTON_BLACK_IMG}/>
                 </NavigateButtonContainer>
             </main>
         </>

@@ -1,5 +1,5 @@
 import GoLinkLogo from "./goLink.png"
-import GithubLogo from "../../../sections/footer/gitHub.svg"
+import GithubLogo from "../../../data/imgs/github.png"
 import styled from "styled-components";
 
 const MainContainer = styled.div`
@@ -48,10 +48,11 @@ const InfoContainer = styled.div`
 const LinkContainer = styled.div`
     display: flex;
     align-items: center;
-    gap: 10px;
     padding: 0 0 20px 0;
+    gap: 3px;
     a {
         img {
+            width: 50px;
             @media (max-width: 750px) {
                 width: 30px;
             }

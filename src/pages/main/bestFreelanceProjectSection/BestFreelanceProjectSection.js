@@ -1,6 +1,7 @@
 import FREELANCE_IMG from "./freelance.jpg"
-import GithubLogo from "../../../sections/footer/gitHub.svg"
+import GithubLogo from "../../../data/imgs/github.png"
 import styled from "styled-components";
+import React from "react";
 
 const MainContainer = styled.div`
     min-height: 90vh;
@@ -48,10 +49,11 @@ const InfoContainer = styled.div`
 const LinkContainer = styled.div`
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 3px;
     padding: 0 0 20px 0;
     a {
         img {
+            width: 50px;
             @media (max-width: 750px) {
                 width: 30px;
             }

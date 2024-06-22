@@ -1,5 +1,7 @@
 import React, {useEffect, useRef} from "react";
 import styled from "styled-components";
+import ThemeSwitcher from "./ThemeSwitcher";
+import Typing from "./Typing";
 
 const TextContent = styled.div`
     min-height: 95vh;
@@ -16,7 +18,7 @@ const TypingContainer = styled.div`
 `;
 
 const LanguageCode = styled.div`
-    font-size: 30px;
+    font-size: 36px;
     font-weight: bold;
     text-align: center;
     
@@ -24,26 +26,6 @@ const LanguageCode = styled.div`
         font-size: 25px;
     }
 `
-
-const Typing = styled.div`
-    color: #fff;
-    overflow: hidden;
-    border-right: .20em solid white;
-    white-space: nowrap;
-    margin: 0 auto;
-    letter-spacing: .15em;
-    animation: typing 2.5s steps(35, end), blink-caret .5s step-end infinite;
-
-    @keyframes typing {
-        from { width: 0 }
-        to { width: 100% }
-    }
-
-    @keyframes blink-caret {
-        from, to { border-color: transparent }
-        50% { border-color: white }
-    }
-`;
 
 const StarterDiv = styled.div`
     margin-bottom: 50px;
@@ -63,16 +45,27 @@ const Text = styled.span`
     }
 `;
 
-const FlagContainer = styled.div`
+const LanguageCodeContainer = styled.div`
     position: absolute;
     top: 20px;
     right: 20px;
-    display: flex;
-    align-items: center;
     cursor: pointer;
+    z-index: 100;
 `
 
-export default function StarterSection({ language, starterSectionRef, setLanguage}) {
+const ThemeSwitcherContainer = styled.div`
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    cursor: pointer;
+    z-index: 100;
+`
+
+export default function StarterSection({   language,
+                                           starterSectionRef,
+                                           setLanguage,
+                                           theme,
+                                           setTheme }) {
     const canvasRef = useRef(null);
     const containerRef = useRef(null);
 
@@ -217,20 +210,19 @@ export default function StarterSection({ language, starterSectionRef, setLanguag
     return (
         <StarterDiv ref={starterSectionRef}>
             <TextContent ref={containerRef}>
-                <FlagContainer onClick={() => setLanguage(language === "en" ? "ru" : "en")}>
-                    <LanguageCode>
-                        {
-                            language === "en" ? "EN" : "RU"
-                        }
-                    </LanguageCode>
-                </FlagContainer>
+                <LanguageCodeContainer onClick={() => setLanguage(language === "en" ? "ru" : "en")}>
+                    <LanguageCode> { language === "en" ? "EN" : "RU" }</LanguageCode>
+                </LanguageCodeContainer>
+                <ThemeSwitcherContainer>
+                    <ThemeSwitcher setTheme={setTheme} theme={theme}/>
+                </ThemeSwitcherContainer>
                 <canvas ref={canvasRef} style={{ position: 'absolute', top: 0, left: 0, zIndex: -1 }}></canvas>
                 {language === "en" ? (
                     <>
                         <Text>Hello👋</Text>
                         <Text>my name is <strong>Nikita</strong>,</Text>
                         <TypingContainer>
-                            <Typing>
+                            <Typing theme={theme}>
                                 <Text>I'm</Text>
                                 <Text style={{ color: "#2929ff" }}> FullStack </Text>
                                 <Text>developer.</Text>
@@ -242,7 +234,7 @@ export default function StarterSection({ language, starterSectionRef, setLanguag
                         <Text>Привет👋</Text>
                         <Text>меня зовут <strong>Никита</strong>,</Text>
                         <TypingContainer>
-                            <Typing>
+                            <Typing theme={theme}>
                                 <Text>Я</Text>
                                 <Text style={{ color: "#2929ff" }}> FullStack </Text>
                                 <Text>разработчик.</Text>
