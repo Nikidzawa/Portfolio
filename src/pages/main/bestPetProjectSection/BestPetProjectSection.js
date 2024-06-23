@@ -113,7 +113,7 @@ export default function BestPetProjectSection ({language, bestPetProjectRef}) {
                             </MainInfoContainer>
                         </InfoContainer>
                     </> :
-                    <div>
+                    <>
                         <SiteName>ЛУЧШИЙ ПЕТ ПРОЕКТ</SiteName>
                         <LinkContainer>
                             <a href={"https://github.com/Nikidzawa/Go_Link"}>
@@ -135,7 +135,7 @@ export default function BestPetProjectSection ({language, bestPetProjectRef}) {
                                 </p>
                             </MainInfoContainer>
                         </InfoContainer>
-                    </div>
+                    </>
             }
         </MainContainer>
     )

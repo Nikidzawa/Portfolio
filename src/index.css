@@ -11,10 +11,9 @@ body {
 }
 
 .main-container {
-  min-height: 2000px;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 10px 10px 60px 10px;
+  padding: 0 10px;
 }
 
 .header {

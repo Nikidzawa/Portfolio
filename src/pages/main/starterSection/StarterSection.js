@@ -66,6 +66,7 @@ export default function StarterSection({   language,
                                            setLanguage,
                                            theme,
                                            setTheme }) {
+
     const canvasRef = useRef(null);
     const containerRef = useRef(null);
 

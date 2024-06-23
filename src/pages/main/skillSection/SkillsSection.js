@@ -44,9 +44,9 @@ const MainContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    
-    @media screen and (max-width: 750px){
-        margin: 5vh 0;
+
+    @media screen and (max-width: 600px){
+        padding: 3vh 0 7vh 0;
     }
 `
 

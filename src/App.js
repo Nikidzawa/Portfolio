@@ -1,5 +1,4 @@
 import {Navigate, Route, Routes} from "react-router-dom"
-import FooterSection from "./sections/footer/FooterSection";
 import HomePage from "./pages/main/HomePage";
 import {useEffect, useState} from "react";
 import {createGlobalStyle} from "styled-components";
@@ -47,7 +46,6 @@ function App() {
               ></Route>
               <Route path={"/"} element={<Navigate to="/home"/>}></Route>
           </Routes>
-          <FooterSection theme={theme}/>
       </>
   );
 }
