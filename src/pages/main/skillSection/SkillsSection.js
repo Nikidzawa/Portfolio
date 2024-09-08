@@ -3,7 +3,7 @@ import {useState} from "react";
 import {GetBackEndSkills, GetFrontendSkills, GetOtherSkills} from "../../../data/Skills";
 import SkillComponent from "./SkillComponent";
 import MobileDetect from "mobile-detect";
-import GearWheel from "../../../../../Portfol/src/img/svg/GearWheel";
+import GearWheel from "../../../img/svg/GearWheel";
 
 const md = new MobileDetect(window.navigator.userAgent);
 const isMobile = md.mobile();
