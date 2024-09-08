@@ -57,7 +57,7 @@ const GearWheelContainer = styled.div`
         height: 450px;
         g {
             path {
-                fill: ${props => props.theme === "dark" ? "#0e0e0e" : "#E6E6E6"};
+                fill: ${props => props.theme === "dark" ? "#131313" : "#E6E6E6"};
             }
         }
     }
