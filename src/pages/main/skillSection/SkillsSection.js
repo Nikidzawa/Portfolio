@@ -3,6 +3,7 @@ import {useState} from "react";
 import {GetBackEndSkills, GetFrontendSkills, GetOtherSkills} from "../../../data/Skills";
 import SkillComponent from "./SkillComponent";
 import MobileDetect from "mobile-detect";
+import GearWheel from "../../../../../Portfol/src/img/svg/GearWheel";
 
 const md = new MobileDetect(window.navigator.userAgent);
 const isMobile = md.mobile();
@@ -39,11 +40,51 @@ const SkillButton = styled.button`
         }
     }
 `;
+
+const GearWheelContainer = styled.div`
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+    svg {
+        margin-top: 100px;
+        width: 450px;
+        height: 450px;
+        g {
+            path {
+                fill: ${props => props.theme === "dark" ? "#0e0e0e" : "#E6E6E6"};
+            }
+        }
+    }
+
+    @media screen and (max-width: 500px) {
+        svg {
+            width: 320px;
+            height: 320px;
+            margin: 0;
+        }
+    }
+
+    @media screen and (max-width: 390px){
+        svg {
+            width: 280px;
+            height: 280px;
+            margin: 0;
+        }
+    }
+`
+
 const MainContainer = styled.div`
     min-height: 90vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    position: relative;
 
     @media screen and (max-width: 600px){
         padding: 3vh 0 7vh 0;
@@ -105,6 +146,9 @@ export default function SkillsSection ({language, skillsSectionRef, theme}) {
 
     return (
         <MainContainer ref={skillsSectionRef}>
+            <GearWheelContainer theme={theme}>
+                <GearWheel/>
+            </GearWheelContainer>
             <Category>
                 {language === "en" ?
                     <SiteName>MY STACK</SiteName>
