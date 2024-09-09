@@ -58,9 +58,6 @@ const GearWheelContainer = styled.div`
         g {
             path {
                 fill: ${props => props.theme === "dark" ? "#202020" : "#E6E6E6"};
-                &:not(${isMobile}) {
-                    fill: ${props => props.theme === "dark" ? "#303030" : "#E6E6E6"};
-                }
             }
         }
     }
