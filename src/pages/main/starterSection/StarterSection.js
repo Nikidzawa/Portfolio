@@ -86,8 +86,8 @@ export default function StarterSection({   language,
                     particleAmount: 20,
                     defaultSpeed: 0.45,
                     variantSpeed: 0.45,
-                    defaultRadius: 2.6,
-                    variantRadius: 2.6,
+                    defaultRadius: 2,
+                    variantRadius: 2,
                     linkRadius: 180,
                 };
             } else {
