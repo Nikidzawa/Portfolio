@@ -83,23 +83,23 @@ export default function StarterSection({   language,
                 return {
                     particleColor: "rgb(174,174,174)",
                     lineColor: "rgb(174,174,174)",
-                    particleAmount: 25,
+                    particleAmount: 20,
                     defaultSpeed: 0.45,
                     variantSpeed: 0.45,
-                    defaultRadius: 2,
-                    variantRadius: 2,
+                    defaultRadius: 2.6,
+                    variantRadius: 2.6,
                     linkRadius: 180,
                 };
             } else {
                 return {
                     particleColor: "rgb(174,174,174)",
                     lineColor: "rgb(174,174,174)",
-                    particleAmount: 50,
+                    particleAmount: 45,
                     defaultSpeed: 0.50,
                     variantSpeed: 0.50,
-                    defaultRadius: 2,
-                    variantRadius: 2,
-                    linkRadius: 300,
+                    defaultRadius: 2.6,
+                    variantRadius: 2.6,
+                    linkRadius: 250,
                 };
             }
         };
@@ -141,7 +141,7 @@ export default function StarterSection({   language,
             }
         };
 
-        function Particle(xPos, yPos) {
+        function Particle() {
             this.x = Math.random() * w;
             this.y = Math.random() * h;
             this.speed = opts.defaultSpeed + Math.random() * opts.variantSpeed;
