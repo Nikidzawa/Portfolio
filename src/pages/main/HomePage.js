@@ -17,7 +17,9 @@ const BottomNavigateButton = styled.img`
     right: 25px;
     width: 60px;
     cursor: pointer;
-    display: ${props => props.isLastSection ? "none" : "flex"};
+    opacity: ${props => props.isLastSection ? "0" : "1"};
+    visibility: ${props => props.isLastSection ? "hidden" : "visible"};
+    transition: opacity 0.4s ease, visibility 0.4s ease;
     z-index: 1000;
     
     @media screen and (max-width: 600px) {
@@ -31,7 +33,9 @@ const UpNavigateButton = styled.img`
     right: 25px;
     width: 60px;
     cursor: pointer;
-    display: ${props => props.isFirstSection ? "none" : "flex"};
+    opacity: ${props => props.isFirstSection ? "0" : "1"};
+    visibility: ${props => props.isFirstSection ? "hidden" : "visible"};
+    transition: opacity 0.4s ease, visibility 0.4s ease;
 
     @media screen and (max-width: 600px) {
         bottom: 70px;
@@ -90,11 +94,6 @@ export default function HomePage ({language, setLanguage, theme, setTheme}) {
         }
         const currentIndex = sections.findIndex(section => section.id === currentSection);
         const nextIndex = currentIndex + 1;
-        if (nextIndex >= sections.length - 1) {
-            setLastSection(true);
-        } else {
-            setLastSection(false);
-        }
         return sections[nextIndex];
     };
 
@@ -105,11 +104,6 @@ export default function HomePage ({language, setLanguage, theme, setTheme}) {
         }
         const currentIndex = sections.findIndex(section => section.id === currentSection);
         const prevIndex = currentIndex - 1;
-        if (prevIndex <= 0) {
-            setFirstSection(true);
-        } else {
-            setFirstSection(false);
-        }
         return sections[prevIndex];
     };
 

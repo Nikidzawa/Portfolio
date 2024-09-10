@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import {useState} from "react";
-import {GetBackEndSkills, GetFrontendSkills, GetOtherSkills} from "../../../data/Skills";
+import {GetBackEndSkills, GetFrontendSkills, GetOtherSkills} from "./data/SkillsData";
 import SkillComponent from "./SkillComponent";
 import MobileDetect from "mobile-detect";
 import GearWheel from "../../../img/svg/GearWheel";
@@ -122,7 +122,14 @@ const SkillsButtons = styled.div`
 `
 
 const Components = styled.div`
-    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px 0 0 0;
+    
+    @media screen and (max-width: 500px) {
+        padding: 10px;
+    }
 `
 
 export default function SkillsSection ({language, skillsSectionRef, theme}) {

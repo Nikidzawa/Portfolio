@@ -32,13 +32,13 @@ const Input = styled.input`
     }
 
     &:checked + span::before {
-        transform: translateX(42px);
+        transform: translateX(43px);
         background-color: orange;
         box-shadow: none;
-        width: 32px;
-        height: 32px;
+        width: 33px;
+        height: 33px;
         @media screen and (max-width: 600px) {
-            transform: translateX(30px);
+            transform: translateX(33px);
             width: 25px;
             height: 25px;
             top: 3px;
@@ -57,7 +57,7 @@ const Slider = styled.span`
         content: "";
         position: absolute;
         top: 7px;
-        left: 9px;
+        left: 8px;
         width: 30px;
         height: 30px;
         border-radius: 50%;

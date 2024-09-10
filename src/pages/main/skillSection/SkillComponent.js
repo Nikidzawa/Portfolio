@@ -1,18 +1,20 @@
 import styled from "styled-components";
 import {useEffect, useState} from "react";
 
-const Title = styled.span`
-    font-size: 20px;
-    padding: 10px;
-    @media (max-width: 500px) {
-        font-size: 17px;
-    }
-`
 const SkillItem = styled.li`
-    padding: 10px;
     display: flex;
     opacity: ${({ visible }) => (visible ? '1' : '0')};
-    transition: opacity 0.8s ease; 
+    align-items: center;
+    gap: 10px;
+
+    font-size: 20px;
+    transition: font-size 0.4s ease, opacity 0.8s ease;
+    
+    img {
+        width: 50px;
+        height: 50px;
+        transition: width 0.4s ease, height 0.4s ease;
+    }
 `;
 
 export default function SkillComponent ({skill}) {
@@ -24,8 +26,8 @@ export default function SkillComponent ({skill}) {
 
     return (
         <SkillItem visible={isVisible}>
-            <img width="50px" height="50px" src={skill.img} alt={skill.title} />
-            <Title>{skill.title}</Title>
+            <img src={skill.img} alt={skill.title} />
+            <div>{skill.title}</div>
         </SkillItem>
     );
 }

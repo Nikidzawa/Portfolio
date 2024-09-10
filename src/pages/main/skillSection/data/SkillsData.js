@@ -27,11 +27,11 @@ export function GetBackEndSkills () {
         },
         {
             img: SPRING_IMG,
-            title: "Spring Framework (CORE, BOOT, JDBC, JPA, SECURITY)"
+            title: "Spring Framework"
         },
         {
             img: SQL_IMG,
-            title: "SQL (PostgreSQL)"
+            title: "SQL"
         },
         {
             img: REDIS_IMG,
@@ -44,10 +44,6 @@ export function GetBackEndSkills () {
         {
             img: KAFKA_IMG,
             title: "Apache Kafka"
-        },
-        {
-            img: REST_ASSURED,
-            title: "Rest Assured"
         },
         {
             img: LOGBACK_IMG,
