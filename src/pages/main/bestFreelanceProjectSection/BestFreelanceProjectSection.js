@@ -1,7 +1,9 @@
-import FREELANCE_IMG from "./freelance.jpg"
+import FREELANCE_IMG from "./img/freelance.jpg"
 import GithubLogo from "../../../img/github.png"
 import styled from "styled-components";
-import React from "react";
+import React, {useEffect, useState} from "react";
+import languageController from "../../../store/LanguageController";
+import {observer} from "mobx-react-lite";
 
 const MainContainer = styled.div`
     min-height: 90vh;
@@ -14,7 +16,7 @@ const MainContainer = styled.div`
     }
 `
 
-const SiteName = styled.h1`
+const SectionName = styled.h1`
     text-align: center;
     height: 70px;
     display: flex;
@@ -84,59 +86,31 @@ const MainInfoContainer = styled.div`
     }
 `
 
-export default function BestFreelanceProjectSection ({language, bestFreelanceProjectRef}) {
+export default observer(function BestFreelanceProjectSection ({bestFreelanceProjectRef}) {
+    const [languagePageData, setLanguagePageData] = useState({});
+
+    useEffect(() => {
+        setLanguagePageData(languageController.getTranslation("bestFreelanceProject"));
+    }, [languageController.currentLanguage])
+
     return (
         <MainContainer ref={bestFreelanceProjectRef}>
-            {
-                language === "en" ?
-                    <>
-                        <SiteName>FREELANCE</SiteName>
-                        <LinkContainer>
-                            <a href={"https://github.com/Nikidzawa/ThatGirl_Oasis_Telebot"}>
-                                <img src={GithubLogo}/>
-                            </a>
-                            <strong>ThatGirl Oasis</strong>
-                        </LinkContainer>
-                        <InfoContainer>
-                            <Image src={FREELANCE_IMG}/>
-                            <MainInfoContainer>
-                                <div><strong>ThatGirl Oasis</strong> - this is a women's community for meeting new
-                                    friends and spending quality time together.
-                                    For this community, I have created an informational ecosystem that allows finding
-                                    new friends and participating in exciting offline events together.
-                                </div>
-                                <p>The ecosystem includes a Telegram bot for dating, working on the Tinder principle -
-                                    you create a profile, choose a photo, and an intelligent recommendation mechanism,
-                                    based on physical proximity and age, will find you good company. You can then sign
-                                    up for the best offline events in your city through a poster website directly within
-                                    the bot.</p>
-                            </MainInfoContainer>
-                        </InfoContainer>
-                    </> :
-                    <div>
-                        <SiteName>ФРИЛАНС</SiteName>
-                        <LinkContainer>
-                            <a href={"https://github.com/Nikidzawa/ThatGirl_Oasis_Telebot"}>
-                                <img src={GithubLogo}/>
-                            </a>
-                            <strong style={{fontSize: "25px"}}>ThatGirl Oasis</strong>
-                        </LinkContainer>
-                        <InfoContainer>
-                            <Image src={FREELANCE_IMG}/>
-                            <MainInfoContainer>
-                                <div><strong>ThatGirl Oasis</strong> - это женское сообщество для знакомств и уютного время провождения.
-                                    Для этого сообщества я создал информационную экосистему, которая позволяет находить новых подруг и вместе
-                                    участвовать в увлекательных оффлайн мероприятиях</div>
-                                <p>В экосистему входит телеграм бот для знакомств, работающий по принципу Tinder - создаёшь анкету,
-                                    выбираешь фотографию, а умный механизм рекомендаций, на основании физической близости и возраста,
-                                    подберёт для тебя хорошую компанию, с которой ты сможешь записаться на лучшие в твоём городе
-                                    оффлайн мероприятия через сайт-афишу прямо внутри бота.
-                                    Верификация происходит на месте проведения, когда один из организаторов отсканирует
-                                    QR-код, который приходит на почту участника после оплаты билета</p>
-                            </MainInfoContainer>
-                        </InfoContainer>
-                    </div>
-            }
+            <div>
+                <SectionName>{languagePageData.title}</SectionName>
+                <LinkContainer>
+                    <a href={"https://github.com/Nikidzawa/ThatGirl_Oasis_Telebot"}>
+                        <img src={GithubLogo} alt={"GIT"}/>
+                    </a>
+                    <strong style={{fontSize: "25px"}}>{languagePageData.name}</strong>
+                </LinkContainer>
+                <InfoContainer>
+                    <Image src={FREELANCE_IMG}/>
+                    <MainInfoContainer>
+                        <div><strong>{languagePageData.name}</strong> {languagePageData.firstParagraph}</div>
+                        <p>{languagePageData.secondParagraph}</p>
+                    </MainInfoContainer>
+                </InfoContainer>
+            </div>
         </MainContainer>
     )
-}
+})

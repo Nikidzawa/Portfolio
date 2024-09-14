@@ -10,6 +10,7 @@ import JS from "./imgs/JS.png"
 import HTML from "./imgs/html.jpg"
 import CSS from "./imgs/css.jpg"
 import REACT from "./imgs/react.png"
+import MOBX from "./imgs/mobx.png"
 import LINUX from "./imgs/linux.png"
 import DOCKER from "./imgs/docker.png"
 import GITHUB from "./imgs/github.png"
@@ -66,6 +67,10 @@ export function GetFrontendSkills () {
             title: "React"
         },
         {
+          img: MOBX,
+          title: "MobX"
+        },
+        {
             img: HTML,
             title: "HTML"
         },
@@ -104,7 +109,7 @@ export function GetOtherSkills () {
         },
         {
             img: GITHUB,
-            title: "GitHub, GitLab"
+            title: "Git"
         },
 
     ]

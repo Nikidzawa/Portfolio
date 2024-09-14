@@ -7,6 +7,9 @@ import MAIL_BLACK_IMG from "../../../img/mailBlack.png";
 import CODE_WARS_WHITE_IMG from "../../../img/codewarsWhite.png";
 import CODE_WARS_BLACK_IMG from "../../../img/codewarsBlack.png";
 import themeController from "../../../store/ThemeController";
+import {useEffect, useState} from "react";
+import languageController from "../../../store/LanguageController";
+import {observer} from "mobx-react-lite";
 
 const MainContainer = styled.div`
     min-height: 100vh;
@@ -51,10 +54,16 @@ const Links = styled.div`
     justify-content: center;
 `
 
-export default function ContactsSection ({language, contactsSectionRef}) {
+export default observer (function ContactsSection ({contactsSectionRef}) {
+    const [languagePageData, setLanguagePageData] = useState({});
+
+    useEffect(() => {
+        setLanguagePageData(languageController.getTranslation("contactSection"));
+    }, [languageController.currentLanguage])
+
     return (
         <MainContainer ref={contactsSectionRef}>
-            <SectionName>{language === "en" ? "Social Links" : "Связь со мной"}</SectionName>
+            <SectionName>{languagePageData.title}</SectionName>
             <Links>
                 <a href={"https://t.me/Nikidzawa"}>
                     <img alt={"Telegram"}
@@ -84,4 +93,4 @@ export default function ContactsSection ({language, contactsSectionRef}) {
             <SiteNameContainer>© NIKIDZAWA.RU, 2024</SiteNameContainer>
         </MainContainer>
     )
-}
+})

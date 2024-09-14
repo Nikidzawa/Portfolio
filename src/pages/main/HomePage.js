@@ -44,7 +44,7 @@ const UpNavigateButton = styled.img`
     }
 `
 
-export default function HomePage ({language, setLanguage}) {
+export default function HomePage () {
     const starterSectionRef = useRef(null);
     const bestPetProjectRef = useRef(null);
     const bestFreelanceProjectRef = useRef(null);
@@ -123,39 +123,39 @@ export default function HomePage ({language, setLanguage}) {
         }
     };
 
+    const handleKeyDown = (event) => {
+        event.preventDefault(false)
+        if (event.key === "ArrowUp") {
+            handlePrevScroll();
+        } else if (event.key === "ArrowDown") {
+            handleNextSection();
+        }
+    };
+
     useEffect(() => {
         window.addEventListener('scroll', updateCurrentSection);
-        return () => window.removeEventListener('scroll', updateCurrentSection);
-    }, []);
+        window.addEventListener('keydown', handleKeyDown);
+        return () => {
+            window.removeEventListener('scroll', updateCurrentSection);
+            window.removeEventListener('keydown', handleKeyDown);
+        };
+    }, [currentSection]);
 
     return (
         <>
-            <StarterSection
-                starterSectionRef={starterSectionRef}
-                language={language}
-                setLanguage={setLanguage}
-            />
+            <StarterSection starterSectionRef={starterSectionRef}/>
             <main className={"main-container"}>
                 <Separator/>
-                <BestPetProjectSection
-                    language={language}
-                    bestPetProjectRef={bestPetProjectRef}
-                />
+                <BestPetProjectSection bestPetProjectRef={bestPetProjectRef}/>
                 <Separator/>
-                <BestFreelanceProjectSection
-                    language={language}
-                    bestFreelanceProjectRef={bestFreelanceProjectRef}
-                />
+                <BestFreelanceProjectSection bestFreelanceProjectRef={bestFreelanceProjectRef}/>
                 <Separator/>
-                <SkillsSection
-                    language={language}
-                    skillsSectionRef={skillsSectionRef}
-                />
+                <SkillsSection skillsSectionRef={skillsSectionRef}/>
                 <Separator/>
-                <ContactsSection contactsSectionRef={contactsSectionRef} language={language}/>
+                <ContactsSection contactsSectionRef={contactsSectionRef}/>
             </main>
-            <UpNavigateButton isFirstSection={isFirstSection} onClick={handlePrevScroll} src={themeController.themeIsDark() ? UP_BUTTON_IMAGE : UP_BUTTON_BLACK_IMG}/>
-            <BottomNavigateButton isLastSection={isLastSection} onClick={handleNextSection} src={themeController.themeIsDark() ? DOWN_BUTTON_IMAGE : DOWN_BUTTON_BLACK_IMG}/>
+            <UpNavigateButton title={"ArrowUp"} isFirstSection={isFirstSection} onClick={handlePrevScroll} src={themeController.themeIsDark() ? UP_BUTTON_IMAGE : UP_BUTTON_BLACK_IMG}/>
+            <BottomNavigateButton title={"ArrowDown"} isLastSection={isLastSection} onClick={handleNextSection} src={themeController.themeIsDark() ? DOWN_BUTTON_IMAGE : DOWN_BUTTON_BLACK_IMG}/>
         </>
     );
 }

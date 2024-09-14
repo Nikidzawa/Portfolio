@@ -1,10 +1,12 @@
 import styled from "styled-components";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {GetBackEndSkills, GetFrontendSkills, GetOtherSkills} from "./data/SkillsData";
-import SkillComponent from "./SkillComponent";
+import SkillComponent from "./components/SkillComponent";
 import MobileDetect from "mobile-detect";
 import GearWheel from "../../../img/svg/GearWheel";
 import themeController from "../../../store/ThemeController";
+import languageController from "../../../store/LanguageController";
+import {observer} from "mobx-react-lite";
 
 const md = new MobileDetect(window.navigator.userAgent);
 const isMobile = md.mobile();
@@ -16,8 +18,8 @@ const SkillButton = styled.button`
     min-width: 260px;
     font-size: 22px;
     cursor: pointer;
-    background-color: ${props => props.theme === "dark" ? "white" : "black"};
-    color: ${props => props.theme === "dark" ? "black" : "white"};
+    background-color: ${props => props.themeIsDark === true ? "white" : "black"};
+    color: ${props => props.themeIsDark === true ? "black" : "white"};
 
     @media screen and (max-width: 800px) {  
         min-width: 30%;
@@ -58,7 +60,7 @@ const GearWheelContainer = styled.div`
         height: 450px;
         g {
             path {
-                fill: ${props => props.theme === "dark" ? "#202020" : "#E6E6E6"};
+                fill: ${props => props.themeIsDark === true ? "#202020" : "#E6E6E6"};
             }
         }
     }
@@ -92,7 +94,7 @@ const MainContainer = styled.div`
     }
 `
 
-const SiteName = styled.h1`
+const SectionName = styled.h1`
     text-align: center;
     height: 70px;
     display: flex;
@@ -133,8 +135,13 @@ const Components = styled.div`
     }
 `
 
-export default function SkillsSection ({language, skillsSectionRef}) {
+export default observer(function SkillsSection ({skillsSectionRef}) {
+    const [languagePageData, setLanguagePageData] = useState({});
     const [category, setCategory] = useState("Backend");
+
+    useEffect(() => {
+        setLanguagePageData(languageController.getTranslation("skillsSection"));
+    }, [languageController.currentLanguage])
 
     function handleChange (props) {
         setCategory(props)
@@ -148,34 +155,31 @@ export default function SkillsSection ({language, skillsSectionRef}) {
                 return GetFrontendSkills().map(skill => <SkillComponent key={skill.title} skill={skill}/>)
             case "Other":
                 return GetOtherSkills().map(skill => <SkillComponent key={skill.title} skill={skill}/>)
-            default: return null
+            default:
+                return GetBackEndSkills().map(skill => <SkillComponent key={skill.title} skill={skill}/>)
         }
     }
 
     return (
         <MainContainer ref={skillsSectionRef}>
-            <GearWheelContainer theme={themeController.currentTheme}>
+            <GearWheelContainer themeIsDark={themeController.themeIsDark()}>
                 <GearWheel/>
             </GearWheelContainer>
             <Category>
-                {language === "en" ?
-                    <SiteName>MY STACK</SiteName>
-                    :
-                    <SiteName>МОЙ СТЕК</SiteName>
-                }
+                <SectionName>{languagePageData.title}</SectionName>
                 <SkillsButtons>
                     <SkillButton onClick={() => handleChange("Backend")}
-                                 theme={themeController.currentTheme}
+                                 themeIsDark={themeController.themeIsDark()}
                                  className={category === "Backend" ? "active" : ""}>Backend</SkillButton>
                     <SkillButton onClick={() => handleChange("Frontend")}
-                                 theme={themeController.currentTheme}
+                                 themeIsDark={themeController.themeIsDark()}
                                  className={category === "Frontend" ? "active" : ""}>Frontend</SkillButton>
                     <SkillButton onClick={() => handleChange("Other")}
-                                 theme={themeController.currentTheme}
+                                 themeIsDark={themeController.themeIsDark()}
                                  className={category === "Other" ? "active" : ""}>Other</SkillButton>
                 </SkillsButtons>
                 <Components>{getText()}</Components>
             </Category>
         </MainContainer>
     )
-}
+})

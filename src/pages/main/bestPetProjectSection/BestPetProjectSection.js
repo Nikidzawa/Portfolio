@@ -1,6 +1,9 @@
-import GoLinkLogo from "./goLink.png"
+import GoLinkLogo from "./img/goLink.png"
 import GithubLogo from "../../../img/github.png"
 import styled from "styled-components";
+import languageController from "../../../store/LanguageController";
+import {useEffect, useState} from "react";
+import {observer} from "mobx-react-lite";
 
 const MainContainer = styled.div`
     min-height: 90vh;
@@ -17,7 +20,7 @@ const MainContainer = styled.div`
     }
 `
 
-const SiteName = styled.h1`
+const SectionName = styled.h1`
     text-align: center;
     height: 70px;
     display: flex;
@@ -85,58 +88,30 @@ const MainInfoContainer = styled.div`
     }
 `
 
-export default function BestPetProjectSection ({language, bestPetProjectRef}) {
+export default observer(function BestPetProjectSection ({bestPetProjectRef}) {
+    const [languagePageData, setLanguagePageData] = useState({});
+
+    useEffect(() => {
+        setLanguagePageData(languageController.getTranslation("bestPetProject"));
+    }, [languageController.currentLanguage])
+
     return (
         <MainContainer ref={bestPetProjectRef}>
-            {
-                language === "en" ?
-                    <>
-                        <SiteName>BEST PET PROJECT</SiteName>
-                        <LinkContainer>
-                            <a href={"https://github.com/Nikidzawa/Go_Link"}>
-                                <img src={GithubLogo}/>
-                            </a>
-                            <strong>GoLink Messenger</strong>
-                        </LinkContainer>
-                        <InfoContainer>
-                            <Image src={GoLinkLogo} />
-                            <MainInfoContainer>
-                                <div><strong>GoLink</strong> - this is my desktop equivalent of the Telegram messenger
-                                </div>
-                                <p>It has all the functions typical of regular messengers - it supports sending text,
-                                    photos, voice messages, and has a built-in media and audio player. Messages can be
-                                    edited and deleted.</p>
-                                <p>The messenger is well optimized. The database is used only during the first launch,
-                                    all other actions, including sending messages, are carried out using the TCP/IP
-                                    network protocol.</p>
-
-                            </MainInfoContainer>
-                        </InfoContainer>
-                    </> :
-                    <>
-                        <SiteName>ЛУЧШИЙ ПЕТ ПРОЕКТ</SiteName>
-                        <LinkContainer>
-                            <a href={"https://github.com/Nikidzawa/Go_Link"}>
-                                <img src={GithubLogo}/>
-                            </a>
-                            <strong>Мессенджер GoLink</strong>
-                        </LinkContainer>
-                        <InfoContainer>
-                            <Image src={GoLinkLogo}/>
-                            <MainInfoContainer>
-                                <div><strong>GoLink</strong> - это мой десктопный аналог мессенджера Telegram</div>
-                                <p>Есть все функции присущие обынчым мессенджерам -
-                                    он поддерживает отправку текста, фотографий, голосовых сообщений и имеет встроенный медиа и аудио плеер.
-                                    Можно изменять и удалять сообщения</p>
-                                <p>
-                                    Мессенджер хорошо оптимизирован. Использование базы данных происходит только при первом запуске,
-                                    все остальные действия, в том числе отправка сообщений, осуществляются с помощью сетевого
-                                    протокола TCP/IP
-                                </p>
-                            </MainInfoContainer>
-                        </InfoContainer>
-                    </>
-            }
+            <SectionName>{languagePageData.title}</SectionName>
+            <LinkContainer>
+                <a href={"https://github.com/Nikidzawa/Go_Link"}>
+                    <img alt={"GIT"} src={GithubLogo}/>
+                </a>
+                <strong>{languagePageData.name}</strong>
+            </LinkContainer>
+            <InfoContainer>
+                <Image src={GoLinkLogo}/>
+                <MainInfoContainer>
+                    <div><strong>{languagePageData.previewTitle}</strong> {languagePageData.preview}</div>
+                    <p>{languagePageData.firstParagraph}</p>
+                    <p>{languagePageData.secondParagraph}</p>
+                </MainInfoContainer>
+            </InfoContainer>
         </MainContainer>
     )
-}
+})

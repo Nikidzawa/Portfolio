@@ -1,6 +1,6 @@
-import React from "react";
+import React, {useEffect} from "react";
 import styled from "styled-components";
-import themeController from "../../../store/ThemeController";
+import themeController from "../../../../store/ThemeController";
 
 const ToggleSwitch = styled.div`
     position: relative;
@@ -15,8 +15,8 @@ const Label = styled.label`
     position: absolute;
     width: 100%;
     height: 45px;
-    background-color: ${({ theme }) => (theme === "dark" ? "black" : "white")};
-    border: 2px solid ${({ theme }) => (theme === "dark" ? " white" : "black")};
+    background-color: ${({ themeIsDark }) => (themeIsDark === true ? "black" : "white")};
+    border: 2px solid ${({ themeIsDark }) => (themeIsDark === true ? " white" : "black")};
     border-radius: 50px;
     cursor: pointer;
     @media screen and (max-width: 600px){
@@ -75,9 +75,23 @@ const Slider = styled.span`
 `;
 
 export default function ThemeSwitcher() {
+    const handleKeyDown = (event) => {
+        if (event.key === "F1") {
+            event.preventDefault();
+            themeController.changeTheme();
+        }
+    };
+
+    useEffect(() => {
+        window.addEventListener("keydown", handleKeyDown);
+        return () => {
+            window.removeEventListener("keydown", handleKeyDown);
+        };
+    }, []);
+
     return (
-        <ToggleSwitch>
-            <Label theme={themeController.currentTheme}>
+        <ToggleSwitch title={"F1"}>
+            <Label themeIsDark={themeController.themeIsDark()}>
                 <Input type="checkbox"
                        checked={!themeController.themeIsDark()}
                        onClick={() => themeController.changeTheme()}

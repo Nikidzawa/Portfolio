@@ -7,12 +7,12 @@ const typing = keyframes`
 
 const blinkCaret = props => keyframes`
     from, to { border-color: transparent }
-    50% { border-color: ${props.theme === "dark" ? "white" : "black"}; }
+    50% { border-color: ${props.themeIsDark === true ? "white" : "black"}; }
 `;
 
 const Typing = styled.div`
     overflow: hidden;
-    border-right: 0.20em solid ${props => props.theme === "dark" ? "white" : "black"};
+    border-right: 0.20em solid ${props => props.themeIsDark === true ? "white" : "black"};
     white-space: nowrap;
     margin: 0 auto;
     letter-spacing: 0.15em;

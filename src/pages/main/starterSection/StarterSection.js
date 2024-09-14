@@ -1,8 +1,11 @@
-import React, {useEffect, useRef} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import styled from "styled-components";
-import ThemeSwitcher from "./ThemeSwitcher";
-import Typing from "./Typing";
+import ThemeSwitcher from "./components/ThemeSwitcher";
+import Typing from "./components/Typing";
 import themeController from "../../../store/ThemeController";
+import languageController from "../../../store/LanguageController";
+import {observer} from "mobx-react-lite";
+import LanguageSwitcher from "./components/LanguageSwitcher";
 
 const TextContent = styled.div`
     min-height: 95vh;
@@ -17,16 +20,6 @@ const TypingContainer = styled.div`
     display: flex;
     justify-content: center;
 `;
-
-const LanguageCode = styled.div`
-    font-size: 36px;
-    font-weight: bold;
-    text-align: center;
-    
-    @media screen and (max-width: 500px) {
-        font-size: 25px;
-    }
-`
 
 const StarterDiv = styled.div`
     margin-bottom: 50px;
@@ -62,13 +55,14 @@ const ThemeSwitcherContainer = styled.div`
     z-index: 100;
 `
 
-export default function StarterSection({   language,
-                                           starterSectionRef,
-                                           setLanguage,
-                                       }) {
-
+export default observer(function StarterSection({ starterSectionRef }) {
     const canvasRef = useRef(null);
     const containerRef = useRef(null);
+    const [languagePageData, setLanguagePageData] = useState({});
+
+    useEffect(() => {
+        setLanguagePageData(languageController.getTranslation("starter"));
+    }, [languageController.currentLanguage])
 
     useEffect(() => {
         const canvasBody = canvasRef.current;
@@ -211,39 +205,23 @@ export default function StarterSection({   language,
     return (
         <StarterDiv ref={starterSectionRef}>
             <TextContent ref={containerRef}>
-                <LanguageCodeContainer onClick={() => setLanguage(language === "en" ? "ru" : "en")}>
-                    <LanguageCode> { language === "en" ? "EN" : "RU" }</LanguageCode>
+                <LanguageCodeContainer>
+                    <LanguageSwitcher/>
                 </LanguageCodeContainer>
                 <ThemeSwitcherContainer>
                     <ThemeSwitcher/>
                 </ThemeSwitcherContainer>
                 <canvas ref={canvasRef} style={{ position: 'absolute', top: 0, left: 0, zIndex: -1 }}></canvas>
-                {language === "en" ? (
-                    <>
-                        <Text>Hello👋</Text>
-                        <Text>my name is <strong>Nikita</strong>,</Text>
-                        <TypingContainer>
-                            <Typing theme={themeController.currentTheme}>
-                                <Text>I'm</Text>
-                                <Text style={{ color: "#2929ff" }}> FullStack </Text>
-                                <Text>developer.</Text>
-                            </Typing>
-                        </TypingContainer>
-                    </>
-                ) : (
-                    <>
-                        <Text>Привет👋</Text>
-                        <Text>меня зовут <strong>Никита</strong>,</Text>
-                        <TypingContainer>
-                            <Typing theme={themeController.currentTheme}>
-                                <Text>Я</Text>
-                                <Text style={{ color: "#2929ff" }}> FullStack </Text>
-                                <Text>разработчик.</Text>
-                            </Typing>
-                        </TypingContainer>
-                    </>
-                )}
+                <Text>{languagePageData.greeting}</Text>
+                <Text>{languagePageData.introduction} {languagePageData.name},</Text>
+                <TypingContainer>
+                    <Typing themeIsDark={themeController.themeIsDark()}>
+                        <Text>{languagePageData.profession}</Text>
+                        <Text style={{ color: "#2424ff" }}> {languagePageData.role} </Text>
+                        <Text>{languagePageData.preRole}</Text>
+                    </Typing>
+                </TypingContainer>
             </TextContent>
         </StarterDiv>
     );
-}
+})
