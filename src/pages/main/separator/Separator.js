@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import themeController from "../../../store/ThemeController"
 
 const SeparatorLine = styled.div`
     height: 1px;
@@ -10,8 +11,8 @@ const SeparatorLine = styled.div`
     }
 `
 
-export default function Separator ({theme}) {
+export default function Separator () {
     return (
-        <SeparatorLine theme={theme}/>
+        <SeparatorLine theme={themeController.currentTheme}/>
     )
 }

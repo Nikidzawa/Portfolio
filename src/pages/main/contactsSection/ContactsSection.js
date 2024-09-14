@@ -6,6 +6,7 @@ import MAIL_IMG from "../../../img/mail.png";
 import MAIL_BLACK_IMG from "../../../img/mailBlack.png";
 import CODE_WARS_WHITE_IMG from "../../../img/codewarsWhite.png";
 import CODE_WARS_BLACK_IMG from "../../../img/codewarsBlack.png";
+import themeController from "../../../store/ThemeController";
 
 const MainContainer = styled.div`
     min-height: 100vh;
@@ -50,7 +51,7 @@ const Links = styled.div`
     justify-content: center;
 `
 
-export default function ContactsSection ({language, theme, contactsSectionRef}) {
+export default function ContactsSection ({language, contactsSectionRef}) {
     return (
         <MainContainer ref={contactsSectionRef}>
             <SectionName>{language === "en" ? "Social Links" : "Связь со мной"}</SectionName>
@@ -59,7 +60,7 @@ export default function ContactsSection ({language, theme, contactsSectionRef}) 
                     <img alt={"Telegram"}
                          height={"42px"}
                          width={"42px"}
-                         src={theme === "dark" ? TELEGRAM_IMG : TELEGRAM_BLACK_IMG}/>
+                         src={themeController.themeIsDark() ? TELEGRAM_IMG : TELEGRAM_BLACK_IMG}/>
                 </a>
                 <a href={"https://github.com/Nikidzawa"}>
                     <img alt={"GitHub"}
@@ -71,13 +72,13 @@ export default function ContactsSection ({language, theme, contactsSectionRef}) 
                     <img alt={"CodeWars"}
                          height={"45px"}
                          width={"45px"}
-                         src={theme === "dark" ? CODE_WARS_WHITE_IMG : CODE_WARS_BLACK_IMG}/>
+                         src={themeController.themeIsDark() ? CODE_WARS_WHITE_IMG : CODE_WARS_BLACK_IMG}/>
                 </a>
                 <a href={"mailto:datr1932@mail.ru"}>
                     <img alt={"Mail"}
                          height={"45px"}
                          width={"45px"}
-                         src={theme === "dark" ? MAIL_IMG : MAIL_BLACK_IMG}/>
+                         src={themeController.themeIsDark() ? MAIL_IMG : MAIL_BLACK_IMG}/>
                 </a>
             </Links>
             <SiteNameContainer>© NIKIDZAWA.RU, 2024</SiteNameContainer>

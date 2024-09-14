@@ -2,6 +2,7 @@ import React, {useEffect, useRef} from "react";
 import styled from "styled-components";
 import ThemeSwitcher from "./ThemeSwitcher";
 import Typing from "./Typing";
+import themeController from "../../../store/ThemeController";
 
 const TextContent = styled.div`
     min-height: 95vh;
@@ -64,8 +65,7 @@ const ThemeSwitcherContainer = styled.div`
 export default function StarterSection({   language,
                                            starterSectionRef,
                                            setLanguage,
-                                           theme,
-                                           setTheme }) {
+                                       }) {
 
     const canvasRef = useRef(null);
     const containerRef = useRef(null);
@@ -215,7 +215,7 @@ export default function StarterSection({   language,
                     <LanguageCode> { language === "en" ? "EN" : "RU" }</LanguageCode>
                 </LanguageCodeContainer>
                 <ThemeSwitcherContainer>
-                    <ThemeSwitcher setTheme={setTheme} theme={theme}/>
+                    <ThemeSwitcher/>
                 </ThemeSwitcherContainer>
                 <canvas ref={canvasRef} style={{ position: 'absolute', top: 0, left: 0, zIndex: -1 }}></canvas>
                 {language === "en" ? (
@@ -223,7 +223,7 @@ export default function StarterSection({   language,
                         <Text>Hello👋</Text>
                         <Text>my name is <strong>Nikita</strong>,</Text>
                         <TypingContainer>
-                            <Typing theme={theme}>
+                            <Typing theme={themeController.currentTheme}>
                                 <Text>I'm</Text>
                                 <Text style={{ color: "#2929ff" }}> FullStack </Text>
                                 <Text>developer.</Text>
@@ -235,7 +235,7 @@ export default function StarterSection({   language,
                         <Text>Привет👋</Text>
                         <Text>меня зовут <strong>Никита</strong>,</Text>
                         <TypingContainer>
-                            <Typing theme={theme}>
+                            <Typing theme={themeController.currentTheme}>
                                 <Text>Я</Text>
                                 <Text style={{ color: "#2929ff" }}> FullStack </Text>
                                 <Text>разработчик.</Text>

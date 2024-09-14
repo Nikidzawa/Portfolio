@@ -10,6 +10,7 @@ import UP_BUTTON_IMAGE from "../../img/upButton.png"
 import UP_BUTTON_BLACK_IMG from "../../img/upButtonBlack.png"
 import styled from "styled-components";
 import ContactsSection from "./contactsSection/ContactsSection";
+import themeController from "../../store/ThemeController";
 
 const BottomNavigateButton = styled.img`
     position: fixed;
@@ -43,7 +44,7 @@ const UpNavigateButton = styled.img`
     }
 `
 
-export default function HomePage ({language, setLanguage, theme, setTheme}) {
+export default function HomePage ({language, setLanguage}) {
     const starterSectionRef = useRef(null);
     const bestPetProjectRef = useRef(null);
     const bestFreelanceProjectRef = useRef(null);
@@ -133,31 +134,28 @@ export default function HomePage ({language, setLanguage, theme, setTheme}) {
                 starterSectionRef={starterSectionRef}
                 language={language}
                 setLanguage={setLanguage}
-                theme={theme}
-                setTheme={setTheme}
             />
             <main className={"main-container"}>
-                <Separator theme={theme}/>
+                <Separator/>
                 <BestPetProjectSection
                     language={language}
                     bestPetProjectRef={bestPetProjectRef}
                 />
-                <Separator theme={theme}/>
+                <Separator/>
                 <BestFreelanceProjectSection
                     language={language}
                     bestFreelanceProjectRef={bestFreelanceProjectRef}
                 />
-                <Separator theme={theme}/>
+                <Separator/>
                 <SkillsSection
-                    theme={theme}
                     language={language}
                     skillsSectionRef={skillsSectionRef}
                 />
-                <Separator theme={theme}/>
-                <ContactsSection contactsSectionRef={contactsSectionRef} language={language} theme={theme}/>
+                <Separator/>
+                <ContactsSection contactsSectionRef={contactsSectionRef} language={language}/>
             </main>
-            <UpNavigateButton isFirstSection={isFirstSection} onClick={handlePrevScroll} src={theme === "dark" ? UP_BUTTON_IMAGE : UP_BUTTON_BLACK_IMG}/>
-            <BottomNavigateButton isLastSection={isLastSection} onClick={handleNextSection} src={theme === "dark" ? DOWN_BUTTON_IMAGE : DOWN_BUTTON_BLACK_IMG}/>
+            <UpNavigateButton isFirstSection={isFirstSection} onClick={handlePrevScroll} src={themeController.themeIsDark() ? UP_BUTTON_IMAGE : UP_BUTTON_BLACK_IMG}/>
+            <BottomNavigateButton isLastSection={isLastSection} onClick={handleNextSection} src={themeController.themeIsDark() ? DOWN_BUTTON_IMAGE : DOWN_BUTTON_BLACK_IMG}/>
         </>
     );
 }

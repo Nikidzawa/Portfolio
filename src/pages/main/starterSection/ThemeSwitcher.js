@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import themeController from "../../../store/ThemeController";
 
 const ToggleSwitch = styled.div`
     position: relative;
@@ -37,6 +38,7 @@ const Input = styled.input`
         box-shadow: none;
         width: 33px;
         height: 33px;
+        top: 6px;
         @media screen and (max-width: 600px) {
             transform: translateX(33px);
             width: 25px;
@@ -72,16 +74,14 @@ const Slider = styled.span`
     }
 `;
 
-export default function ThemeSwitcher({theme, setTheme}) {
-
-    const toggleTheme = () => {
-        setTheme((prevTheme) => (prevTheme === "dark" ? "light" : "dark"));
-    };
-
+export default function ThemeSwitcher() {
     return (
         <ToggleSwitch>
-            <Label theme={theme}>
-                <Input type="checkbox" checked={theme === "light"} onChange={toggleTheme}/>
+            <Label theme={themeController.currentTheme}>
+                <Input type="checkbox"
+                       checked={!themeController.themeIsDark()}
+                       onClick={() => themeController.changeTheme()}
+                />
                 <Slider/>
             </Label>
         </ToggleSwitch>

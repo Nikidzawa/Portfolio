@@ -2,6 +2,8 @@ import {Navigate, Route, Routes} from "react-router-dom"
 import HomePage from "./pages/main/HomePage";
 import {useEffect, useState} from "react";
 import {createGlobalStyle} from "styled-components";
+import themeController from "../src/store/ThemeController"
+import {observer} from "mobx-react-lite";
 
 const GlobalStyle = createGlobalStyle`
     body {
@@ -11,44 +13,36 @@ const GlobalStyle = createGlobalStyle`
     }
 `;
 
-function App() {
+const App = observer(() => {
     const [language, setLanguage] = useState("");
-    const [theme, setTheme] = useState("");
 
     useEffect(() => {
         const language = localStorage.getItem("language") || "ru";
         setLanguage(language)
 
         const theme = localStorage.getItem("theme") || "dark";
-        setTheme(theme)
+        themeController.setTheme(theme)
     }, []);
 
     useEffect(() => {
         localStorage.setItem("language", language)
     }, [language]);
 
-    useEffect(() => {
-        localStorage.setItem("theme", theme)
-    }, [theme]);
-
-  return (
-      language && theme &&
-      <>
-          <GlobalStyle theme={theme}/>
-          <Routes>
-              <Route path={"/home"} element={
-                  <HomePage setLanguage={setLanguage}
-                            language={language}
-                            theme={theme}
-                            setTheme={setTheme}
-                  />
-              }
-              ></Route>
-              <Route path={"/"} element={<Navigate to="/home"/>}></Route>
-          </Routes>
-      </>
-  );
-}
-
+    return (
+        language &&
+        <>
+            <GlobalStyle theme={themeController.currentTheme}/>
+            <Routes>
+                <Route path={"/home"} element={
+                    <HomePage setLanguage={setLanguage}
+                              language={language}
+                    />
+                }
+                ></Route>
+                <Route path={"/"} element={<Navigate to="/home"/>}></Route>
+            </Routes>
+        </>
+    );
+})
 
 export default App;

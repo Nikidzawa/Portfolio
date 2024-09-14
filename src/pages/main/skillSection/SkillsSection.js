@@ -4,6 +4,7 @@ import {GetBackEndSkills, GetFrontendSkills, GetOtherSkills} from "./data/Skills
 import SkillComponent from "./SkillComponent";
 import MobileDetect from "mobile-detect";
 import GearWheel from "../../../img/svg/GearWheel";
+import themeController from "../../../store/ThemeController";
 
 const md = new MobileDetect(window.navigator.userAgent);
 const isMobile = md.mobile();
@@ -132,7 +133,7 @@ const Components = styled.div`
     }
 `
 
-export default function SkillsSection ({language, skillsSectionRef, theme}) {
+export default function SkillsSection ({language, skillsSectionRef}) {
     const [category, setCategory] = useState("Backend");
 
     function handleChange (props) {
@@ -153,7 +154,7 @@ export default function SkillsSection ({language, skillsSectionRef, theme}) {
 
     return (
         <MainContainer ref={skillsSectionRef}>
-            <GearWheelContainer theme={theme}>
+            <GearWheelContainer theme={themeController.currentTheme}>
                 <GearWheel/>
             </GearWheelContainer>
             <Category>
@@ -164,13 +165,13 @@ export default function SkillsSection ({language, skillsSectionRef, theme}) {
                 }
                 <SkillsButtons>
                     <SkillButton onClick={() => handleChange("Backend")}
-                                 theme={theme}
+                                 theme={themeController.currentTheme}
                                  className={category === "Backend" ? "active" : ""}>Backend</SkillButton>
                     <SkillButton onClick={() => handleChange("Frontend")}
-                                 theme={theme}
+                                 theme={themeController.currentTheme}
                                  className={category === "Frontend" ? "active" : ""}>Frontend</SkillButton>
                     <SkillButton onClick={() => handleChange("Other")}
-                                 theme={theme}
+                                 theme={themeController.currentTheme}
                                  className={category === "Other" ? "active" : ""}>Other</SkillButton>
                 </SkillsButtons>
                 <Components>{getText()}</Components>
