@@ -12,11 +12,7 @@ const MainContainer = styled.div`
     justify-content: center;
     
     @media screen and (max-width: 750px){
-        min-height: 100vh;
-    }
-    
-    @media screen and (max-height: 820px){
-        margin: 2vh 0 5vh 0;
+        min-height: 95vh;
     }
 `
 

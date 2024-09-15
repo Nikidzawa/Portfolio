@@ -39,7 +39,7 @@ const UpNavigateButton = styled.img`
     transition: opacity 0.4s ease, visibility 0.4s ease;
 
     @media screen and (max-width: 600px) {
-        bottom: 70px;
+        bottom: 67px;
         width: 40px;
     }
 `
@@ -67,7 +67,7 @@ export default function HomePage () {
         if (scroll.current) {
             scroll.current.scrollIntoView({
                 behavior: 'smooth',
-                block: window.innerWidth < 750 ? 'start' : 'center',
+                block: window.innerHeight < 750 ? 'start' : 'center',
             });
         }
     };

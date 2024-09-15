@@ -12,8 +12,7 @@ const MainContainer = styled.div`
     justify-content: center;
 
     @media screen and (max-width: 750px){
-        margin: 5vh 0;
-    }
+        min-height: 95vh;
 `
 
 const SectionName = styled.h1`
@@ -24,11 +23,17 @@ const SectionName = styled.h1`
     align-items: center;
     flex-direction: column;
 
-    @media screen and (max-width: 750px){
+    @media screen and (max-width: 750px) {
         font-size: 26px;
+        margin-bottom: 30px;
     }
 
-    @media screen and (max-width: 390px){
+    @media screen and (max-width: 390px) {
+        font-size: 25px;
+    }
+    
+    @media screen and (max-width: 380px) {
+        margin-bottom: 10px;
         font-size: 25px;
     }
 `
@@ -73,17 +78,16 @@ const Image = styled.img`
     height: 500px;
     
     @media (max-width: 750px) {
-        width: 100%;
+        width: 45%;
         height: auto;
         max-width: 500px;
         max-height: 700px;
     }
 `
 
-const MainInfoContainer = styled.div`
-    @media screen and (max-width: 750px) {
-        padding-top: 10px;
-    }
+const ImageAndFirstParagraph = styled.div`
+    display: flex;
+    gap: 10px;
 `
 
 export default observer(function BestFreelanceProjectSection ({bestFreelanceProjectRef}) {
@@ -104,11 +108,27 @@ export default observer(function BestFreelanceProjectSection ({bestFreelanceProj
                     <strong style={{fontSize: "25px"}}>{languagePageData.name}</strong>
                 </LinkContainer>
                 <InfoContainer>
-                    <Image src={FREELANCE_IMG}/>
-                    <MainInfoContainer>
-                        <div><strong>{languagePageData.name}</strong> {languagePageData.firstParagraph}</div>
-                        <p>{languagePageData.secondParagraph}</p>
-                    </MainInfoContainer>
+                    {
+                        window.innerWidth < 600 ? (
+                            <>
+                                <ImageAndFirstParagraph>
+                                    <Image src={FREELANCE_IMG}/>
+                                    <div><strong>{languagePageData.name}</strong> {languagePageData.firstParagraph}</div>
+                                </ImageAndFirstParagraph>
+                                <div>
+                                    <p>{languagePageData.secondParagraph}</p>
+                                </div>
+                            </>
+                        ) : (
+                            <>
+                                <Image src={FREELANCE_IMG}/>
+                                <div>
+                                    <div><strong>{languagePageData.name}</strong> {languagePageData.firstParagraph}</div>
+                                    <p>{languagePageData.secondParagraph}</p>
+                                </div>
+                            </>
+                        )
+                    }
                 </InfoContainer>
             </div>
         </MainContainer>

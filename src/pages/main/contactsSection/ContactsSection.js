@@ -42,6 +42,7 @@ const SiteNameContainer = styled.div`
     left: 50%;
     transform: translateX(-50%);
     text-align: center;
+    white-space: nowrap;
 `
 
 const Links = styled.div`

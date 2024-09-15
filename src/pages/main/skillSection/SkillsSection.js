@@ -83,15 +83,11 @@ const GearWheelContainer = styled.div`
 `
 
 const MainContainer = styled.div`
-    min-height: 90vh;
+    min-height: 95vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     position: relative;
-
-    @media screen and (max-width: 600px){
-        padding: 3vh 0 7vh 0;
-    }
 `
 
 const SectionName = styled.h1`
@@ -115,6 +111,10 @@ const Category = styled.div`
     display: flex;
     flex-direction: column;
     min-height: 800px;
+    
+    @media screen and (max-height: 750px){
+        min-height: 0;
+    }
 `
 
 const SkillsButtons = styled.div`
