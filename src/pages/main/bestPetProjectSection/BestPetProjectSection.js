@@ -8,11 +8,14 @@ import imageWidgetController from "../../../store/ImageWidgetController";
 import FREELANCE_IMG from "../bestFreelanceProjectSection/img/freelance.jpg";
 
 const MainContainer = styled.div`
-    min-height: 90vh;
+    min-height: 95vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     
+    @media screen and (max-width: 750px){
+        min-height: 90vh;
+    }
 `
 
 const SectionName = styled.h1`

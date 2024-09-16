@@ -7,10 +7,14 @@ import {observer} from "mobx-react-lite";
 import imageWidgetController from "../../../store/ImageWidgetController";
 
 const MainContainer = styled.div`
-    min-height: 90vh;
+    min-height: 95vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    
+    @media screen and (max-width: 750px){
+        min-height: 90vh;
+    }
 `
 
 const SectionName = styled.h1`
