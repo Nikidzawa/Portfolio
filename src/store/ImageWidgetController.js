@@ -3,7 +3,7 @@ import {makeAutoObservable} from "mobx";
 class ImageWidgetController {
 
     isVisible = false;
-    image = null;
+    images = [];
 
     constructor() {
         makeAutoObservable(this);
@@ -13,9 +13,9 @@ class ImageWidgetController {
         this.isVisible = false;
     }
 
-    showWidget(image) {
+    showWidget(images) {
         this.isVisible = true;
-        this.image = image;
+        this.images = images;
     }
 }
 

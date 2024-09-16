@@ -104,7 +104,7 @@ export default observer(function BestPetProjectSection ({bestPetProjectRef}) {
                 <strong>{languagePageData.name}</strong>
             </LinkContainer>
             <InfoContainer>
-                <Image src={GoLinkLogo} onClick={() => imageWidgetController.showWidget(GoLinkLogo)}/>
+                <Image src={GoLinkLogo} onClick={() => imageWidgetController.showWidget([GoLinkLogo])}/>
                 <MainInfoContainer>
                     <div><strong>{languagePageData.previewTitle}</strong> {languagePageData.preview}</div>
                     <p>{languagePageData.firstParagraph}</p>

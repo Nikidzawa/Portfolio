@@ -8,6 +8,7 @@ const SeparatorLine = styled.div`
     margin: 0 auto;
     @media screen and (max-width: 750px) {
         margin: 10px auto;
+        width: 70%;
     }
 `
 

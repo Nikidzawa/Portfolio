@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import imageWidgetController from "../store/ImageWidgetController"
 import {observer} from "mobx-react-lite";
 import CloseImage from "../img/close.png"
@@ -18,11 +18,14 @@ const Background = styled.div`
     padding: 5px;
 `
 
-const Image = styled.img`
+const ImagesContainer = styled.div`
+    max-height: 85vh;
+`
+
+const MainImage = styled.img`
     width: auto;
     height: auto;
-    max-height: 90vh;
-    
+    max-height: 70vh;
     @media (max-width: 650px) {
         width: 100%;
         height: auto;
@@ -42,7 +45,24 @@ const CloseButton = styled.img`
     }
 `
 
+const ImageListElement = styled.img`
+    width: 50px;
+    height: 60px;
+    cursor: pointer;
+    border-bottom: ${props => props.isSelected ? '2px solid white' : 'none'};
+    padding-bottom: 5px;
+`;
+
+const ImageList = styled.div`
+    display: flex;
+    grid-gap: 10px;
+    align-items: center;
+    overflow-x: auto;
+    white-space: nowrap;
+`;
+
 export default observer(function ImageWidget() {
+    const [currentImage, setCurrentImage] = useState(null)
 
     function closeWidget (event) {
         event.preventDefault()
@@ -62,6 +82,8 @@ export default observer(function ImageWidget() {
     }
 
     useEffect(() => {
+        setCurrentImage(imageWidgetController.images[0]);
+
         if (imageWidgetController.isVisible) {
             window.addEventListener('wheel', preventScrolling, { passive: false });
             window.addEventListener('touchmove', preventScrolling, { passive: false });
@@ -78,10 +100,27 @@ export default observer(function ImageWidget() {
     return (
         <>
             {
-                imageWidgetController.isVisible && (
+                imageWidgetController.isVisible && currentImage && (
                     <Background onClick={handleBackgroundClick}>
                         <CloseButton src={CloseImage} onClick={() => imageWidgetController.closeWidget()}/>
-                        <Image src={imageWidgetController.image}/>
+                        <ImagesContainer>
+                            <MainImage src={currentImage}/>
+                            {
+                                imageWidgetController.images.length > 1 && (
+                                    <ImageList>
+                                        {
+                                            imageWidgetController.images.map((image, index) => (
+                                                <ImageListElement key={index}
+                                                     src={image}
+                                                     onClick={() => setCurrentImage(image)}
+                                                     isSelected={currentImage === image}
+                                                />
+                                            ))
+                                        }
+                                    </ImageList>
+                                )
+                            }
+                        </ImagesContainer>
                     </Background>
                 )
             }
