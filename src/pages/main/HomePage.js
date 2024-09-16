@@ -11,6 +11,7 @@ import UP_BUTTON_BLACK_IMG from "../../img/upButtonBlack.png"
 import styled from "styled-components";
 import ContactsSection from "./contactsSection/ContactsSection";
 import themeController from "../../store/ThemeController";
+import ImageWidget from "../../components/ImageWidget";
 
 const BottomNavigateButton = styled.img`
     position: fixed;
@@ -154,6 +155,7 @@ export default function HomePage () {
                 <Separator/>
                 <ContactsSection contactsSectionRef={contactsSectionRef}/>
             </main>
+            <ImageWidget/>
             <UpNavigateButton title={"ArrowUp"} isFirstSection={isFirstSection} onClick={handlePrevScroll} src={themeController.themeIsDark() ? UP_BUTTON_IMAGE : UP_BUTTON_BLACK_IMG}/>
             <BottomNavigateButton title={"ArrowDown"} isLastSection={isLastSection} onClick={handleNextSection} src={themeController.themeIsDark() ? DOWN_BUTTON_IMAGE : DOWN_BUTTON_BLACK_IMG}/>
         </>

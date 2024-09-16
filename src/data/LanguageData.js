@@ -27,17 +27,15 @@ export default class LanguageData {
                 title: "BEST PET PROJECT",
                 name: "GoLink Messenger",
                 previewTitle: "GoLink",
-                preview: "this is my desktop equivalent of the Telegram messenger",
-                firstParagraph: "It has all the functions typical of regular messengers - it supports sending text photos, voice messages, and has a built-in media and audio player. Messages can be edited and deleted.",
-                secondParagraph: "The messenger is well optimized. The database is used only during the first launch, all other actions, including sending messages, are carried out using the TCP/IP network protocol."
+                preview: "this is my desktop equivalent of the Whatsapp messenger",
+                firstParagraph: "Messenger support sending text, photos, voice messages, and has media and audio player. Messages can be edited and deleted. Data exchange between users is carried out in real time thanks to the TCP/IP protocol",
             }
             case "ru": return {
                 title: "ЛУЧШИЙ ПЕТ ПРОЕКТ",
                 name: "Мессенджер GoLink",
                 previewTitle: "GoLink",
                 preview: "- это мой десктопный аналог мессенджера Telegram",
-                firstParagraph: "Есть все функции присущие обычным мессенджерам - он поддерживает отправку текста, фотографий, голосовых сообщений и имеет встроенный медиа и аудио плеер. Можно изменять и удалять сообщения",
-                secondParagraph: "Мессенджер хорошо оптимизирован. Использование базы данных происходит только при первом запуске, все остальные действия, в том числе отправка сообщений, осуществляются с помощью сетевого протокола TCP/IP"
+                firstParagraph: "Мессенджер поддерживает отправку текста, фотографий, голосовых сообщений и имеет медиа и аудио плеер. Можно изменять и удалять сообщения. Обмен данных между пользователями осуществляется в режиме реального времени c помощью протокола TCP/IP",
             }
             default: break;
         }

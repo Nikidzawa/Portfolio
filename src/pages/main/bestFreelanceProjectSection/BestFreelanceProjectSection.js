@@ -4,15 +4,13 @@ import styled from "styled-components";
 import React, {useEffect, useState} from "react";
 import languageController from "../../../store/LanguageController";
 import {observer} from "mobx-react-lite";
+import imageWidgetController from "../../../store/ImageWidgetController";
 
 const MainContainer = styled.div`
     min-height: 90vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
-
-    @media screen and (max-width: 750px){
-        min-height: 95vh;
 `
 
 const SectionName = styled.h1`
@@ -76,7 +74,8 @@ const LinkContainer = styled.div`
 const Image = styled.img`
     width: 550px;
     height: 500px;
-    
+    cursor: pointer;
+
     @media (max-width: 750px) {
         width: 45%;
         height: auto;
@@ -112,7 +111,7 @@ export default observer(function BestFreelanceProjectSection ({bestFreelanceProj
                         window.innerWidth < 600 ? (
                             <>
                                 <ImageAndFirstParagraph>
-                                    <Image src={FREELANCE_IMG}/>
+                                    <Image src={FREELANCE_IMG} onClick={() => imageWidgetController.showWidget(FREELANCE_IMG)}/>
                                     <div><strong>{languagePageData.name}</strong> {languagePageData.firstParagraph}</div>
                                 </ImageAndFirstParagraph>
                                 <div>
@@ -121,7 +120,7 @@ export default observer(function BestFreelanceProjectSection ({bestFreelanceProj
                             </>
                         ) : (
                             <>
-                                <Image src={FREELANCE_IMG}/>
+                                <Image src={FREELANCE_IMG} onClick={() => imageWidgetController.showWidget(FREELANCE_IMG)}/>
                                 <div>
                                     <div><strong>{languagePageData.name}</strong> {languagePageData.firstParagraph}</div>
                                     <p>{languagePageData.secondParagraph}</p>

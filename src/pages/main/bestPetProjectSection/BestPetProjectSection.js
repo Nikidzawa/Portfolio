@@ -4,6 +4,8 @@ import styled from "styled-components";
 import languageController from "../../../store/LanguageController";
 import {useEffect, useState} from "react";
 import {observer} from "mobx-react-lite";
+import imageWidgetController from "../../../store/ImageWidgetController";
+import FREELANCE_IMG from "../bestFreelanceProjectSection/img/freelance.jpg";
 
 const MainContainer = styled.div`
     min-height: 90vh;
@@ -11,9 +13,6 @@ const MainContainer = styled.div`
     flex-direction: column;
     justify-content: center;
     
-    @media screen and (max-width: 750px){
-        min-height: 95vh;
-    }
 `
 
 const SectionName = styled.h1`
@@ -71,6 +70,7 @@ const LinkContainer = styled.div`
 const Image = styled.img`
     width: 450px;
     height: 450px;
+    cursor: pointer;
     
     @media (max-width: 450px) {
         width: 100%;
@@ -101,11 +101,10 @@ export default observer(function BestPetProjectSection ({bestPetProjectRef}) {
                 <strong>{languagePageData.name}</strong>
             </LinkContainer>
             <InfoContainer>
-                <Image src={GoLinkLogo}/>
+                <Image src={GoLinkLogo} onClick={() => imageWidgetController.showWidget(GoLinkLogo)}/>
                 <MainInfoContainer>
                     <div><strong>{languagePageData.previewTitle}</strong> {languagePageData.preview}</div>
                     <p>{languagePageData.firstParagraph}</p>
-                    <p>{languagePageData.secondParagraph}</p>
                 </MainInfoContainer>
             </InfoContainer>
         </MainContainer>

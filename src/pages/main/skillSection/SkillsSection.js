@@ -83,7 +83,7 @@ const GearWheelContainer = styled.div`
 `
 
 const MainContainer = styled.div`
-    min-height: 95vh;
+    min-height: 90vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
