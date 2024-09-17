@@ -1,8 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
 body {
   margin: 0;
   padding: 0;
-  min-width: 360px;
-  font-family: sans-serif;
+  font-family: Poppins, Rubik, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: black;
@@ -14,22 +15,6 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 10px;
-}
-
-.header {
-  padding: 20px 0;
-  border-bottom: 1px solid azure;
-  letter-spacing: normal;
-  margin-bottom: 20px;
-  @media screen and (max-width: 600px) {
-    margin-bottom: 10px;
-    padding: 10px 0;
-  }
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
 }
 
 a {
