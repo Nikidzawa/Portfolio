@@ -75,8 +75,8 @@ export default observer(function StarterSection({ starterSectionRef }) {
 
             if (width < 500) {
                 return {
-                    particleColor: "rgb(174,174,174)",
-                    lineColor: "rgb(174,174,174)",
+                    particleColor: themeController.themeIsDark() ? "rgb(174,174,174)" : "rgb(53,53,53)",
+                    lineColor: themeController.themeIsDark() ? "rgb(174,174,174)" : "rgb(53,53,53)",
                     particleAmount: 20,
                     defaultSpeed: 0.45,
                     variantSpeed: 0.45,
@@ -86,8 +86,8 @@ export default observer(function StarterSection({ starterSectionRef }) {
                 };
             } else {
                 return {
-                    particleColor: "rgb(174,174,174)",
-                    lineColor: "rgb(174,174,174)",
+                    particleColor: themeController.themeIsDark() ? "rgb(174,174,174)" : "rgb(53,53,53)",
+                    lineColor: themeController.themeIsDark() ? "rgb(174,174,174)" : "rgb(53,53,53)",
                     particleAmount: 45,
                     defaultSpeed: 0.50,
                     variantSpeed: 0.50,
@@ -200,7 +200,7 @@ export default observer(function StarterSection({ starterSectionRef }) {
         return () => {
             window.removeEventListener("resize", deBouncer);
         };
-    }, []);
+    }, [themeController.currentTheme]);
 
     return (
         <StarterDiv ref={starterSectionRef}>
