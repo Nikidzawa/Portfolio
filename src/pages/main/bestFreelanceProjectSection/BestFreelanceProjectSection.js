@@ -2,6 +2,8 @@ import FREELANCE_IMG from "./img/freelance.jpg"
 import FREELANCE2_IMG from "./img/freelance2.png"
 import FREELANCE3_IMG from "./img/freelance3.png"
 import FREELANCE4_IMG from "./img/freelance4.png"
+import FREELANCE5_IMG from "./img/freelance5.jpg"
+import FREELANCE6_IMG from "./img/freelance6.png"
 import GithubLogo from "../../../img/github.png"
 import styled from "styled-components";
 import React, {useEffect, useState} from "react";
@@ -118,7 +120,7 @@ export default observer(function BestFreelanceProjectSection ({bestFreelanceProj
                         window.innerWidth < 600 ? (
                             <>
                                 <ImageAndFirstParagraph>
-                                    <Image src={FREELANCE_IMG} onClick={() => imageWidgetController.showWidget([FREELANCE_IMG, FREELANCE2_IMG, FREELANCE3_IMG, FREELANCE4_IMG])}/>
+                                    <Image src={FREELANCE5_IMG} onClick={() => imageWidgetController.showWidget([FREELANCE_IMG, FREELANCE2_IMG, FREELANCE3_IMG, FREELANCE4_IMG, FREELANCE6_IMG])}/>
                                     <div><strong>{languagePageData.name}</strong> {languagePageData.firstParagraph}</div>
                                 </ImageAndFirstParagraph>
                                 <div>
@@ -127,7 +129,7 @@ export default observer(function BestFreelanceProjectSection ({bestFreelanceProj
                             </>
                         ) : (
                             <>
-                                <Image src={FREELANCE_IMG} onClick={() => imageWidgetController.showWidget([FREELANCE_IMG, FREELANCE2_IMG, FREELANCE3_IMG, FREELANCE4_IMG])}/>
+                                <Image src={FREELANCE5_IMG} onClick={() => imageWidgetController.showWidget([FREELANCE_IMG, FREELANCE2_IMG, FREELANCE3_IMG, FREELANCE4_IMG, FREELANCE6_IMG])}/>
                                 <div>
                                     <div><strong>{languagePageData.name}</strong> {languagePageData.firstParagraph}</div>
                                     <p>{languagePageData.secondParagraph}</p>
