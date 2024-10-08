@@ -41,7 +41,7 @@ const UpNavigateButton = styled.img`
     transition: opacity 0.4s ease, visibility 0.4s ease;
 
     @media screen and (max-width: 600px) {
-        bottom: 67px;
+        bottom: 68px;
         width: 45px;
         right: 20px;
     }
@@ -68,10 +68,22 @@ export default function HomePage() {
 
     const handleScroll = (scroll) => {
         if (scroll.current) {
-            scroll.current.scrollIntoView({
-                behavior: 'smooth',
-                block: window.innerHeight < 750 ? 'start' : 'center',
-            });
+            if (scroll.current === starterSectionRef.current) {
+                scroll.current.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start',
+                });
+            } else if (scroll.current === contactsSectionRef.current) {
+                scroll.current.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'end',
+                });
+            } else {
+                scroll.current.scrollIntoView({
+                    behavior: 'smooth',
+                    block: window.innerHeight < 750 ? 'start' : 'center',
+                });
+            }
         }
     };
 
