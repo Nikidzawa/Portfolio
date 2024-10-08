@@ -6,8 +6,12 @@ const typing = keyframes`
 `;
 
 const blinkCaret = props => keyframes`
-    from, to { border-color: transparent }
-    50% { border-color: ${props.themeIsDark === true ? "white" : "black"}; }
+    from, to {
+        border-color: transparent
+    }
+    50% {
+        border-color: ${props.themeIsDark === true ? "white" : "black"};
+    }
 `;
 
 const Typing = styled.div`

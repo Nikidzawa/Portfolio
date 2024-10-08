@@ -12,7 +12,7 @@ const SeparatorLine = styled.div`
     }
 `
 
-export default function Separator () {
+export default function Separator() {
     return (
         <SeparatorLine themeIsDark={themeController.themeIsDark()}/>
     )

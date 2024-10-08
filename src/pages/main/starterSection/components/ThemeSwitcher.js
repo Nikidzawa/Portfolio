@@ -15,8 +15,8 @@ const Label = styled.label`
     position: absolute;
     width: 100%;
     height: 45px;
-    background-color: ${({ themeIsDark }) => (themeIsDark === true ? "black" : "white")};
-    border: 2px solid ${({ themeIsDark }) => (themeIsDark === true ? " white" : "black")};
+    background-color: ${({themeIsDark}) => (themeIsDark === true ? "black" : "white")};
+    border: 2px solid ${({themeIsDark}) => (themeIsDark === true ? " white" : "black")};
     border-radius: 50px;
     cursor: pointer;
     @media screen and (max-width: 600px){

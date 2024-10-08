@@ -20,20 +20,29 @@ class LanguageController {
 
     getCurrentLanguageCode() {
         switch (this.currentLanguage) {
-            case "en": return "EN";
-            case "ru": return "RU";
-            default: return "RU"
+            case "en":
+                return "EN";
+            case "ru":
+                return "RU";
+            default:
+                return "RU"
         }
     }
 
     getTranslation(section) {
         switch (section) {
-            case "starter": return LanguageData.getStarterSectionWords(this.currentLanguage);
-            case "bestPetProject": return LanguageData.getBestProjectSectionWords(this.currentLanguage);
-            case "bestFreelanceProject": return LanguageData.getBestFreelancerSectionWords(this.currentLanguage);
-            case "skillsSection": return LanguageData.getSkillSectionWords(this.currentLanguage);
-            case "contactSection": return LanguageData.getContactSectionWords(this.currentLanguage);
-            default: break;
+            case "starter":
+                return LanguageData.getStarterSectionWords(this.currentLanguage);
+            case "bestPetProject":
+                return LanguageData.getBestProjectSectionWords(this.currentLanguage);
+            case "bestFreelanceProject":
+                return LanguageData.getBestFreelancerSectionWords(this.currentLanguage);
+            case "skillsSection":
+                return LanguageData.getSkillSectionWords(this.currentLanguage);
+            case "contactSection":
+                return LanguageData.getContactSectionWords(this.currentLanguage);
+            default:
+                break;
         }
     }
 }

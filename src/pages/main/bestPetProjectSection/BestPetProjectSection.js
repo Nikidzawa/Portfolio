@@ -5,15 +5,14 @@ import languageController from "../../../store/LanguageController";
 import {useEffect, useState} from "react";
 import {observer} from "mobx-react-lite";
 import imageWidgetController from "../../../store/ImageWidgetController";
-import FREELANCE_IMG from "../bestFreelanceProjectSection/img/freelance.jpg";
 
 const MainContainer = styled.div`
     min-height: 95vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    
-    @media screen and (max-width: 750px){
+
+    @media screen and (max-width: 750px) {
         min-height: 90vh;
     }
 `
@@ -25,13 +24,10 @@ const SectionName = styled.h1`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
-    @media screen and (max-width: 750px){
-        font-size: 26px;
-    }
 
-    @media screen and (max-width: 390px){
-        font-size: 25px;
+    @media screen and (max-width: 750px) {
+        height: auto;
+        font-size: 27px;
     }
 `
 
@@ -41,10 +37,15 @@ const InfoContainer = styled.div`
     gap: 15px;
     font-size: 18px;
 
-    @media screen and (max-width: 750px){
+    @media screen and (max-width: 750px) {
+        height: auto;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        font-size: 16px;
+    }
+
+    @media screen and (max-width: 420px) {
         font-size: 15px;
     }
 `
@@ -52,8 +53,9 @@ const InfoContainer = styled.div`
 const LinkContainer = styled.div`
     display: flex;
     align-items: center;
-    padding: 0 0 20px 0;
+    padding: 0 0 10px 0;
     gap: 5px;
+
     a {
         img {
             width: 40px;
@@ -62,11 +64,13 @@ const LinkContainer = styled.div`
             }
         }
     }
-    strong {
-        font-size: 25px;
-        @media (max-width: 750px) {
-            font-size: 23px;
-        }
+`
+
+const ProjectName = styled.strong`
+    font-size: 25px;
+
+    @media (max-width: 750px) {
+        font-size: 22px;
     }
 `
 
@@ -74,7 +78,7 @@ const Image = styled.img`
     width: 450px;
     height: 450px;
     cursor: pointer;
-    
+
     @media (max-width: 450px) {
         width: 100%;
         height: auto;
@@ -87,7 +91,7 @@ const MainInfoContainer = styled.div`
     }
 `
 
-export default observer(function BestPetProjectSection ({bestPetProjectRef}) {
+export default observer(function BestPetProjectSection({bestPetProjectRef}) {
     const [languagePageData, setLanguagePageData] = useState({});
 
     useEffect(() => {
@@ -101,7 +105,7 @@ export default observer(function BestPetProjectSection ({bestPetProjectRef}) {
                 <a href={"https://github.com/Nikidzawa/Go_Link"}>
                     <img alt={"GIT"} src={GithubLogo}/>
                 </a>
-                <strong>{languagePageData.name}</strong>
+                <ProjectName>{languagePageData.name}</ProjectName>
             </LinkContainer>
             <InfoContainer>
                 <Image src={GoLinkLogo} onClick={() => imageWidgetController.showWidget([GoLinkLogo])}/>

@@ -55,7 +55,7 @@ const Links = styled.div`
     justify-content: center;
 `
 
-export default observer (function ContactsSection ({contactsSectionRef}) {
+export default observer(function ContactsSection({contactsSectionRef}) {
     const [languagePageData, setLanguagePageData] = useState({});
 
     useEffect(() => {

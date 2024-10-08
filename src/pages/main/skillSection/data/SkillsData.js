@@ -19,7 +19,7 @@ import FX_IMG from "./imgs/javaFX.jpg"
 import NGINX from "./imgs/nginx.png"
 import TOMCAT from "./imgs/tomcat.png"
 
-export function GetBackEndSkills () {
+export function GetBackEndSkills() {
     return [
         {
             img: JAVA_IMG,
@@ -56,7 +56,7 @@ export function GetBackEndSkills () {
     ]
 }
 
-export function GetFrontendSkills () {
+export function GetFrontendSkills() {
     return [
         {
             img: JS,
@@ -67,8 +67,8 @@ export function GetFrontendSkills () {
             title: "React"
         },
         {
-          img: MOBX,
-          title: "MobX"
+            img: MOBX,
+            title: "MobX"
         },
         {
             img: HTML,
@@ -85,7 +85,7 @@ export function GetFrontendSkills () {
     ]
 }
 
-export function GetOtherSkills () {
+export function GetOtherSkills() {
     return [
         {
             img: LINUX,

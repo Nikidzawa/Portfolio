@@ -23,7 +23,7 @@ const BottomNavigateButton = styled.img`
     visibility: ${props => props.isLastSection ? "hidden" : "visible"};
     transition: opacity 0.4s ease, visibility 0.4s ease;
     z-index: 1000;
-    
+
     @media screen and (max-width: 600px) {
         width: 40px;
     }
@@ -45,7 +45,7 @@ const UpNavigateButton = styled.img`
     }
 `
 
-export default function HomePage () {
+export default function HomePage() {
     const starterSectionRef = useRef(null);
     const bestPetProjectRef = useRef(null);
     const bestFreelanceProjectRef = useRef(null);
@@ -53,11 +53,11 @@ export default function HomePage () {
     const contactsSectionRef = useRef(null);
 
     const sections = [
-        { ref: starterSectionRef, id: 'starterSection' },
-        { ref: bestPetProjectRef, id: 'bestPetProject' },
-        { ref: bestFreelanceProjectRef, id: 'bestFreelanceProject' },
-        { ref: skillsSectionRef, id: 'skillsSection' },
-        { ref: contactsSectionRef, id: 'contactsSection' },
+        {ref: starterSectionRef, id: 'starterSection'},
+        {ref: bestPetProjectRef, id: 'bestPetProject'},
+        {ref: bestFreelanceProjectRef, id: 'bestFreelanceProject'},
+        {ref: skillsSectionRef, id: 'skillsSection'},
+        {ref: contactsSectionRef, id: 'contactsSection'},
     ];
 
     const [currentSection, setCurrentSection] = useState(null);
@@ -111,7 +111,7 @@ export default function HomePage () {
 
     const updateCurrentSection = () => {
         const offset = window.innerHeight / 2;
-        const section = sections.find(({ ref }) => {
+        const section = sections.find(({ref}) => {
             if (!ref.current) return false;
             const rect = ref.current.getBoundingClientRect();
             return rect.top >= 0 && rect.top <= offset;
@@ -156,8 +156,10 @@ export default function HomePage () {
                 <ContactsSection contactsSectionRef={contactsSectionRef}/>
             </main>
             <ImageWidget/>
-            <UpNavigateButton title={"ArrowUp"} isFirstSection={isFirstSection} onClick={handlePrevScroll} src={themeController.themeIsDark() ? UP_BUTTON_IMAGE : UP_BUTTON_BLACK_IMG}/>
-            <BottomNavigateButton title={"ArrowDown"} isLastSection={isLastSection} onClick={handleNextSection} src={themeController.themeIsDark() ? DOWN_BUTTON_IMAGE : DOWN_BUTTON_BLACK_IMG}/>
+            <UpNavigateButton title={"ArrowUp"} isFirstSection={isFirstSection} onClick={handlePrevScroll}
+                              src={themeController.themeIsDark() ? UP_BUTTON_IMAGE : UP_BUTTON_BLACK_IMG}/>
+            <BottomNavigateButton title={"ArrowDown"} isLastSection={isLastSection} onClick={handleNextSection}
+                                  src={themeController.themeIsDark() ? DOWN_BUTTON_IMAGE : DOWN_BUTTON_BLACK_IMG}/>
         </>
     );
 }

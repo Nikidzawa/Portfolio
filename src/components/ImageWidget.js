@@ -16,6 +16,10 @@ const Background = styled.div`
     align-items: center;
     justify-content: center;
     padding: 5px;
+    opacity: ${props => (props.visible ? 1 : 0)};
+    pointer-events: ${props => props.visible ? "auto" : "none"};;
+    transition: opacity 0.5s;
+    cursor: zoom-out;
 `
 
 const ImagesContainer = styled.div`
@@ -26,6 +30,7 @@ const MainImage = styled.img`
     width: auto;
     height: auto;
     max-height: 70vh;
+    cursor: default;
     @media (max-width: 650px) {
         width: 100%;
         height: auto;
@@ -64,7 +69,7 @@ const ImageList = styled.div`
 export default observer(function ImageWidget() {
     const [currentImage, setCurrentImage] = useState(null)
 
-    function closeWidget (event) {
+    function closeWidget(event) {
         event.preventDefault()
         if (event.key === "Escape") {
             imageWidgetController.closeWidget();
@@ -85,8 +90,8 @@ export default observer(function ImageWidget() {
         setCurrentImage(imageWidgetController.images[0]);
 
         if (imageWidgetController.isVisible) {
-            window.addEventListener('wheel', preventScrolling, { passive: false });
-            window.addEventListener('touchmove', preventScrolling, { passive: false });
+            window.addEventListener('wheel', preventScrolling, {passive: false});
+            window.addEventListener('touchmove', preventScrolling, {passive: false});
             window.addEventListener('keydown', closeWidget);
         }
 
@@ -100,29 +105,27 @@ export default observer(function ImageWidget() {
     return (
         <>
             {
-                imageWidgetController.isVisible && currentImage && (
-                    <Background onClick={handleBackgroundClick}>
-                        <CloseButton src={CloseImage} onClick={() => imageWidgetController.closeWidget()}/>
-                        <ImagesContainer>
-                            <MainImage src={currentImage}/>
-                            {
-                                imageWidgetController.images.length > 1 && (
-                                    <ImageList>
-                                        {
-                                            imageWidgetController.images.map((image, index) => (
-                                                <ImageListElement key={index}
-                                                     src={image}
-                                                     onClick={() => setCurrentImage(image)}
-                                                     isSelected={currentImage === image}
-                                                />
-                                            ))
-                                        }
-                                    </ImageList>
-                                )
-                            }
-                        </ImagesContainer>
-                    </Background>
-                )
+                <Background visible={imageWidgetController.isVisible} onClick={handleBackgroundClick}>
+                    <CloseButton title={"ESC"} src={CloseImage} onClick={() => imageWidgetController.closeWidget()}/>
+                    <ImagesContainer>
+                        <MainImage src={currentImage}/>
+                        {
+                            imageWidgetController.images.length > 1 && (
+                                <ImageList>
+                                    {
+                                        imageWidgetController.images.map((image, index) => (
+                                            <ImageListElement key={index}
+                                                              src={image}
+                                                              onClick={() => setCurrentImage(image)}
+                                                              isSelected={currentImage === image}
+                                            />
+                                        ))
+                                    }
+                                </ImageList>
+                            )
+                        }
+                    </ImagesContainer>
+                </Background>
             }
         </>
     )

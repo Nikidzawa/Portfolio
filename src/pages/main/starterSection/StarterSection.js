@@ -41,7 +41,7 @@ const Text = styled.span`
 
 const LanguageCodeContainer = styled.div`
     position: absolute;
-    top: 20px;
+    top: 19px;
     right: 20px;
     cursor: pointer;
     z-index: 100;
@@ -55,7 +55,7 @@ const ThemeSwitcherContainer = styled.div`
     z-index: 100;
 `
 
-export default observer(function StarterSection({ starterSectionRef }) {
+export default observer(function StarterSection({starterSectionRef}) {
     const canvasRef = useRef(null);
     const containerRef = useRef(null);
     const [languagePageData, setLanguagePageData] = useState({});
@@ -211,13 +211,13 @@ export default observer(function StarterSection({ starterSectionRef }) {
                 <ThemeSwitcherContainer>
                     <ThemeSwitcher/>
                 </ThemeSwitcherContainer>
-                <canvas ref={canvasRef} style={{ position: 'absolute', top: 0, left: 0, zIndex: -1 }}></canvas>
+                <canvas ref={canvasRef} style={{position: 'absolute', top: 0, left: 0, zIndex: -1}}></canvas>
                 <Text>{languagePageData.greeting}</Text>
                 <Text>{languagePageData.introduction} {languagePageData.name},</Text>
                 <TypingContainer>
                     <Typing themeIsDark={themeController.themeIsDark()}>
                         <Text>{languagePageData.profession}</Text>
-                        <Text style={{ color: "#2424ff" }}> {languagePageData.role} </Text>
+                        <Text style={{color: "#2424ff"}}> {languagePageData.role} </Text>
                         <Text>{languagePageData.preRole}</Text>
                     </Typing>
                 </TypingContainer>

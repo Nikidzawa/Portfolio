@@ -3,7 +3,7 @@ import {useEffect, useState} from "react";
 
 const SkillItem = styled.li`
     display: flex;
-    opacity: ${({ visible }) => (visible ? '1' : '0')};
+    opacity: ${({visible}) => (visible ? '1' : '0')};
     align-items: center;
     gap: 10px;
 
@@ -17,7 +17,7 @@ const SkillItem = styled.li`
     }
 `;
 
-export default function SkillComponent ({skill}) {
+export default function SkillComponent({skill}) {
     const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
@@ -26,7 +26,7 @@ export default function SkillComponent ({skill}) {
 
     return (
         <SkillItem visible={isVisible}>
-            <img src={skill.img} alt={skill.title} />
+            <img src={skill.img} alt={skill.title}/>
             <div>{skill.title}</div>
         </SkillItem>
     );
