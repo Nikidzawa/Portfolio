@@ -27,7 +27,7 @@ const SectionName = styled.h1`
 
     @media screen and (max-width: 750px) {
         height: auto;
-        font-size: 27px;
+        font-size: 26px;
     }
 `
 

@@ -25,7 +25,8 @@ const BottomNavigateButton = styled.img`
     z-index: 1000;
 
     @media screen and (max-width: 600px) {
-        width: 40px;
+        width: 45px;
+        right: 20px;
     }
 `
 
@@ -41,7 +42,8 @@ const UpNavigateButton = styled.img`
 
     @media screen and (max-width: 600px) {
         bottom: 67px;
-        width: 40px;
+        width: 45px;
+        right: 20px;
     }
 `
 

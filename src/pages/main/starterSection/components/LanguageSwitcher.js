@@ -9,7 +9,7 @@ const LanguageCode = styled.div`
     text-align: center;
 
     @media screen and (max-width: 500px) {
-        font-size: 27px;
+        font-size: 28px;
     }
 `
 
