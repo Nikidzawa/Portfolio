@@ -13,7 +13,7 @@ const MainContainer = styled.div`
     justify-content: center;
 
     @media screen and (max-width: 750px) {
-        min-height: 90vh;
+        min-height: 110vh;
     }
 `
 
@@ -85,12 +85,6 @@ const Image = styled.img`
     }
 `
 
-const MainInfoContainer = styled.div`
-    @media screen and (max-width: 750px) {
-        padding-top: 10px;
-    }
-`
-
 export default observer(function BestPetProjectSection({bestPetProjectRef}) {
     const [languagePageData, setLanguagePageData] = useState({});
 
@@ -109,10 +103,10 @@ export default observer(function BestPetProjectSection({bestPetProjectRef}) {
             </LinkContainer>
             <InfoContainer>
                 <Image src={GoLinkLogo} onClick={() => imageWidgetController.showWidget([GoLinkLogo])}/>
-                <MainInfoContainer>
+                <div>
                     <div><strong>{languagePageData.previewTitle}</strong> {languagePageData.preview}</div>
                     <p>{languagePageData.firstParagraph}</p>
-                </MainInfoContainer>
+                </div>
             </InfoContainer>
         </MainContainer>
     )

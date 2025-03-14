@@ -18,7 +18,7 @@ const MainContainer = styled.div`
     justify-content: center;
 
     @media screen and (max-width: 750px) {
-        min-height: 90vh;
+        min-height: 110vh;
     }
 `
 

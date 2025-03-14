@@ -7,7 +7,6 @@ const SeparatorLine = styled.div`
     background-color: ${props => props.themeIsDark === true ? "white" : "black"};
     margin: 0 auto;
     @media screen and (max-width: 750px) {
-        margin: 10px auto;
         width: 70%;
     }
 `
