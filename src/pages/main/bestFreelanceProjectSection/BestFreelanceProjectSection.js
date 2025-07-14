@@ -1,38 +1,31 @@
-import FREELANCE_IMG from "./img/freelance.jpg"
-import FREELANCE2_IMG from "./img/freelance2.png"
-import FREELANCE3_IMG from "./img/freelance3.png"
-import FREELANCE4_IMG from "./img/freelance4.png"
-import FREELANCE5_IMG from "./img/freelance5.jpg"
-import FREELANCE6_IMG from "./img/freelance6.png"
-import GithubLogo from "../../../img/github.png"
-import styled from "styled-components";
+import FREELANCE_IMG from "../../../img/dating1.jpg"
+import FREELANCE2_IMG from "../../../img/dating2.jpg"
+import FREELANCE3_IMG from "../../../img/dating3.jpg"
+import FREELANCE4_IMG from "../../../img/dating4.jpg"
+import TELEGRAM_IMG from "../../../img/telega.png"
+import styled, {css, keyframes} from "styled-components";
 import React, {useEffect, useState} from "react";
 import languageController from "../../../store/LanguageController";
 import {observer} from "mobx-react-lite";
 import imageWidgetController from "../../../store/ImageWidgetController";
 
 const MainContainer = styled.div`
-    min-height: 95vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
-
-    @media screen and (max-width: 750px) {
-        min-height: 110vh;
-    }
+    min-height: 95vh;
 `
 
 const SectionName = styled.h1`
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    height: 70px;
 
     @media screen and (max-width: 750px) {
-        height: auto;
         font-size: 27px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
     }
 `
 
@@ -42,15 +35,7 @@ const InfoContainer = styled.div`
     gap: 15px;
     font-size: 18px;
 
-    @media screen and (max-width: 750px) {
-        height: auto;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        font-size: 16px;
-    }
-
-    @media screen and (max-width: 420px) {
+    @media screen and (max-width: 500px) {
         font-size: 15px;
     }
 `
@@ -58,8 +43,8 @@ const InfoContainer = styled.div`
 const LinkContainer = styled.div`
     display: flex;
     align-items: center;
-    padding: 0 0 10px 0;
-    gap: 5px;
+    padding: 0 0 12px 0;
+    gap: 15px;
 
     a {
         img {
@@ -79,69 +64,170 @@ const ProjectName = styled.strong`
     }
 `
 
+const ProjectContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+`
+
 const Image = styled.img`
-    width: 550px;
+    min-width: auto;
     height: 500px;
     cursor: pointer;
 
     @media (max-width: 750px) {
-        width: 45%;
+        width: 50%;
         height: auto;
-        max-width: 500px;
-        max-height: 700px;
     }
 `
 
-const ImageAndFirstParagraph = styled.div`
+const fadeIn = keyframes`
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+        max-height: 0;
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        max-height: 500px;
+    }
+`;
+
+const fadeOut = keyframes`
+    from {
+        opacity: 1;
+        transform: translateY(0);
+        max-height: 500px;
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-10px);
+        max-height: 0;
+    }
+`;
+
+const DescriptionContainer = styled.div`
+    overflow: hidden;
+    padding-bottom: 20px;
+`;
+
+const DescriptionList = styled.div`
+    ${({ $isExpanded }) => $isExpanded ?
+            css`animation: ${fadeIn} 0.3s ease-out forwards;` :
+            css`animation: ${fadeOut} 0.3s ease-out forwards;`
+    }
+`;
+
+const ToggleButton = styled.button`
+    background: none;
+    border: none;
+    color: #24B5D5FC;
+    cursor: pointer;
+    font-size: inherit;
+    padding: 0;
+    margin: 10px 0;
+    text-align: left;
     display: flex;
-    gap: 10px;
-`
+    align-items: center;
+    font-weight: bold;
+  
+    &::after {
+        content: '▼';
+        font-size: 0.8em;
+        margin-left: 5px;
+        transition: transform 0.3s;
+    }
+  
+    &[aria-expanded="true"]::after {
+        transform: rotate(180deg);
+    }
+`;
 
 export default observer(function BestFreelanceProjectSection({bestFreelanceProjectRef}) {
     const [languagePageData, setLanguagePageData] = useState({});
+    const [isExpanded, setIsExpanded] = useState(false);
+    const [isAnimating, setIsAnimating] = useState(false);
+    const [shouldRenderDescription, setShouldRenderDescription] = useState(false);
 
     useEffect(() => {
         setLanguagePageData(languageController.getTranslation("bestFreelanceProject"));
     }, [languageController.currentLanguage])
 
+    const toggleDescription = () => {
+        if (isAnimating) return;
+
+        if (isExpanded) {
+            setIsAnimating(true);
+            setTimeout(() => {
+                setShouldRenderDescription(false);
+                setIsAnimating(false);
+            }, 300);
+        } else {
+            setShouldRenderDescription(true);
+        }
+        setIsExpanded(!isExpanded);
+    };
+
     return (
         <MainContainer ref={bestFreelanceProjectRef}>
-            <div>
-                <SectionName>{languagePageData.title}</SectionName>
+            <SectionName>{languagePageData.title}</SectionName>
+            <ProjectContainer>
                 <LinkContainer>
-                    <a href={"https://github.com/Nikidzawa/ThatGirl_Oasis_Telebot"}>
-                        <img src={GithubLogo} alt={"GIT"}/>
+                    <a href={"https://t.me/likestep_bot"} target={"_blank"}>
+                        <img src={TELEGRAM_IMG} alt={"GIT"} style={{width: "32px"}}/>
                     </a>
                     <ProjectName>{languagePageData.name}</ProjectName>
                 </LinkContainer>
-                <InfoContainer>
-                    {
-                        window.innerWidth < 600 ? (
-                            <>
-                                <ImageAndFirstParagraph>
-                                    <Image src={FREELANCE5_IMG}
-                                           onClick={() => imageWidgetController.showWidget([FREELANCE_IMG, FREELANCE2_IMG, FREELANCE3_IMG, FREELANCE4_IMG, FREELANCE6_IMG])}/>
-                                    <div><strong>{languagePageData.name}</strong> {languagePageData.firstParagraph}
-                                    </div>
-                                </ImageAndFirstParagraph>
+
+                {
+                    window.innerWidth > 600 ? (
+                        <InfoContainer>
+                            <Image src={FREELANCE_IMG}
+                                   onClick={() => imageWidgetController.showWidget([FREELANCE_IMG, FREELANCE2_IMG, FREELANCE3_IMG, FREELANCE4_IMG])}/>
+                            <div>
+                                <div>{languagePageData.resume}</div>
+                                <DescriptionContainer>
+                                    <ToggleButton onClick={toggleDescription} aria-expanded={isExpanded}>
+                                        {isExpanded ? 'Скрыть' : 'Подробнее о проекте'}
+                                    </ToggleButton>
+                                    {(shouldRenderDescription || isExpanded) && (
+                                        <DescriptionList $isExpanded={isExpanded}>
+                                            <div>{languagePageData.desc1}</div>
+                                            <p>{languagePageData.desc2}</p>
+                                            <p>{languagePageData.desc3}</p>
+                                            <p>{languagePageData.desc4}</p>
+                                        </DescriptionList>
+                                    )}
+                                </DescriptionContainer>
+                            </div>
+                        </InfoContainer>
+                    ) : (
+                        <div style={{paddingBottom: "20px"}}>
+                            <InfoContainer>
+                                <Image src={FREELANCE_IMG}
+                                       onClick={() => imageWidgetController.showWidget([FREELANCE_IMG, FREELANCE2_IMG, FREELANCE3_IMG, FREELANCE4_IMG])}/>
                                 <div>
-                                    <div>{languagePageData.secondParagraph}</div>
+                                    <div>{languagePageData.resume}</div>
                                 </div>
-                            </>
-                        ) : (
-                            <>
-                                <Image src={FREELANCE5_IMG}
-                                       onClick={() => imageWidgetController.showWidget([FREELANCE_IMG, FREELANCE2_IMG, FREELANCE3_IMG, FREELANCE4_IMG, FREELANCE6_IMG])}/>
-                                <div>
-                                    <div><strong>{languagePageData.name}</strong> {languagePageData.firstParagraph}
-                                    </div>
-                                    <p>{languagePageData.secondParagraph}</p>
-                                </div>
-                            </>
-                        )
-                    }
-                </InfoContainer>
-            </div>
+                            </InfoContainer>
+                            <DescriptionContainer>
+                                <ToggleButton onClick={toggleDescription} aria-expanded={isExpanded}>
+                                    {isExpanded ? 'Свернуть описание' : 'Развернуть описание'}
+                                </ToggleButton>
+                                {(shouldRenderDescription || isExpanded) && (
+                                    <DescriptionList $isExpanded={isExpanded}>
+                                        <div>{languagePageData.desc1}</div>
+                                        <p>{languagePageData.desc2}</p>
+                                        <p>{languagePageData.desc3}</p>
+                                        <p>{languagePageData.desc4}</p>
+                                    </DescriptionList>
+                                )}
+                            </DescriptionContainer>
+                        </div>
+                    )
+                }
+            </ProjectContainer>
         </MainContainer>
     )
 })

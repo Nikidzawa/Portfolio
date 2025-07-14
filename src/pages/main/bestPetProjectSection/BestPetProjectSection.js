@@ -1,33 +1,30 @@
-import GoLinkLogo from "./img/goLink.png"
+import ENIGMA_1_IMAGE from "../../../img/enigma1.png"
+import ENIGMA_2_IMAGE from "../../../img/enigma2.png"
+import ENIGMA_3_IMAGE from "../../../img/enigma3.png"
 import GithubLogo from "../../../img/github.png"
-import styled from "styled-components";
+import styled, {css, keyframes} from "styled-components";
 import languageController from "../../../store/LanguageController";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {observer} from "mobx-react-lite";
 import imageWidgetController from "../../../store/ImageWidgetController";
 
 const MainContainer = styled.div`
-    min-height: 95vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
-
-    @media screen and (max-width: 750px) {
-        min-height: 110vh;
-    }
+    min-height: 95vh;
 `
 
 const SectionName = styled.h1`
-    text-align: center;
-    height: 70px;
     display: flex;
+    flex: 1;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
 
     @media screen and (max-width: 750px) {
-        height: auto;
-        font-size: 26px;
+        font-size: 27px;
     }
 `
 
@@ -54,7 +51,7 @@ const LinkContainer = styled.div`
     display: flex;
     align-items: center;
     padding: 0 0 10px 0;
-    gap: 5px;
+    gap: 10px;
 
     a {
         img {
@@ -64,6 +61,12 @@ const LinkContainer = styled.div`
             }
         }
     }
+`
+
+const ProjectContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 `
 
 const ProjectName = styled.strong`
@@ -85,29 +88,122 @@ const Image = styled.img`
     }
 `
 
+
+const fadeIn = keyframes`
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+        max-height: 0;
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        max-height: 500px;
+    }
+`;
+
+const fadeOut = keyframes`
+    from {
+        opacity: 1;
+        transform: translateY(0);
+        max-height: 500px;
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-10px);
+        max-height: 0;
+    }
+`;
+
+const DescriptionList = styled.div`
+    ${({ $isExpanded }) => $isExpanded ?
+    css`animation: ${fadeIn} 0.3s ease-out forwards;` :
+    css`animation: ${fadeOut} 0.3s ease-out forwards;`
+}
+`;
+
+const DescriptionContainer = styled.div`
+    overflow: hidden;
+`;
+
+const ToggleButton = styled.button`
+  background: none;
+  border: none;
+  color: #24B5D5FC;
+  cursor: pointer;
+  font-size: inherit;
+  padding: 0;
+  margin: 10px 0;
+  text-align: left;
+  display: flex;
+  align-items: center;
+    font-weight: bold;
+
+
+    &::after {
+    content: '▼';
+    font-size: 0.8em;
+    margin-left: 5px;
+    transition: transform 0.3s;
+  }
+  
+  &[aria-expanded="true"]::after {
+    transform: rotate(180deg);
+  }
+`;
+
 export default observer(function BestPetProjectSection({bestPetProjectRef}) {
     const [languagePageData, setLanguagePageData] = useState({});
+    const [isExpanded, setIsExpanded] = useState(false);
+    const [isAnimating, setIsAnimating] = useState(false);
+    const [shouldRenderDescription, setShouldRenderDescription] = useState(false);
 
     useEffect(() => {
         setLanguagePageData(languageController.getTranslation("bestPetProject"));
     }, [languageController.currentLanguage])
 
+    const toggleDescription = () => {
+        if (isAnimating) return;
+
+        if (isExpanded) {
+            setIsAnimating(true);
+            setTimeout(() => {
+                setShouldRenderDescription(false);
+                setIsAnimating(false);
+            }, 300);
+        } else {
+            setShouldRenderDescription(true);
+        }
+        setIsExpanded(!isExpanded);
+    };
+
     return (
         <MainContainer ref={bestPetProjectRef}>
             <SectionName>{languagePageData.title}</SectionName>
-            <LinkContainer>
-                <a href={"https://github.com/Nikidzawa/Go_Link"}>
-                    <img alt={"GIT"} src={GithubLogo}/>
-                </a>
-                <ProjectName>{languagePageData.name}</ProjectName>
-            </LinkContainer>
-            <InfoContainer>
-                <Image src={GoLinkLogo} onClick={() => imageWidgetController.showWidget([GoLinkLogo])}/>
-                <div>
-                    <div><strong>{languagePageData.previewTitle}</strong> {languagePageData.preview}</div>
-                    <p>{languagePageData.firstParagraph}</p>
-                </div>
-            </InfoContainer>
+            <ProjectContainer>
+                <LinkContainer>
+                    <a href={"https://github.com/Nikidzawa/Enigma"}>
+                        <img alt={"GIT"} src={GithubLogo}/>
+                    </a>
+                    <ProjectName>{languagePageData.name}</ProjectName>
+                </LinkContainer>
+                <InfoContainer>
+                    <Image src={ENIGMA_1_IMAGE} onClick={() => imageWidgetController.showWidget([ENIGMA_1_IMAGE, ENIGMA_2_IMAGE, ENIGMA_3_IMAGE])}/>
+                    <div>
+                        <div>{languagePageData.previewTitle} {languagePageData.preview}</div>
+                        <DescriptionContainer>
+                            <ToggleButton onClick={toggleDescription} aria-expanded={isExpanded}>
+                                {isExpanded ? 'Скрыть' : 'Подробнее о проекте'}
+                            </ToggleButton>
+                            {(shouldRenderDescription || isExpanded) && (
+                                <DescriptionList $isExpanded={isExpanded}>
+                                    <div>{languagePageData.desc1}</div>
+                                </DescriptionList>
+                            )}
+                        </DescriptionContainer>
+                    </div>
+                </InfoContainer>
+            </ProjectContainer>
         </MainContainer>
     )
 })

@@ -14,8 +14,8 @@ class ImageWidgetController {
     }
 
     showWidget(images) {
-        this.isVisible = true;
         this.images = images;
+        this.isVisible = true;
     }
 }
 

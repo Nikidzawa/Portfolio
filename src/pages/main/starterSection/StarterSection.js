@@ -217,7 +217,7 @@ export default observer(function StarterSection({starterSectionRef}) {
                 <TypingContainer>
                     <Typing themeIsDark={themeController.themeIsDark()}>
                         <Text>{languagePageData.profession}</Text>
-                        <Text style={{color: "#2424ff"}}> {languagePageData.role} </Text>
+                        <Text style={{color: "#24B5D5FC"}}> {languagePageData.role} </Text>
                         <Text>{languagePageData.preRole}</Text>
                     </Typing>
                 </TypingContainer>

@@ -68,22 +68,10 @@ export default function HomePage() {
 
     const handleScroll = (scroll) => {
         if (scroll.current) {
-            if (scroll.current === starterSectionRef.current) {
-                scroll.current.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start',
-                });
-            } else if (scroll.current === contactsSectionRef.current) {
-                scroll.current.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'end',
-                });
-            } else {
-                scroll.current.scrollIntoView({
-                    behavior: 'smooth',
-                    block: window.innerHeight < 750 ? 'start' : 'center',
-                });
-            }
+            scroll.current.scrollIntoView({
+                behavior: 'smooth',
+                block: window.innerHeight < 750 ? 'start' : 'center',
+            });
         }
     };
 

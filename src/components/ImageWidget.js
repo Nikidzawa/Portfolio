@@ -18,7 +18,7 @@ const Background = styled.div`
     padding: 5px;
     opacity: ${props => (props.visible ? 1 : 0)};
     pointer-events: ${props => props.visible ? "auto" : "none"};;
-    transition: opacity 0.5s;
+    transition: opacity 0.4s;
     cursor: zoom-out;
 `
 
@@ -87,7 +87,13 @@ export default observer(function ImageWidget() {
     }
 
     useEffect(() => {
-        setCurrentImage(imageWidgetController.images[0]);
+        if (imageWidgetController.isVisible) {
+            setCurrentImage(imageWidgetController.images[0]);
+        } else {
+            setTimeout(() => {
+                setCurrentImage(imageWidgetController.images[0]);
+            }, 250)
+        }
 
         if (imageWidgetController.isVisible) {
             window.addEventListener('wheel', preventScrolling, {passive: false});

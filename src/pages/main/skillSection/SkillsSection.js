@@ -2,14 +2,11 @@ import styled from "styled-components";
 import {useEffect, useState} from "react";
 import {GetBackEndSkills, GetFrontendSkills, GetOtherSkills} from "./data/SkillsData";
 import SkillComponent from "./components/SkillComponent";
-import MobileDetect from "mobile-detect";
 import GearWheel from "../../../img/svg/GearWheel";
 import themeController from "../../../store/ThemeController";
 import languageController from "../../../store/LanguageController";
 import {observer} from "mobx-react-lite";
 
-const md = new MobileDetect(window.navigator.userAgent);
-const isMobile = md.mobile();
 const SkillButton = styled.button`
     border: none;
     border-radius: 20px;
@@ -27,21 +24,8 @@ const SkillButton = styled.button`
     }
 
     &.active {
-        background-color: blue;
+        background-color: #0094b8;
         color: white;
-        transition: color 0.5s;
-    }
-
-    &:not(${!isMobile}) {
-        &:hover {
-            opacity: 0.7;
-            transition: opacity 0.35s ease-in;
-        }
-
-        &:not(:hover) {
-            opacity: 1;
-            transition: opacity 0.35s ease-in;
-        }
     }
 `;
 
@@ -90,29 +74,25 @@ const MainContainer = styled.div`
     flex-direction: column;
     justify-content: center;
     position: relative;
-
-    @media screen and (max-width: 750px) {
-        min-height: 110vh;
-    }
 `
 
 const SectionName = styled.h1`
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    height: 70px;
 
     @media screen and (max-width: 750px) {
-        height: auto;
         font-size: 27px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        margin-bottom: 30px;
     }
-    
-    @media screen and (max-width: 380px) {
-        margin-bottom: 20px;
-    }
+`
+
+const ProjectContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 `
 
 const Category = styled.div`
@@ -124,19 +104,16 @@ const Category = styled.div`
 
 const SkillsButtons = styled.div`
     display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
 `
 
 const Components = styled.div`
     display: flex;
     flex-direction: column;
     gap: 20px;
-    padding: 20px 0 0 0;
+    padding: 30px 0 0 70px;
 
     @media screen and (max-width: 500px) {
-        padding: 10px;
+        padding: 30px 0 0 10px;
     }
 `
 
@@ -171,20 +148,22 @@ export default observer(function SkillsSection({skillsSectionRef}) {
                 <GearWheel/>
             </GearWheelContainer>
             <SectionName>{languagePageData.title}</SectionName>
-            <SkillsButtons>
-                <SkillButton onClick={() => handleChange("Backend")}
-                             themeIsDark={themeController.themeIsDark()}
-                             className={category === "Backend" ? "active" : ""}>Backend</SkillButton>
-                <SkillButton onClick={() => handleChange("Frontend")}
-                             themeIsDark={themeController.themeIsDark()}
-                             className={category === "Frontend" ? "active" : ""}>Frontend</SkillButton>
-                <SkillButton onClick={() => handleChange("Other")}
-                             themeIsDark={themeController.themeIsDark()}
-                             className={category === "Other" ? "active" : ""}>Other</SkillButton>
-            </SkillsButtons>
-            <Category>
-                <Components>{getText()}</Components>
-            </Category>
+            <ProjectContainer>
+                <SkillsButtons>
+                    <SkillButton onClick={() => handleChange("Backend")}
+                                 themeIsDark={themeController.themeIsDark()}
+                                 className={category === "Backend" ? "active" : ""}>Backend</SkillButton>
+                    <SkillButton onClick={() => handleChange("Frontend")}
+                                 themeIsDark={themeController.themeIsDark()}
+                                 className={category === "Frontend" ? "active" : ""}>Frontend</SkillButton>
+                    <SkillButton onClick={() => handleChange("Other")}
+                                 themeIsDark={themeController.themeIsDark()}
+                                 className={category === "Other" ? "active" : ""}>Other</SkillButton>
+                </SkillsButtons>
+                <Category>
+                    <Components>{getText()}</Components>
+                </Category>
+            </ProjectContainer>
         </MainContainer>
     )
 })

@@ -2,10 +2,7 @@ import JAVA_IMG from "./imgs/java.png"
 import SPRING_IMG from "./imgs/spring.png"
 import SQL_IMG from "./imgs/SQL.png"
 import REDIS_IMG from "./imgs/redis.png"
-import KAFKA_IMG from "./imgs/Kafka.jpg"
 import SWAGGER_IMG from "./imgs/swagger.png"
-import LOGBACK_IMG from "./imgs/logback.png"
-import LOMBOK_IMG from "./imgs/lombok.png"
 import JS from "./imgs/JS.png"
 import HTML from "./imgs/html.jpg"
 import CSS from "./imgs/css.jpg"
@@ -18,6 +15,9 @@ import POSTMAN_IMG from "./imgs/postman.png"
 import FX_IMG from "./imgs/javaFX.jpg"
 import NGINX from "./imgs/nginx.png"
 import TOMCAT from "./imgs/tomcat.png"
+import ELASTIC from "./imgs/elasticsearch.svg"
+import RABBIT_MQ from "./imgs/rabbitmq.svg"
+import KAFKA from "./imgs/kafka.svg"
 
 export function GetBackEndSkills() {
     return [
@@ -31,23 +31,23 @@ export function GetBackEndSkills() {
         },
         {
             img: SQL_IMG,
-            title: "SQL"
+            title: "Postgresql"
         },
         {
             img: REDIS_IMG,
             title: "Redis"
         },
         {
-            img: LOMBOK_IMG,
-            title: "Lombok"
+            img: RABBIT_MQ,
+            title: "RabbitMq"
         },
         {
-            img: KAFKA_IMG,
-            title: "Apache Kafka"
+            img: ELASTIC,
+            title: "Elasticsearch"
         },
         {
-            img: LOGBACK_IMG,
-            title: "Logback"
+            img: KAFKA,
+            title: "Kafka"
         },
         {
             img: SWAGGER_IMG,

@@ -10,6 +10,8 @@ import themeController from "../../../store/ThemeController";
 import {useEffect, useState} from "react";
 import languageController from "../../../store/LanguageController";
 import {observer} from "mobx-react-lite";
+import SKEBOB_IMG from "../../../img/skebob.jpg"
+import ImageWidgetController from "../../../store/ImageWidgetController";
 
 const MainContainer = styled.div`
     min-height: 100vh;
@@ -27,13 +29,6 @@ const SectionName = styled.h1`
     justify-content: center;
     align-items: center;
     
-    @media screen and (max-width: 750px){
-        font-size: 26px;
-    }
-
-    @media screen and (max-width: 390px){
-        font-size: 25px;
-    }
 `
 
 const SiteNameContainer = styled.div`
@@ -43,6 +38,7 @@ const SiteNameContainer = styled.div`
     transform: translateX(-50%);
     text-align: center;
     white-space: nowrap;
+    cursor: pointer;
 `
 
 const Links = styled.div`
@@ -91,7 +87,7 @@ export default observer(function ContactsSection({contactsSectionRef}) {
                          src={themeController.themeIsDark() ? MAIL_IMG : MAIL_BLACK_IMG}/>
                 </a>
             </Links>
-            <SiteNameContainer>© NIKIDZAWA.RU, 2024</SiteNameContainer>
+            <SiteNameContainer onClick={() => ImageWidgetController.showWidget([SKEBOB_IMG])}>© NIKIDZAWA.RU, 2025</SiteNameContainer>
         </MainContainer>
     )
 })
