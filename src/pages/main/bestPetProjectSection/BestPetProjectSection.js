@@ -13,14 +13,21 @@ const MainContainer = styled.div`
     flex-direction: column;
     justify-content: center;
     min-height: 95vh;
+
+    @media (max-width: 750px) {
+        padding-bottom: 20px;
+    }
 `
 
-const SectionName = styled.h1`
+const SectionNameContainer = styled.div`
+    min-height: 20vh;
     display: flex;
-    flex: 1;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+`
+
+const SectionName = styled.h1`
     text-align: center;
 
     @media screen and (max-width: 750px) {
@@ -49,8 +56,7 @@ const InfoContainer = styled.div`
 
 const LinkContainer = styled.div`
     display: flex;
-    align-items: center;
-    padding: 0 0 10px 0;
+    padding-bottom: 10px;
     gap: 10px;
 
     a {
@@ -73,7 +79,7 @@ const ProjectName = styled.strong`
     font-size: 25px;
 
     @media (max-width: 750px) {
-        font-size: 22px;
+        font-size: 21px;
     }
 `
 
@@ -116,14 +122,11 @@ const fadeOut = keyframes`
 `;
 
 const DescriptionList = styled.div`
+    padding-bottom: 10vh;
     ${({ $isExpanded }) => $isExpanded ?
     css`animation: ${fadeIn} 0.3s ease-out forwards;` :
     css`animation: ${fadeOut} 0.3s ease-out forwards;`
 }
-`;
-
-const DescriptionContainer = styled.div`
-    overflow: hidden;
 `;
 
 const ToggleButton = styled.button`
@@ -179,7 +182,9 @@ export default observer(function BestPetProjectSection({bestPetProjectRef}) {
 
     return (
         <MainContainer ref={bestPetProjectRef}>
-            <SectionName>{languagePageData.title}</SectionName>
+            <SectionNameContainer>
+                <SectionName>{languagePageData.title}</SectionName>
+            </SectionNameContainer>
             <ProjectContainer>
                 <LinkContainer>
                     <a href={"https://github.com/Nikidzawa/Enigma"}>
@@ -191,7 +196,7 @@ export default observer(function BestPetProjectSection({bestPetProjectRef}) {
                     <Image src={ENIGMA_1_IMAGE} onClick={() => imageWidgetController.showWidget([ENIGMA_1_IMAGE, ENIGMA_2_IMAGE, ENIGMA_3_IMAGE])}/>
                     <div>
                         <div>{languagePageData.previewTitle} {languagePageData.preview}</div>
-                        <DescriptionContainer>
+                        <div>
                             <ToggleButton onClick={toggleDescription} aria-expanded={isExpanded}>
                                 {isExpanded ? 'Скрыть' : 'Подробнее о проекте'}
                             </ToggleButton>
@@ -200,7 +205,7 @@ export default observer(function BestPetProjectSection({bestPetProjectRef}) {
                                     <div>{languagePageData.desc1}</div>
                                 </DescriptionList>
                             )}
-                        </DescriptionContainer>
+                        </div>
                     </div>
                 </InfoContainer>
             </ProjectContainer>

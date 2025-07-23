@@ -48,11 +48,7 @@ export function GetBackEndSkills() {
         {
             img: KAFKA,
             title: "Kafka"
-        },
-        {
-            img: SWAGGER_IMG,
-            title: "Swagger"
-        },
+        }
     ]
 }
 

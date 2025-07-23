@@ -7,6 +7,14 @@ import themeController from "../../../store/ThemeController";
 import languageController from "../../../store/LanguageController";
 import {observer} from "mobx-react-lite";
 
+const MainContainer = styled.div`
+    min-height: 95vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+`
+
 const SkillButton = styled.button`
     border: none;
     border-radius: 20px;
@@ -41,8 +49,11 @@ const GearWheelContainer = styled.div`
 
     svg {
         margin-top: 100px;
-        width: 450px;
-        height: 450px;
+        width: 38vh;
+        height: 38vh;
+
+        max-width: 450px;
+        max-height: 450px;
 
         g {
             path {
@@ -50,38 +61,17 @@ const GearWheelContainer = styled.div`
             }
         }
     }
-
-    @media screen and (max-width: 500px) {
-        svg {
-            width: 320px;
-            height: 320px;
-            margin: 0;
-        }
-    }
-
-    @media screen and (max-width: 390px) {
-        svg {
-            width: 280px;
-            height: 280px;
-            margin: 0;
-        }
-    }
 `
 
-const MainContainer = styled.div`
-    min-height: 95vh;
+const SectionNameContainer = styled.div`
+    min-height: 20vh;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    position: relative;
-`
-
-const SectionName = styled.h1`
-    display: flex;
-    flex: 1;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+`
+
+const SectionName = styled.h1`
     text-align: center;
 
     @media screen and (max-width: 750px) {
@@ -110,11 +100,7 @@ const Components = styled.div`
     display: flex;
     flex-direction: column;
     gap: 20px;
-    padding: 30px 0 0 70px;
-
-    @media screen and (max-width: 500px) {
-        padding: 30px 0 0 10px;
-    }
+    padding: 30px 0 0 10px;
 `
 
 export default observer(function SkillsSection({skillsSectionRef}) {
@@ -147,7 +133,9 @@ export default observer(function SkillsSection({skillsSectionRef}) {
             <GearWheelContainer themeIsDark={themeController.themeIsDark()}>
                 <GearWheel/>
             </GearWheelContainer>
-            <SectionName>{languagePageData.title}</SectionName>
+            <SectionNameContainer>
+                <SectionName>{languagePageData.title}</SectionName>
+            </SectionNameContainer>
             <ProjectContainer>
                 <SkillsButtons>
                     <SkillButton onClick={() => handleChange("Backend")}

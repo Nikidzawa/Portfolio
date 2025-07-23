@@ -8,6 +8,8 @@ import React, {useEffect, useState} from "react";
 import languageController from "../../../store/LanguageController";
 import {observer} from "mobx-react-lite";
 import imageWidgetController from "../../../store/ImageWidgetController";
+import themeController from "../../../store/ThemeController";
+import TELEGRAM_BLACK_IMG from "../../../img/telegaBlack.png";
 
 const MainContainer = styled.div`
     display: flex;
@@ -16,12 +18,15 @@ const MainContainer = styled.div`
     min-height: 95vh;
 `
 
-const SectionName = styled.h1`
+const SectionNameContainer = styled.div`
+    min-height: 20vh;
     display: flex;
-    flex: 1;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+`
+
+const SectionName = styled.h1`
     text-align: center;
 
     @media screen and (max-width: 750px) {
@@ -35,16 +40,16 @@ const InfoContainer = styled.div`
     gap: 15px;
     font-size: 18px;
 
-    @media screen and (max-width: 500px) {
+    @media screen and (max-width: 750px) {
         font-size: 15px;
+        gap: 10px;
     }
 `
 
 const LinkContainer = styled.div`
     display: flex;
-    align-items: center;
-    padding: 0 0 12px 0;
-    gap: 15px;
+    padding-bottom: 10px;
+    gap: 13px;
 
     a {
         img {
@@ -60,7 +65,7 @@ const ProjectName = styled.strong`
     font-size: 25px;
 
     @media (max-width: 750px) {
-        font-size: 22px;
+        font-size: 21px;
     }
 `
 
@@ -90,7 +95,6 @@ const fadeIn = keyframes`
     to {
         opacity: 1;
         transform: translateY(0);
-        max-height: 500px;
     }
 `;
 
@@ -98,7 +102,6 @@ const fadeOut = keyframes`
     from {
         opacity: 1;
         transform: translateY(0);
-        max-height: 500px;
     }
     to {
         opacity: 0;
@@ -107,12 +110,8 @@ const fadeOut = keyframes`
     }
 `;
 
-const DescriptionContainer = styled.div`
-    overflow: hidden;
-    padding-bottom: 20px;
-`;
-
 const DescriptionList = styled.div`
+    padding-bottom: 10vh;
     ${({ $isExpanded }) => $isExpanded ?
             css`animation: ${fadeIn} 0.3s ease-out forwards;` :
             css`animation: ${fadeOut} 0.3s ease-out forwards;`
@@ -171,11 +170,15 @@ export default observer(function BestFreelanceProjectSection({bestFreelanceProje
 
     return (
         <MainContainer ref={bestFreelanceProjectRef}>
-            <SectionName>{languagePageData.title}</SectionName>
+            <SectionNameContainer>
+                <SectionName>{languagePageData.title}</SectionName>
+            </SectionNameContainer>
             <ProjectContainer>
                 <LinkContainer>
                     <a href={"https://t.me/likestep_bot"} target={"_blank"}>
-                        <img src={TELEGRAM_IMG} alt={"GIT"} style={{width: "32px"}}/>
+                        <img
+                            src={themeController.themeIsDark() ? TELEGRAM_IMG : TELEGRAM_BLACK_IMG}
+                            alt={"Telegram"} style={{width: "30px"}}/>
                     </a>
                     <ProjectName>{languagePageData.name}</ProjectName>
                 </LinkContainer>
@@ -187,7 +190,7 @@ export default observer(function BestFreelanceProjectSection({bestFreelanceProje
                                    onClick={() => imageWidgetController.showWidget([FREELANCE_IMG, FREELANCE2_IMG, FREELANCE3_IMG, FREELANCE4_IMG])}/>
                             <div>
                                 <div>{languagePageData.resume}</div>
-                                <DescriptionContainer>
+                                <div>
                                     <ToggleButton onClick={toggleDescription} aria-expanded={isExpanded}>
                                         {isExpanded ? 'Скрыть' : 'Подробнее о проекте'}
                                     </ToggleButton>
@@ -199,11 +202,11 @@ export default observer(function BestFreelanceProjectSection({bestFreelanceProje
                                             <p>{languagePageData.desc4}</p>
                                         </DescriptionList>
                                     )}
-                                </DescriptionContainer>
+                                </div>
                             </div>
                         </InfoContainer>
                     ) : (
-                        <div style={{paddingBottom: "20px"}}>
+                        <div>
                             <InfoContainer>
                                 <Image src={FREELANCE_IMG}
                                        onClick={() => imageWidgetController.showWidget([FREELANCE_IMG, FREELANCE2_IMG, FREELANCE3_IMG, FREELANCE4_IMG])}/>
@@ -211,7 +214,7 @@ export default observer(function BestFreelanceProjectSection({bestFreelanceProje
                                     <div>{languagePageData.resume}</div>
                                 </div>
                             </InfoContainer>
-                            <DescriptionContainer>
+                            <div>
                                 <ToggleButton onClick={toggleDescription} aria-expanded={isExpanded}>
                                     {isExpanded ? 'Свернуть описание' : 'Развернуть описание'}
                                 </ToggleButton>
@@ -223,7 +226,7 @@ export default observer(function BestFreelanceProjectSection({bestFreelanceProje
                                         <p>{languagePageData.desc4}</p>
                                     </DescriptionList>
                                 )}
-                            </DescriptionContainer>
+                            </div>
                         </div>
                     )
                 }
