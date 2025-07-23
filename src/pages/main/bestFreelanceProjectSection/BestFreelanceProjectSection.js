@@ -19,11 +19,16 @@ const MainContainer = styled.div`
 `
 
 const SectionNameContainer = styled.div`
-    min-height: 20vh;
     display: flex;
+    flex: 1;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    @media screen and (max-width: 750px) {
+        flex: 0;
+        min-height: 20vh;
+    }
 `
 
 const SectionName = styled.h1`
@@ -111,7 +116,9 @@ const fadeOut = keyframes`
 `;
 
 const DescriptionList = styled.div`
-    padding-bottom: 10vh;
+    @media (max-width: 750px) {
+        padding-bottom: 10vh;
+    }    
     ${({ $isExpanded }) => $isExpanded ?
             css`animation: ${fadeIn} 0.3s ease-out forwards;` :
             css`animation: ${fadeOut} 0.3s ease-out forwards;`

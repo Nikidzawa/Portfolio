@@ -64,11 +64,16 @@ const GearWheelContainer = styled.div`
 `
 
 const SectionNameContainer = styled.div`
-    min-height: 20vh;
     display: flex;
+    flex: 1;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    @media screen and (max-width: 750px) {
+        flex: 0;
+        min-height: 20vh;
+    }
 `
 
 const SectionName = styled.h1`
